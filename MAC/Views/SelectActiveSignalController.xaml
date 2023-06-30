@@ -1,0 +1,131 @@
+﻿<Window x:Class="MAC.Views.SelectActiveSignalController"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:MAC.ViewModels"
+        xmlns:models="clr-namespace:MAC.Models"
+        xmlns:gif="http://wpfanimatedgif.codeplex.com"
+        ResizeMode="NoResize"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=viewModels:SelectActiveSignalControllerVm}"
+        Title="Выбор активных КС для тестирования"
+        Height="310"
+        Width="620">
+    <Window.Resources>
+        <!--#region ComConnectItem-->
+
+        <Style TargetType="TextBlock"
+               x:Key="NameSignalController">
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="FontSize"
+                    Value="18" />
+        </Style>
+
+        <DataTemplate x:Key="ItemComConnectDataTemplate"
+                      DataType="{x:Type models:ComConnectItem}" />
+        <!--#endregion-->
+    </Window.Resources>
+    <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*" />
+            <RowDefinition Height="50" />
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Border Margin="2"
+                    CornerRadius="5"
+                    BorderThickness="1"
+                    BorderBrush="Black">
+                <ItemsControl ItemsSource="{Binding SignalControllerItems , UpdateSourceTrigger=PropertyChanged}"
+                              Padding="5,0">
+                    <ItemsControl.ItemTemplate>
+                        <DataTemplate DataType="{x:Type models:ComConnectItem}">
+                            <Grid Margin="0,5"
+                                  IsEnabled="{Binding CheckedResult}">
+                                <Border>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="2*" />
+                                            <ColumnDefinition Width="4*" />
+                                            <ColumnDefinition Width="2*" />
+                                        </Grid.ColumnDefinitions>
+                                        <Grid Grid.Column="0">
+                                            <TextBlock Text="{Binding TechnicalName}"
+                                                       Style="{StaticResource NameSignalController}" />
+                                        </Grid>
+                                        <Grid Grid.Column="1" >
+                                            <Viewbox Width="25">
+                                                <CheckBox IsChecked="{Binding IsActiveTest}"
+                                                      VerticalAlignment="Center"
+                                                      HorizontalAlignment="Center" />
+                                            </Viewbox>
+                                        </Grid>
+                                        <Grid Grid.Column="2">
+                                            <TextBox Text="{Binding Name}"
+                                                     VerticalAlignment="Center" />
+                                        </Grid>
+                                        <Grid Grid.Column="3">
+                                            <Button Style="{StaticResource IconBackgroundButton}"
+                                                    Command="{Binding RelativeSource={ RelativeSource Mode=FindAncestor , AncestorType= Window} , Path=DataContext.GetSerialNumberScCommand}"
+                                                    CommandParameter="{Binding  }"
+                                                    Height="25"
+                                                    VerticalAlignment="Center"
+                                                    HorizontalAlignment="Center"
+                                                    Visibility="{Binding IsChecked, Converter={StaticResource InvertBoolToVis}}">
+                                                <Image>
+                                                    <Image.Style>
+                                                        <Style TargetType="Image">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding CheckedResult}"
+                                                                             Value="True">
+                                                                    <Setter Property="Source"
+                                                                            Value="{StaticResource SuccessIcon}" />
+                                                                </DataTrigger>
+                                                                <DataTrigger Binding="{Binding CheckedResult}"
+                                                                             Value="False">
+                                                                    <Setter Property="Source"
+                                                                            Value="{StaticResource FailIcon}" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Image.Style>
+                                                </Image>
+                                            </Button>
+                                            
+
+                                            <Image Visibility="{Binding IsChecked , Converter={StaticResource BoolToVis}}"
+                                                   Height="25"
+                                                   gif:ImageBehavior.AnimatedSource="../Style/ImageGif/Loader.gif"
+                                                   gif:ImageBehavior.RepeatBehavior="Forever"
+                                                   gif:ImageBehavior.AnimateInDesignMode="True" />
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </Grid>
+                        </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                </ItemsControl>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Border Margin="2"
+                    CornerRadius="5"
+                    BorderThickness="1"
+                    BorderBrush="Black">
+                <Grid>
+                    <Button Content="Продолжить"
+                            Margin="20,10,400,10"
+                            Command="{Binding ContinueCommand}" />
+                    <Button Content="Отменить"
+                            Margin="400,10,20,10"
+                            Command="{Binding CancelCommand}" />
+                </Grid>
+            </Border>
+        </Grid>
+
+    </Grid>
+</Window>

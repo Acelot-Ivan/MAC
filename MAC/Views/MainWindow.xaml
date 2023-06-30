@@ -1,0 +1,722 @@
+﻿<Window x:Class="MAC.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:MAC.ViewModels"
+        mc:Ignorable="d"
+        d:DataContext="{d:DesignInstance Type=viewModels:MainWindowVm}"
+        xmlns:model="clr-namespace:MAC.Models"
+        xmlns:value="clr-namespace:MAC.Models.Value"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:customControl="clr-namespace:MAC.Style.CustomControl"
+        Title="{Binding Version , StringFormat={}Тестирование Контроллеров Сигналов {0}}"
+        MinWidth="800"
+        Width="800"
+        ResizeMode="CanMinimize"
+        MinHeight="390"
+        Height="390">
+    <Window.Resources>
+        <!--#region Head Menu Style-->
+        <Style TargetType="Border"
+               x:Key="HeadMenuBorder">
+            <Setter Property="Padding"
+                    Value="0" />
+
+        </Style>
+        <Style TargetType="TextBlock"
+               x:Key="HeadMenuTextBlock">
+            <Setter Property="FontSize"
+                    Value="14" />
+            <Setter Property="FontWeight"
+                    Value="SemiBold" />
+            <Setter Property="TextWrapping"
+                    Value="Wrap" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+        </Style>
+        <!--#endregion-->
+
+        <Style TargetType="Border"
+               x:Key="ChannelBorder">
+            <Setter Property="Margin"
+                    Value="2" />
+            <Setter Property="BorderThickness"
+                    Value="1" />
+            <Setter Property="BorderBrush"
+                    Value="Black" />
+            <Setter Property="CornerRadius"
+                    Value="2" />
+        </Style>
+
+        <DataTemplate DataType="{x:Type value:IScValue}"
+                      x:Key="ValueDataTemplate">
+            <Border Height="27">
+                <Grid>
+                    <TextBox Text="{Binding ResultValue}"
+                             Margin="3"
+                             BorderThickness="0"
+                             VerticalAlignment="Center"
+                             HorizontalContentAlignment="Center"
+                             VerticalContentAlignment="Center"
+                             TextAlignment="Center"
+                             IsReadOnly="True"
+                             IsEnabled="{Binding IsActive}">
+                        <TextBox.Style>
+                            <Style TargetType="TextBox">
+                                <Style.Triggers>
+                                    <DataTrigger Binding="{Binding IsСheckedNow}"
+                                                 Value="True">
+                                        <Setter Property="Background"
+                                                Value="Yellow" />
+                                    </DataTrigger>
+
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsActive}"
+                                                       Value="True" />
+                                            <Condition Binding="{Binding IsVerified}"
+                                                       Value="True" />
+                                            <Condition Binding="{Binding IsValidResult}"
+                                                       Value="True" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Background"
+                                                Value="#00df1e" />
+                                    </MultiDataTrigger>
+
+                                    <MultiDataTrigger>
+                                        <MultiDataTrigger.Conditions>
+                                            <Condition Binding="{Binding IsActive}"
+                                                       Value="True" />
+                                            <Condition Binding="{Binding IsVerified}"
+                                                       Value="True" />
+                                            <Condition Binding="{Binding IsValidResult}"
+                                                       Value="False" />
+                                        </MultiDataTrigger.Conditions>
+                                        <Setter Property="Background"
+                                                Value="#EC4242" />
+                                    </MultiDataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </TextBox.Style>
+                    </TextBox>
+                </Grid>
+            </Border>
+        </DataTemplate>
+    </Window.Resources>
+    <Grid MinHeight="350"
+          MinWidth="785"
+          Height="{Binding ContentGridHeight , Mode=OneWayToSource}"
+          Width="{Binding ContentGridWidth , Mode=OneWayToSource}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="120" />
+            <ColumnDefinition Width="1*" />
+        </Grid.ColumnDefinitions>
+
+        <!--#region Заголовок Меню-->
+        <Border Grid.Column="0">
+            <Grid Background="{DynamicResource {x:Static SystemColors.ActiveCaptionBrushKey}}">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="25" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="25" />
+                </Grid.RowDefinitions>
+                <Border Grid.Row="1"
+                        Style="{StaticResource HeadMenuBorder}">
+                    <Button Style="{StaticResource ControlFrameContentButton}"
+                            Command="{Binding GoOnMainWindowCommand}">
+                        <TextBlock Text="Главная Страница"
+                                   Style="{StaticResource HeadMenuTextBlock}" />
+                    </Button>
+                </Border>
+                <Border Grid.Row="2"
+                        Style="{StaticResource HeadMenuBorder}">
+                    <Button Style="{StaticResource ControlFrameContentButton}"
+                            Command="{Binding GoOnMeasurementsSettings}">
+                        <TextBlock Text="Активные Измерения"
+                                   Style="{StaticResource HeadMenuTextBlock}" />
+                    </Button>
+                </Border>
+                <Border Grid.Row="3"
+                        Style="{StaticResource HeadMenuBorder}">
+                    <Button Style="{StaticResource ControlFrameContentButton}"
+                            Command="{Binding GoOnMainSettingsCommand}">
+                        <TextBlock Text="Общие Настройки"
+                                   Style="{StaticResource HeadMenuTextBlock}" />
+                    </Button>
+                </Border>
+                <Border Grid.Row="4"
+                        Style="{StaticResource HeadMenuBorder}">
+                    <Button Style="{StaticResource ControlFrameContentButton}"
+                            Command="{Binding GoOnConnectSettings}">
+                        <TextBlock Text="Настройки Подключения"
+                                   Style="{StaticResource HeadMenuTextBlock}" />
+                    </Button>
+                </Border>
+                <Border Grid.Row="5"
+                        Style="{StaticResource HeadMenuBorder}">
+                    <Button Style="{StaticResource ControlFrameContentButton}"
+                            Command="{Binding GoOnErrorValueCommand}">
+                        <TextBlock Text="Настройки Погрешности"
+                                   Style="{StaticResource HeadMenuTextBlock}" />
+                    </Button>
+                </Border>
+            </Grid>
+        </Border>
+        <!--#endregion-->
+
+        <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"
+              Grid.Column="1">
+            <Border>
+                <Grid>
+
+                    <!--#region Основной контент ( таблица с результатами )-->
+                    <Border>
+                        <Grid Background="DarkGray">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="1*" />
+                                <ColumnDefinition Width="1*" />
+                            </Grid.ColumnDefinitions>
+                            <Border Grid.ColumnSpan="2" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+                                <Grid>
+                                    <TabControl ItemsSource="{Binding ActiveScResultItems}"
+                                                SelectedIndex="{Binding SelectIndexTabControl}"
+                                                BorderThickness="0"
+                                                Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+                                        <TabControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <Grid>
+                                                    <Grid.Style>
+                                                        <Style TargetType="Grid">
+                                                            <Style.Triggers>
+                                                                <DataTrigger Binding="{Binding IsCheckedNow}"
+                                                                             Value="true">
+                                                                    <Setter Property="Background"
+                                                                            Value="Yellow" />
+                                                                </DataTrigger>
+                                                            </Style.Triggers>
+                                                        </Style>
+                                                    </Grid.Style>
+                                                    <Border Padding="2"
+                                                            Margin="4,0">
+                                                        <TextBlock Text="{Binding  NameSc}"
+                                                                   TextAlignment="Center" />
+                                                    </Border>
+                                                </Grid>
+                                            </DataTemplate>
+                                        </TabControl.ItemTemplate>
+                                        <TabControl.ContentTemplate>
+                                            <DataTemplate DataType="{x:Type model:ScResultItem}">
+                                                <Border>
+                                                    <Grid>
+                                                        <Grid.RowDefinitions>
+                                                            <RowDefinition Height="1*" />
+                                                            <RowDefinition Height="50" />
+                                                        </Grid.RowDefinitions>
+                                                        <Grid Grid.Row="0">
+                                                            <Grid.ColumnDefinitions>
+                                                                <ColumnDefinition Width="4*" />
+                                                                <ColumnDefinition Width="3*" />
+                                                                <ColumnDefinition Width="2*" />
+                                                            </Grid.ColumnDefinitions>
+                                                            <Border Grid.Column="0"
+                                                                    Style="{StaticResource ChannelBorder}">
+                                                                <Grid Margin="5">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="1*" />
+                                                                        <ColumnDefinition Width="2*" />
+                                                                        <ColumnDefinition Width="2*" />
+                                                                        <ColumnDefinition Width="2*" />
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <!--Header-->
+                                                                    <Grid Grid.Column="0">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="20" />
+                                                                            <RowDefinition Height="1*" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Border Grid.Row="0">
+                                                                            <Grid>
+                                                                                <TextBlock Text="Ohm"
+                                                                                           TextAlignment="Center"
+                                                                                           HorizontalAlignment="Center"
+                                                                                           VerticalAlignment="Center" />
+                                                                            </Grid>
+                                                                        </Border>
+                                                                        <Border Grid.Row="1">
+                                                                            <Grid>
+                                                                                <ItemsControl
+                                                                                    ItemsSource="{Binding ChOhm}">
+                                                                                    <ItemsControl.ItemsPanel>
+                                                                                        <ItemsPanelTemplate>
+                                                                                            <StackPanel
+                                                                                                Orientation="Vertical" />
+                                                                                        </ItemsPanelTemplate>
+                                                                                    </ItemsControl.ItemsPanel>
+                                                                                    <ItemsControl.ItemTemplate>
+                                                                                        <DataTemplate>
+                                                                                            <Border Height="27">
+                                                                                                <Grid>
+                                                                                                    <TextBlock
+                                                                                                        Text="{Binding}"
+                                                                                                        VerticalAlignment="Center"
+                                                                                                        HorizontalAlignment="Center" />
+                                                                                                </Grid>
+                                                                                            </Border>
+                                                                                        </DataTemplate>
+                                                                                    </ItemsControl.ItemTemplate>
+                                                                                </ItemsControl>
+                                                                            </Grid>
+                                                                        </Border>
+                                                                    </Grid>
+
+                                                                    <!--CH0-->
+                                                                    <Grid Grid.Column="1">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="20" />
+                                                                            <RowDefinition Height="1*" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Border Grid.Row="0">
+                                                                            <Grid>
+                                                                                <customControl:ChannelButton
+                                                                                    TextButton="t возд"
+                                                                                    DefaultChannel="Ch0"
+                                                                                    CurrentChannel="{Binding CurrentChannel}"
+                                                                                    RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
+                                                                            </Grid>
+                                                                        </Border>
+                                                                        <Border Grid.Row="1">
+                                                                            <ItemsControl ItemsSource="{Binding Ch0}"
+                                                                                          ItemTemplate="{StaticResource ValueDataTemplate}">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel
+                                                                                            Orientation="Vertical" />
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                            </ItemsControl>
+                                                                        </Border>
+                                                                    </Grid>
+
+                                                                    <!--CH1-->
+                                                                    <Grid Grid.Column="2">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="20" />
+                                                                            <RowDefinition Height="1*" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Border Grid.Row="0">
+                                                                            <Grid>
+                                                                                <customControl:ChannelButton
+                                                                                    TextButton="t дор"
+                                                                                    DefaultChannel="Ch1"
+                                                                                    CurrentChannel="{Binding CurrentChannel}"
+                                                                                    RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
+
+                                                                            </Grid>
+                                                                        </Border>
+                                                                        <Border Grid.Row="1">
+                                                                            <ItemsControl ItemsSource="{Binding Ch1}"
+                                                                                          ItemTemplate="{StaticResource ValueDataTemplate}">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel
+                                                                                            Orientation="Vertical" />
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                            </ItemsControl>
+                                                                        </Border>
+                                                                    </Grid>
+
+                                                                    <!--CH2-->
+                                                                    <Grid Grid.Column="3">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="20" />
+                                                                            <RowDefinition Height="1*" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Border Grid.Row="0">
+                                                                            <Grid>
+                                                                                <customControl:ChannelButton
+                                                                                    TextButton="t п/п"
+                                                                                    DefaultChannel="Ch2"
+                                                                                    CurrentChannel="{Binding CurrentChannel}"
+                                                                                    RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
+                                                                            </Grid>
+                                                                        </Border>
+                                                                        <Border Grid.Row="1">
+                                                                            <ItemsControl ItemsSource="{Binding Ch2}"
+                                                                                          ItemTemplate="{StaticResource ValueDataTemplate}">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel
+                                                                                            Orientation="Vertical" />
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                            </ItemsControl>
+                                                                        </Border>
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </Border>
+                                                            <Border Grid.Column="1"
+                                                                    Style="{StaticResource ChannelBorder}">
+                                                                <Grid Margin="5">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="1*" />
+                                                                        <ColumnDefinition Width="2*" />
+                                                                        <ColumnDefinition Width="2*" />
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <!--Header-->
+                                                                    <Grid Grid.Column="0">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="20" />
+                                                                            <RowDefinition Height="1*" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Border Grid.Row="0">
+                                                                            <Grid>
+                                                                                <TextBlock Text="V"
+                                                                                           TextAlignment="Center"
+                                                                                           HorizontalAlignment="Center"
+                                                                                           VerticalAlignment="Center" />
+                                                                            </Grid>
+                                                                        </Border>
+                                                                        <Border Grid.Row="1">
+                                                                            <ItemsControl ItemsSource="{Binding ChV}">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel
+                                                                                            Orientation="Vertical" />
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                                <ItemsControl.ItemTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <Border Height="27">
+                                                                                            <Grid>
+                                                                                                <TextBlock
+                                                                                                    Text="{Binding}"
+                                                                                                    VerticalAlignment="Center"
+                                                                                                    HorizontalAlignment="Center" />
+                                                                                            </Grid>
+                                                                                        </Border>
+                                                                                    </DataTemplate>
+                                                                                </ItemsControl.ItemTemplate>
+                                                                            </ItemsControl>
+                                                                        </Border>
+                                                                    </Grid>
+
+                                                                    <!--CH3-->
+                                                                    <Grid Grid.Column="1">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="20" />
+                                                                            <RowDefinition Height="1*" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Border Grid.Row="0">
+                                                                            <Grid>
+                                                                                <customControl:ChannelButton
+                                                                                    TextButton="Влаж"
+                                                                                    DefaultChannel="Ch3"
+                                                                                    CurrentChannel="{Binding CurrentChannel}"
+                                                                                    RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
+                                                                            </Grid>
+                                                                        </Border>
+                                                                        <Border Grid.Row="1">
+                                                                            <ItemsControl ItemsSource="{Binding Ch3}"
+                                                                                          ItemTemplate="{StaticResource ValueDataTemplate}">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel
+                                                                                            Orientation="Vertical" />
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                            </ItemsControl>
+                                                                        </Border>
+                                                                    </Grid>
+
+                                                                    <!--CH5-->
+                                                                    <Grid Grid.Column="2">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="20" />
+                                                                            <RowDefinition Height="1*" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Border Grid.Row="0">
+                                                                            <Grid>
+                                                                                <customControl:ChannelButton
+                                                                                    TextButton="ДНВ"
+                                                                                    DefaultChannel="Ch5"
+                                                                                    CurrentChannel="{Binding CurrentChannel}"
+                                                                                    RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
+                                                                            </Grid>
+                                                                        </Border>
+                                                                        <Border Grid.Row="1">
+                                                                            <ItemsControl ItemsSource="{Binding Ch5}"
+                                                                                          ItemTemplate="{StaticResource ValueDataTemplate}">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel
+                                                                                            Orientation="Vertical" />
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                            </ItemsControl>
+                                                                        </Border>
+                                                                    </Grid>
+
+                                                                </Grid>
+                                                            </Border>
+                                                            <Border Grid.Column="2"
+                                                                    Style="{StaticResource ChannelBorder}">
+                                                                <Grid Margin="5">
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="1*" />
+                                                                        <ColumnDefinition Width="2*" />
+                                                                    </Grid.ColumnDefinitions>
+
+                                                                    <!--Header-->
+                                                                    <Grid Grid.Column="0">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="20" />
+                                                                            <RowDefinition Height="1*" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Border Grid.Row="0">
+                                                                            <Grid>
+                                                                                <TextBlock Text="Hz"
+                                                                                           TextAlignment="Center"
+                                                                                           HorizontalAlignment="Center"
+                                                                                           VerticalAlignment="Center" />
+                                                                            </Grid>
+                                                                        </Border>
+                                                                        <Border Grid.Row="1">
+                                                                            <ItemsControl ItemsSource="{Binding ChHz}">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel
+                                                                                            Orientation="Vertical" />
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                                <ItemsControl.ItemTemplate>
+                                                                                    <DataTemplate>
+                                                                                        <Border Height="27">
+                                                                                            <Grid>
+                                                                                                <TextBlock
+                                                                                                    Text="{Binding}"
+                                                                                                    VerticalAlignment="Center"
+                                                                                                    HorizontalAlignment="Center" />
+                                                                                            </Grid>
+                                                                                        </Border>
+                                                                                    </DataTemplate>
+                                                                                </ItemsControl.ItemTemplate>
+                                                                            </ItemsControl>
+                                                                        </Border>
+                                                                    </Grid>
+
+                                                                    <!--CH6-->
+                                                                    <Grid Grid.Column="1">
+                                                                        <Grid.RowDefinitions>
+                                                                            <RowDefinition Height="20" />
+                                                                            <RowDefinition Height="1*" />
+                                                                        </Grid.RowDefinitions>
+                                                                        <Border Grid.Row="0">
+                                                                            <Grid>
+                                                                                <customControl:ChannelButton
+                                                                                    TextButton="ДВС"
+                                                                                    DefaultChannel="Ch6"
+                                                                                    CurrentChannel="{Binding CurrentChannel}"
+                                                                                    RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
+                                                                            </Grid>
+                                                                        </Border>
+                                                                        <Border Grid.Row="1">
+                                                                            <ItemsControl ItemsSource="{Binding Ch6}"
+                                                                                          ItemTemplate="{StaticResource ValueDataTemplate}">
+                                                                                <ItemsControl.ItemsPanel>
+                                                                                    <ItemsPanelTemplate>
+                                                                                        <StackPanel
+                                                                                            Orientation="Vertical" />
+                                                                                    </ItemsPanelTemplate>
+                                                                                </ItemsControl.ItemsPanel>
+                                                                            </ItemsControl>
+                                                                        </Border>
+                                                                    </Grid>
+
+                                                                </Grid>
+                                                            </Border>
+                                                        </Grid>
+                                                        <Grid Grid.Row="1">
+                                                            <Border>
+                                                                <Grid>
+                                                                    <Grid.ColumnDefinitions>
+                                                                        <ColumnDefinition Width="160*" />
+                                                                        <ColumnDefinition Width="125*" />
+                                                                        <ColumnDefinition Width="380*" />
+                                                                    </Grid.ColumnDefinitions>
+                                                                    <Grid Grid.Column="0" />
+                                                                    <Grid Grid.Column="1">
+                                                                        <TextBlock Text="{Binding VersionSc}"
+                                                                                   FontSize="20"
+                                                                                   FontWeight="SemiBold"
+                                                                                   VerticalAlignment="Center"
+                                                                                   HorizontalAlignment="Center" />
+                                                                    </Grid>
+                                                                    <Grid Grid.Column="2">
+                                                                        <ProgressBar Margin="15,10"
+                                                                                     Maximum="{Binding CountActiveMeasurements}"
+                                                                                     Value="{Binding CurrentActiveMeasurement}" />
+
+                                                                        <TextBlock HorizontalAlignment="Left"
+                                                                                   Margin="30,10,15,10"
+                                                                                   Style="{StaticResource HeadMenuTextBlock}"
+                                                                                   Text="{Binding MessageProgressBar}" />
+
+                                                                        <TextBlock Grid.Row="0"
+                                                                                   HorizontalAlignment="Right"
+                                                                                   Margin="15,10,30,10"
+                                                                                   Style="{StaticResource HeadMenuTextBlock}"
+                                                                                   Text="{Binding MessageCurrentAndMaxCountMeasurements}" />
+                                                                    </Grid>
+                                                                </Grid>
+                                                            </Border>
+                                                        </Grid>
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </TabControl.ContentTemplate>
+                                    </TabControl>
+                                </Grid>
+
+                            </Border>
+
+
+                            <StackPanel Orientation="Horizontal"
+                                        Height="40"
+                                        Width="140"
+                                        Margin="15,0,0,5"
+                                        VerticalAlignment="Bottom"
+                                        HorizontalAlignment="Left"
+                                        Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}"
+                                        Grid.Column="0">
+
+                                <Button Margin="5,5,10,5"
+                                        HorizontalAlignment="Center"
+                                        VerticalAlignment="Center">
+                                    <Button.Style>
+                                        <Style TargetType="Button">
+                                            <Setter Property="Background"
+                                                    Value="#FF135D9C" />
+                                            <Setter Property="FontSize"
+                                                    Value="14" />
+                                            <Setter Property="Template">
+                                                <Setter.Value>
+                                                    <ControlTemplate TargetType="{x:Type Button}">
+                                                        <Border x:Name="ButtonBorder"
+                                                                CornerRadius="5,5,5,5"
+                                                                Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+                                                            <Grid>
+                                                                <ContentPresenter x:Name="ButtonContentPresenter"
+                                                                                  VerticalAlignment="Center"
+                                                                                  HorizontalAlignment="Center" />
+                                                                <TextBlock VerticalAlignment="Center"
+                                                                           HorizontalAlignment="Center" />
+                                                            </Grid>
+                                                        </Border>
+                                                    </ControlTemplate>
+                                                </Setter.Value>
+                                            </Setter>
+                                            <Style.Triggers>
+                                                <Trigger Property="IsMouseOver"
+                                                         Value="True">
+                                                    <Setter Property="Cursor"
+                                                            Value="Hand" />
+                                                </Trigger>
+
+                                                <DataTrigger Binding="{Binding IsActiveTest}"
+                                                             Value="false">
+                                                    <Setter Property="Command"
+                                                            Value="{Binding StartTestSignalControllersCommand}" />
+                                                    <Setter Property="ToolTip"
+                                                            Value="Запуск тестирования" />
+                                                </DataTrigger>
+
+                                                <DataTrigger Binding="{Binding IsActiveTest}"
+                                                             Value="true">
+                                                    <Setter Property="Command"
+                                                            Value="{Binding PauseTestSignalControllersCommand}" />
+                                                    <Setter Property="ToolTip"
+                                                            Value="Пауза(С последующим перезапуском теста КС)" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>
+                                    <Image>
+                                        <Image.Style>
+                                            <Style TargetType="Image">
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding IsActiveTest}"
+                                                                 Value="true">
+                                                        <Setter Property="Source"
+                                                                Value="{StaticResource PauseTestScIcon}" />
+                                                    </DataTrigger>
+                                                    <DataTrigger Binding="{Binding IsActiveTest}"
+                                                                 Value="false">
+                                                        <Setter Property="Source"
+                                                                Value="{StaticResource StartTestIcon}" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </Image.Style>
+                                    </Image>
+                                </Button>
+
+                                <Button Command="{Binding StopTestSignalControllersCommand}"
+                                        Style="{StaticResource IconBackgroundButton}"
+                                        ToolTip="Остановка тестирования"
+                                        IsEnabled="{Binding IsActiveTest}"
+                                        Margin="0,5,5,5">
+                                    <Image Source="{StaticResource StopTestAllIcon}" />
+                                </Button>
+
+                                <Button Command="{Binding RestartTestOneSignalControllerCommand}"
+                                        ToolTip="Перезапуск текущей КС"
+                                        IsEnabled="{Binding IsActiveTest}"
+                                        Style="{StaticResource IconBackgroundButton}"
+                                        Margin="5">
+                                    <Image Source="{StaticResource RestartIcon}" />
+                                </Button>
+                            </StackPanel>
+
+
+                            <Grid Visibility="{Binding IsWaitCancel , Converter={StaticResource BoolToVis}}"
+                                  Grid.Column="0"
+                                  Grid.ColumnSpan="2">
+                                <xctk:BusyIndicator IsBusy="{Binding IsWaitCancel}"
+                                                    BusyContent="Ожидание отмены задачи" />
+                            </Grid>
+
+
+                            <!--#region Image-->
+                            <Grid Visibility="{Binding VisibilityImage , Converter={StaticResource BoolToVis}}"
+                                  Margin="0,20"
+                                  HorizontalAlignment="Center"
+                                  Grid.ColumnSpan="2" Grid.Column="0"
+                                  VerticalAlignment="Center">
+                                <Image>
+                                    <Image.Source>
+                                        <BitmapImage UriSource="/Resources/ContollerSignals.png"/>
+                                    </Image.Source>
+                                </Image>
+                            </Grid>
+                            <!--#endregion-->
+                        </Grid>
+                    </Border>
+                    <!--#endregion-->
+                    <!--#region Дополнительные окна настроек-->
+                    <Frame Content="{Binding FrameContent , UpdateSourceTrigger=PropertyChanged}"
+                           NavigationUIVisibility="Hidden" />
+                    <!--#endregion-->
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

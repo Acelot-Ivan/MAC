@@ -1,0 +1,601 @@
+﻿<UserControl x:Class="MAC.Views.MeasurementsSettings"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:viewModels="clr-namespace:MAC.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewModels:MeasurementsSettingsVm}"
+             MinHeight="{Binding ContentGridHeight}"
+             MinWidth="{Binding ContentGridWidth}"
+             mc:Ignorable="d"
+             d:DesignHeight="280"
+             d:DesignWidth="620">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock"
+               x:Key="HeaderTextBlock">
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+        </Style>
+        <Style TargetType="CheckBox" x:Key="ResultCheckBox">
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+        <Border Margin="2"
+                CornerRadius="5"
+                BorderThickness="1"
+                BorderBrush="Black">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Border Grid.Column="1">
+                            <Grid>
+                                <TextBlock Text="t возд"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2">
+                            <Grid>
+                                <TextBlock Text="t дор"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3">
+                            <Grid>
+                                <TextBlock Text="t п/п"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Column="5">
+                            <Grid>
+                                <TextBlock Text="Влаж"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="6">
+                            <Grid>
+                                <TextBlock Text="ДНВ"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Column="8">
+                            <Grid>
+                                <TextBlock Text="ДВС"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="80 Ом"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm80}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm80}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm80}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4">
+                            <Grid>
+                                <TextBlock Text="1 V"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch3V1}"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="6">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch5V1}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="7">
+                            <Grid>
+                                <TextBlock Text="5 Hz"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="8">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz5}"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="90 Ом"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm90}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm90}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm90}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4">
+                            <Grid>
+                                <TextBlock Text="2 V"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch3V2}"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="6">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch5V2}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="7">
+                            <Grid>
+                                <TextBlock Text="25 Hz"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="8">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz25}"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="100 Ом"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm100}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm100}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm100}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4">
+                            <Grid>
+                                <TextBlock Text="3 V"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch3V3}"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="6">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch5V3}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="7">
+                            <Grid>
+                                <TextBlock Text="50 Hz"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="8">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz50}"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="4">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="115 Ом"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm115}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm115}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm115}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4">
+                            <Grid>
+                                <TextBlock Text="4 V"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch3V4}"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="6">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch5V4}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="7">
+                            <Grid>
+                                <TextBlock Text="75 Hz"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="8">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz75}"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="130 Ом"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm130}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm130}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm130}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4">
+                            <Grid>
+                                <TextBlock Text="5 V"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch3V5}"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="6">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch5V5}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="7">
+                            <Grid>
+                                <TextBlock Text="100 Hz"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="8">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz100}"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="6">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="140 Ом"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm140}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm140}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm140}"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+
+
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="7">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="All"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.IsAllCh0Active , Mode=OneWay}"
+                                          Command="{Binding IsAllCh0ClickCommand}"
+                                          Background="Green"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.IsAllCh1Active, Mode=OneWay}"
+                                          Command="{Binding IsAllCh1ClickCommand}"
+                                          Background="Green"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.IsAllCh2Active, Mode=OneWay}"
+                                          Command="{Binding IsAllCh2ClickCommand}"
+                                          Background="Green"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+
+
+                        <Border Grid.Column="5">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.IsAllCh3Active, Mode=OneWay}"
+                                              Command="{Binding IsAllCh3ClickCommand}"
+                                              Background="Green"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="6">
+                            <Grid>
+                                <CheckBox IsChecked="{Binding ActiveSettings.IsAllCh5Active, Mode=OneWay}"
+                                          Command="{Binding IsAllCh5ClickCommand}"
+                                          Background="Green"
+                                          Style="{StaticResource ResultCheckBox}" />
+                            </Grid>
+                        </Border>
+
+                        <Border Grid.Column="8">
+                            <Grid>
+                                <Grid>
+                                    <CheckBox IsChecked="{Binding ActiveSettings.IsAllCh6Active, Mode=OneWay}"
+                                              Command="{Binding IsAllCh6ClickCommand}"
+                                              Background="Green"
+                                              Style="{StaticResource ResultCheckBox}" />
+                                </Grid>
+                            </Grid>
+                        </Border>
+
+                    </Grid>
+                </Border>
+            </Grid>
+        </Border>
+        <Grid Background="Black"
+              Opacity="0.30"
+              Visibility="{Binding IsActiveTest , Converter={StaticResource BoolToVis}}" />
+    </Grid>
+</UserControl>

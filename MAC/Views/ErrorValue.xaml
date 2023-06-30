@@ -1,0 +1,460 @@
+﻿<UserControl x:Class="MAC.Views.ErrorValue"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+             xmlns:viewModels="clr-namespace:MAC.ViewModels"
+             d:DataContext="{d:DesignInstance Type=viewModels:ErrorValueVm}"
+             MinHeight="{Binding ContentGridHeight}"
+             MinWidth="{Binding ContentGridWidth}"
+             mc:Ignorable="d"
+             d:DesignHeight="280"
+             d:DesignWidth="620">
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" x:Key="HeaderTextBlock">
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+        </Style>
+
+        <Style TargetType="xctk:DecimalUpDown"
+               x:Key="DecimalUpDownStyle">
+            <Setter Property="Increment" Value="0.001" />
+            <Setter Property="MinWidth"
+                    Value="60" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="HorizontalAlignment"
+                    Value="Center" />
+
+        </Style>
+
+        <Style TargetType="Border" x:Key="BorderForDecimalUpDown" />
+    </UserControl.Resources>
+    <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40" />
+            <RowDefinition Height="1*" />
+        </Grid.RowDefinitions>
+        <Border Grid.Row="0"
+                Margin="2"
+                CornerRadius="5"
+                BorderThickness="1"
+                BorderBrush="Black">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock Grid.Column="0"
+                           Margin="5"
+                           Text="Включить учет погрешности"
+                           TextWrapping="Wrap"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center" />
+
+                <CheckBox Grid.Column="1"
+                          Margin="5"
+                          IsChecked="{Binding IsErrorActive}"
+                          VerticalAlignment="Center"
+                          HorizontalAlignment="Center" />
+
+            </Grid>
+
+        </Border>
+        <Border Grid.Row="1"
+                Margin="2"
+                CornerRadius="5"
+                BorderThickness="1"
+                BorderBrush="Black">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                    <RowDefinition Height="1*" />
+                </Grid.RowDefinitions>
+
+                <Border Grid.Row="0">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock VerticalAlignment="Center"
+                                           HorizontalAlignment="Center" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1">
+                            <Grid>
+                                <TextBlock Text="t возд"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2">
+                            <Grid>
+                                <TextBlock Text="t дор"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3">
+                            <Grid>
+                                <TextBlock Text="t п/п"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4">
+                            <Grid>
+                                <TextBlock Text="Влаж"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5">
+                            <Grid>
+                                <TextBlock Text="ДНВ"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="1">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="КС - 1"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc1Ch0Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc1Ch1Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc1Ch2Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc1Ch3Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc1Ch5Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="2">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="КС - 2"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc2Ch0Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc2Ch1Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc2Ch2Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc2Ch3Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc2Ch5Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="3">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="КС - 3"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc3Ch0Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc3Ch1Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc3Ch2Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc3Ch3Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc3Ch5Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="4">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="КС - 4"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc4Ch0Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc4Ch1Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc4Ch2Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc4Ch3Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc4Ch5Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="КС - 5"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc5Ch0Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc5Ch1Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc5Ch2Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc5Ch3Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc5Ch5Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+
+                <Border Grid.Row="6">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="40" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                            <ColumnDefinition Width="1*" />
+                        </Grid.ColumnDefinitions>
+                        <Border Grid.Column="0">
+                            <Grid>
+                                <TextBlock Text="КС - 6"
+                                           Style="{StaticResource HeaderTextBlock}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="1"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc6Ch0Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="2"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc6Ch1Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="3"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc6Ch2Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="4"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc6Ch3Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                        <Border Grid.Column="5"
+                                Style="{StaticResource BorderForDecimalUpDown}">
+                            <Grid>
+                                <xctk:DecimalUpDown Value="{Binding ErrorSettingsModel.Sc6Ch5Error}"
+                                                    Style="{StaticResource DecimalUpDownStyle}" />
+                            </Grid>
+                        </Border>
+                    </Grid>
+                </Border>
+
+            </Grid>
+        </Border>
+
+    </Grid>
+</UserControl>
