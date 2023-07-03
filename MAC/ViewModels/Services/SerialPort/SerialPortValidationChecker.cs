@@ -43,7 +43,7 @@ namespace MAC.ViewModels.Services.SerialPort
             switch (comType)
             {
                 case ComType.SignalController:
-                    _serialPort.WriteLine("open 1\r\n");
+                    _serialPort.WriteLine("open mas *\r\n");
                     Thread.Sleep(200);
                     _serialPort.WriteLine("close\r\n");
                     Thread.Sleep(100);

@@ -44,7 +44,7 @@ namespace MAC.ViewModels
         /// </summary>
         public int SelectIndexTabControl { get; set; }
 
-        public ObservableCollection<MacResultItem> ActiveScResultItems { get; set; } =
+        public ObservableCollection<MacResultItem> ActiveMacResultItems { get; set; } =
             new ObservableCollection<MacResultItem>();
 
         private CancellationTokenSource _ctsTask;
@@ -244,7 +244,7 @@ namespace MAC.ViewModels
             var comm = new CommutatorSerialPort(Comm);
 
             //Получаю список выставленных МАС
-            var activeScResultItems = AllComConnect.Skip(2).Where(item => item.IsActiveTest)
+            var activeMacResultItems = AllComConnect.Skip(2).Where(item => item.IsActiveTest)
                 .Select(item =>
                     new MacResultItem(fluke, comm, item, MainSettingsModel, ActiveMeasurements, TypeCancelTask,
                         SetIsWaitCancelFalse));
@@ -253,9 +253,9 @@ namespace MAC.ViewModels
             _dispatcher.Invoke(() =>
             {
                 //Чистим старый список(если он есть)
-                ActiveScResultItems.Clear();
+                ActiveMacResultItems.Clear();
 
-                ActiveScResultItems = new ObservableCollection<MacResultItem>(activeScResultItems);
+                ActiveMacResultItems = new ObservableCollection<MacResultItem>(activeMacResultItems);
             });
 
             IsActiveTest = true;
@@ -263,22 +263,22 @@ namespace MAC.ViewModels
             if (IsCancellationRequested(_ctsTask)) return;
 
 
-            for (var i = 0; i < ActiveScResultItems.Count; i++)
+            for (var i = 0; i < ActiveMacResultItems.Count; i++)
             {
                 SelectIndexTabControl = i;
-                var scResultItem = ActiveScResultItems[i];
+                var macResultItem = ActiveMacResultItems[i];
                 try
                 {
                     VisibilityImage = false;
-                    scResultItem.MainStartMeasurements(_ctsTask, _measurementsData);
+                    macResultItem.MainStartMeasurements(_ctsTask, _measurementsData);
                 }
                 catch (Exception e)
                 {
-                    scResultItem.IsCheckedNow = false;
+                    macResultItem.IsCheckedNow = false;
                     GlobalLog.Log.Debug(e, e.Message);
                 }
 
-                scResultItem.StopTest();
+                macResultItem.StopTest();
 
                 if (IsCancellationRequested(_ctsTask))
                 {
@@ -293,7 +293,7 @@ namespace MAC.ViewModels
                     if (TypeCancelTask == TypeCancelTask.RestartSc)
                     {
                         _ctsTask = new CancellationTokenSource();
-                        scResultItem.ClearAllResultsValue();
+                        macResultItem.ClearAllResultsValue();
                         i--;
                     }
                 }

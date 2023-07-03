@@ -185,7 +185,7 @@
                             </Grid.ColumnDefinitions>
                             <Border Grid.ColumnSpan="2" Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
                                 <Grid>
-                                    <TabControl ItemsSource="{Binding ActiveScResultItems}"
+                                    <TabControl ItemsSource="{Binding ActiveMacResultItems}"
                                                 SelectedIndex="{Binding SelectIndexTabControl}"
                                                 BorderThickness="0"
                                                 Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">

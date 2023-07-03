@@ -206,7 +206,7 @@ namespace MAC.ViewModels.Services.SerialPort
                     Thread.Sleep(5000);
                 }
 
-                Send("open 1");
+                Send("open mas *");
                 Thread.Sleep(1000);
 
                 var content = _currentData.Replace(" ", "");
