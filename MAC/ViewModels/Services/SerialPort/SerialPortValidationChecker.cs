@@ -43,11 +43,13 @@ namespace MAC.ViewModels.Services.SerialPort
             switch (comType)
             {
                 case ComType.SignalController:
-                    _serialPort.WriteLine("HIST");
+                    _serialPort.WriteLine("open 1\r\n");
                     Thread.Sleep(200);
+                    _serialPort.WriteLine("close\r\n");
+                    Thread.Sleep(100);
                     getData = ReadData();
                     if (getData == null) return false;
-                    if (getData.Contains("[HIST]") && getData.Contains("[/HIST]"))
+                    if (getData.Contains("MAS"))
                     {
                         CloseConnect();
                         return true;
