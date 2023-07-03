@@ -361,17 +361,7 @@ namespace MAC.Models
 
             var folderPath = Path.Combine(_mainSettingsModel.FullLogPath, $"{NameMac}{_startTestStringDateTime}");
 
-            switch (macVersion)
-            {
-                case MacVersion.Old:
-                    //StartMeasurementsOldVersion(ctSource, folderPath);
-                    break;
-                case MacVersion.New:
-                    StartMeasurementNewVersion(ctSource, folderPath);
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            StartMeasurementNewVersion(ctSource, folderPath);
 
             try
             {
