@@ -10,7 +10,7 @@
         xmlns:value="clr-namespace:MAC.Models.Value"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:customControl="clr-namespace:MAC.Style.CustomControl"
-        Title="{Binding Version , StringFormat={}Тестирование Контроллеров Сигналов {0}}"
+        Title="{Binding Version , StringFormat={}ПО для поверки MAC {0}}"
         MinWidth="800"
         Width="800"
         ResizeMode="CanMinimize"
@@ -701,11 +701,7 @@
                                   HorizontalAlignment="Center"
                                   Grid.ColumnSpan="2" Grid.Column="0"
                                   VerticalAlignment="Center">
-                                <Image>
-                                    <Image.Source>
-                                        <BitmapImage UriSource="/Resources/ContollerSignals.png"/>
-                                    </Image.Source>
-                                </Image>
+
                             </Grid>
                             <!--#endregion-->
                         </Grid>
