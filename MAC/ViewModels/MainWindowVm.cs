@@ -44,8 +44,8 @@ namespace MAC.ViewModels
         /// </summary>
         public int SelectIndexTabControl { get; set; }
 
-        public ObservableCollection<ScResultItem> ActiveScResultItems { get; set; } =
-            new ObservableCollection<ScResultItem>();
+        public ObservableCollection<MacResultItem> ActiveScResultItems { get; set; } =
+            new ObservableCollection<MacResultItem>();
 
         private CancellationTokenSource _ctsTask;
         private readonly Dispatcher _dispatcher = Dispatcher.CurrentDispatcher;
@@ -246,7 +246,7 @@ namespace MAC.ViewModels
             //Получаю список выставленных Кс
             var activeScResultItems = AllComConnect.Skip(2).Where(item => item.IsActiveTest)
                 .Select(item =>
-                    new ScResultItem(fluke, comm, item, MainSettingsModel, ActiveMeasurements, TypeCancelTask,
+                    new MacResultItem(fluke, comm, item, MainSettingsModel, ActiveMeasurements, TypeCancelTask,
                         SetIsWaitCancelFalse));
 
 
@@ -255,7 +255,7 @@ namespace MAC.ViewModels
                 //Чистим старый список(если он есть)
                 ActiveScResultItems.Clear();
 
-                ActiveScResultItems = new ObservableCollection<ScResultItem>(activeScResultItems);
+                ActiveScResultItems = new ObservableCollection<MacResultItem>(activeScResultItems);
             });
 
             IsActiveTest = true;
@@ -321,17 +321,17 @@ namespace MAC.ViewModels
 
         private void RestartTestChannel(object obj)
         {
-            var scItem = obj as ScResultItem;
+            var scItem = obj as MacResultItem;
             CtcCancel(TypeCancelTask.RestartChannel, scItem);
         }
 
         private void RestartTestMeasurement(object obj)
         {
-            var scItem = obj as ScResultItem;
+            var scItem = obj as MacResultItem;
             CtcCancel(TypeCancelTask.RestartMeasurement, scItem);
         }
 
-        private void CtcCancel(TypeCancelTask typeCancelTask, ScResultItem scResultItem = null)
+        private void CtcCancel(TypeCancelTask typeCancelTask, MacResultItem scResultItem = null)
         {
             if (typeCancelTask == TypeCancelTask.RestartSc || typeCancelTask == TypeCancelTask.StopTest)
             {

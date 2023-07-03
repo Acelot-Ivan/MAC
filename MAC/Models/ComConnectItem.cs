@@ -22,7 +22,7 @@ namespace MAC.Models
         }
 
         /// <summary>
-        /// Свойство для отображения КС , Fluke and Commutator  на интерфейсе. В меню подключений.
+        /// Свойство для отображения Мас , Fluke and Commutator  на интерфейсе. В меню подключений.
         /// </summary>
         public string TechnicalName { get; set; }
 
@@ -102,7 +102,7 @@ namespace MAC.Models
         #region ConnectSettings
 
         /// <summary>
-        /// Результат проверки выбранного ком порта на флюк, коммутатор или кс.
+        /// Результат проверки выбранного ком порта на флюк, коммутатор или мас.
         /// </summary>
         public bool CheckedResult { get; set; }
 

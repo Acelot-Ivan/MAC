@@ -58,7 +58,7 @@ namespace MAC.ViewModels.Services.SerialPort
                 {
                     GlobalLog.Log.Debug(ex, "Fluke:{_comPort}", _comPort);
                     var result = (int) MessageBox.Show(
-                        "Нажмите Ок, что бы повторить попытку.\r\nНажмите Отмена, что бы перейти на следующую КС или остановить программу.",
+                        "Нажмите Ок, что бы повторить попытку.\r\nНажмите Отмена, что бы перейти на следующую МАС или остановить программу.",
                         $"{ex.Message}({_comPort})",
                         MessageBoxButton.OKCancel
                     );

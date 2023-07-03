@@ -9,7 +9,7 @@
         ResizeMode="NoResize"
         mc:Ignorable="d"
         d:DataContext="{d:DesignInstance Type=viewModels:SelectActiveSignalControllerVm}"
-        Title="Выбор активных КС для тестирования"
+        Title="Выбор активных МАС для тестирования"
         Height="310"
         Width="620">
     <Window.Resources>

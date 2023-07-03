@@ -52,7 +52,7 @@ namespace MAC.ViewModels.Services.SerialPort
                 {
                     GlobalLog.Log.Debug(ex, $"Comm:{_comPort}");
                     int result = (int)MessageBox.Show(
-                        "Нажмите Ок, что бы повторить попытку.\r\nНажмите Отмена, что бы перейти на следующую КС или остановить программу.",
+                        "Нажмите Ок, что бы повторить попытку.\r\nНажмите Отмена, что бы перейти на следующую МАС или остановить программу.",
                         $"{ex.Message}({_comPort})",
                         MessageBoxButton.OKCancel
                     );
@@ -71,19 +71,19 @@ namespace MAC.ViewModels.Services.SerialPort
         /// <summary>
         /// Включаем подачу питания на указанному Mac по индексу
         /// </summary>
-        /// <param name="index">Номер КС от 1 до 6</param>
+        /// <param name="index">Номер МАС от 1 до 6</param>
         public void OnPowerIndex(int index)
         {
 
-            //Для первой КС(мастер), включение выполняется командой on  без индекса.
+            //Для первой МАС(мастер), включение выполняется командой on  без индекса.
             if (index > 6)
                 throw new ArgumentException();
 
             Send("voltageon");
 
-            //Для следующих кс(слейв), включение выполняется командой с указанием индекса.
+            //Для следующих Мас(слейв), включение выполняется командой с указанием индекса.
             //Так же, если коммутатор уже ключен, voltageon не обязателен.
-            //Индексы слейв кс начинаются с 1 ... и до 5
+            //Индексы слейв мас начинаются с 1 ... и до 5
             if (index > 1)
                 Send($"voltage {index - 1}");
         }

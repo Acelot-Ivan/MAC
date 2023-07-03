@@ -205,14 +205,14 @@
                                                     </Grid.Style>
                                                     <Border Padding="2"
                                                             Margin="4,0">
-                                                        <TextBlock Text="{Binding  NameSc}"
+                                                        <TextBlock Text="{Binding  NameMac}"
                                                                    TextAlignment="Center" />
                                                     </Border>
                                                 </Grid>
                                             </DataTemplate>
                                         </TabControl.ItemTemplate>
                                         <TabControl.ContentTemplate>
-                                            <DataTemplate DataType="{x:Type model:ScResultItem}">
+                                            <DataTemplate DataType="{x:Type model:MacResultItem}">
                                                 <Border>
                                                     <Grid>
                                                         <Grid.RowDefinitions>

@@ -112,7 +112,7 @@ namespace MAC.Models
         public bool IsCheckedNow { get; set; }
 
         /// <summary>
-        /// Конструкстор при создании итемов КС
+        /// Конструкстор при создании итемов МАС
         /// </summary>
         /// <param name="fluke"></param>
         /// <param name="comm"></param>
@@ -834,7 +834,7 @@ namespace MAC.Models
         private decimal? DataRead(int channel, CancellationTokenSource ctSource,
             bool isCalibration = false)
         {
-            //Выбранный канал , для КС это 0-1-2 . Для Коммутатора 1-2-3 соответсвенно
+            //Выбранный канал , для МАС это 0-1-2 . Для Коммутатора 1-2-3 соответсвенно
             var channelSignalController = channel < 5
                 ? channel - 1
                 : channel;
@@ -905,7 +905,7 @@ namespace MAC.Models
 
             var currentData = _mac.GetCurrentData();
             //Удаляю все пробелы, во измежание проблем.
-            //Так как КС может добавить мусорные пробелы при перепадах напряжения.
+            //Так как МАС может добавить мусорные пробелы при перепадах напряжения.
             currentData = currentData.Replace(" ", "");
 
             var firstIndex = currentData.LastIndexOf("CH0", StringComparison.Ordinal);
@@ -945,7 +945,7 @@ namespace MAC.Models
             var collectionDataDecimal = new List<decimal>();
             var countAverage = _mainSettingsModel.CountAverageValue;
 
-            //Выбранный канал , для КС это 0-1-2 . Для Коммутатора 1-2-3 соответсвенно
+            //Выбранный канал , для МАС это 0-1-2 . Для Коммутатора 1-2-3 соответсвенно
             var channelSignalController = channel < 5
                 ? channel - 1
                 : channel;
@@ -1024,7 +1024,7 @@ namespace MAC.Models
             var collectionDataString = currentData.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).ToList();
 
 
-            //Удаляю два последних итема, в которых содержится завершение сессии кс
+            //Удаляю два последних итема, в которых содержится завершение сессии МАС
             collectionDataString.Remove(collectionDataString.Last());
             collectionDataString.Remove(collectionDataString.Last());
             //получаю CountAverageValue последних тестов
@@ -1422,7 +1422,7 @@ namespace MAC.Models
 
     /// <summary>
     /// Enum на будущее, если потребуется поддержка следующих версий
-    /// Для распределения действий алгоритма для кс разных версий.
+    /// Для распределения действий алгоритма для МАС разных версий.
     /// </summary>
     public enum ScVersion
     {

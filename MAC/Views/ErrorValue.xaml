@@ -141,7 +141,7 @@
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0">
                             <Grid>
-                                <TextBlock Text="КС - 1"
+                                <TextBlock Text="МАС - 1"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -195,7 +195,7 @@
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0">
                             <Grid>
-                                <TextBlock Text="КС - 2"
+                                <TextBlock Text="МАС - 2"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -249,7 +249,7 @@
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0">
                             <Grid>
-                                <TextBlock Text="КС - 3"
+                                <TextBlock Text="МАС - 3"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -303,7 +303,7 @@
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0">
                             <Grid>
-                                <TextBlock Text="КС - 4"
+                                <TextBlock Text="МАС - 4"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -357,7 +357,7 @@
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0">
                             <Grid>
-                                <TextBlock Text="КС - 5"
+                                <TextBlock Text="МАС - 5"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -411,7 +411,7 @@
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0">
                             <Grid>
-                                <TextBlock Text="КС - 6"
+                                <TextBlock Text="МАС - 6"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>

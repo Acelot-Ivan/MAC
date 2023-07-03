@@ -19,7 +19,7 @@ namespace MAC.Models.Value
         int ValueMeasurement { get; set; }
 
         /// <summary>
-        /// Итоговое полученное значение тестирования КС
+        /// Итоговое полученное значение тестирования МАС
         /// </summary>
         decimal? ResultValue { get; set; }
 

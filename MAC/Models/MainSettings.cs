@@ -135,7 +135,7 @@ namespace MAC.Models
         private string _fullLogPath;
 
         /// <summary>
-        /// Путь сохранения лога общения с КС
+        /// Путь сохранения лога общения с МАС
         /// </summary>
         public string FullLogPath
         {
