@@ -644,7 +644,7 @@
                                                     <Setter Property="Command"
                                                             Value="{Binding PauseTestSignalControllersCommand}" />
                                                     <Setter Property="ToolTip"
-                                                            Value="Пауза(С последующим перезапуском теста КС)" />
+                                                            Value="Пауза(С последующим перезапуском теста МАС)" />
                                                 </DataTrigger>
                                             </Style.Triggers>
                                         </Style>
@@ -678,7 +678,7 @@
                                 </Button>
 
                                 <Button Command="{Binding RestartTestOneSignalControllerCommand}"
-                                        ToolTip="Перезапуск текущей КС"
+                                        ToolTip="Перезапуск текущей МАС"
                                         IsEnabled="{Binding IsActiveTest}"
                                         Style="{StaticResource IconBackgroundButton}"
                                         Margin="5">

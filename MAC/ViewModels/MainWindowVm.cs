@@ -194,7 +194,7 @@ namespace MAC.ViewModels
         {
             if (CheckValidationFlukeAndCommutator()) return;
 
-            //Открываем меню выбора доступных кс. И выставляем активные для теста.
+            //Открываем меню выбора доступных МАС. И выставляем активные для теста.
             if (SetActiveSignalController()) return;
 
 
@@ -243,7 +243,7 @@ namespace MAC.ViewModels
             var fluke = new FlukeSerialPort(Fluke);
             var comm = new CommutatorSerialPort(Comm);
 
-            //Получаю список выставленных Кс
+            //Получаю список выставленных МАС
             var activeScResultItems = AllComConnect.Skip(2).Where(item => item.IsActiveTest)
                 .Select(item =>
                     new MacResultItem(fluke, comm, item, MainSettingsModel, ActiveMeasurements, TypeCancelTask,
@@ -300,14 +300,14 @@ namespace MAC.ViewModels
             }
 
 
-            //...По окончанию теста, обнулить выбранные КС.
+            //...По окончанию теста, обнулить выбранные МАС.
             foreach (var item in AllComConnect.Skip(2))
                 item.IsActiveTest = false;
 
             IsActiveTest = false;
         }
 
-        #region Набор методов для команд остановки теста, рестарта кс, канала или измерения
+        #region Набор методов для команд остановки теста, рестарта МАС, канала или измерения
 
         private void StopTest()
         {
