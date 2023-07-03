@@ -1621,7 +1621,7 @@ namespace MAC.Models
     /// </summary>
     public enum ScVersion
     {
-        Old,
-        New
+        New,
+        Old
     }
 }

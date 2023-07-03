@@ -7,7 +7,7 @@ using MAC.Models;
 
 namespace MAC.ViewModels.Services.SerialPort
 {
-    public class ScSerialPort
+    public class ScSerialPort123
     {
         private System.IO.Ports.SerialPort _signalController;
 
@@ -15,7 +15,7 @@ namespace MAC.ViewModels.Services.SerialPort
         private string _currentData = string.Empty;
         private readonly string _comPort;
 
-        public ScSerialPort(ComConnectItem comConnectItem)
+        public ScSerialPort123(ComConnectItem comConnectItem)
         {
             _comPort = comConnectItem.ComPort;
         }

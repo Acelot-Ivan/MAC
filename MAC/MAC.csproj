@@ -204,6 +204,7 @@
     <Compile Include="ViewModels\Services\SerialPort\FlukeSerialPort.cs" />
     <Compile Include="ViewModels\Services\GlobalLog.cs" />
     <Compile Include="ViewModels\Services\MainConst.cs" />
+    <Compile Include="ViewModels\Services\SerialPort\MacSerialPort.cs" />
     <Compile Include="ViewModels\Services\SerialPort\ScSerialPort.cs" />
     <Compile Include="ViewModels\Services\SerialPort\SerialPortValidationChecker.cs" />
     <Compile Include="ViewModels\Base\BaseVm.cs" />

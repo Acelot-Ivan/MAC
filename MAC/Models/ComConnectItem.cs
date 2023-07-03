@@ -156,12 +156,12 @@ namespace MAC.Models
         }
 
         /// <summary>
-        /// Метод запроса серийного номера КС.
-        /// Только для КС
+        /// Метод запроса серийного номера Mac.
+        /// Только для Mac
         /// </summary>
         public void GerSerialNumberSc()
         {
-            var scSerialPort = new ScSerialPort(this);
+            var scSerialPort = new MacSerialPort(this);
 
             scSerialPort.OpenSerialPort();
 
