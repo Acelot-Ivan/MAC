@@ -39,34 +39,31 @@ namespace MAC.ViewModels
         private void IsAllCh0Click()
         {
             var newValue = !ActiveSettings.IsAllCh0Active;
-            ActiveSettings.Ch0Ohm80 = newValue;
-            ActiveSettings.Ch0Ohm90 = newValue;
-            ActiveSettings.Ch0Ohm100 = newValue;
-            ActiveSettings.Ch0Ohm115 = newValue;
-            ActiveSettings.Ch0Ohm130 = newValue;
-            ActiveSettings.Ch0Ohm140 = newValue;
+            ActiveSettings.Ch0Ohm1 = newValue;
+            ActiveSettings.Ch0Ohm2 = newValue;
+            ActiveSettings.Ch0Ohm3 = newValue;
+            ActiveSettings.Ch0Ohm4 = newValue;
+            ActiveSettings.Ch0Ohm5 = newValue;
         }
 
         private void IsAllCh1Click()
         {
             var isAllActive = !ActiveSettings.IsAllCh1Active;
-            ActiveSettings.Ch1Ohm80 = isAllActive;
-            ActiveSettings.Ch1Ohm90 = isAllActive;
-            ActiveSettings.Ch1Ohm100 = isAllActive;
-            ActiveSettings.Ch1Ohm115 = isAllActive;
-            ActiveSettings.Ch1Ohm130 = isAllActive;
-            ActiveSettings.Ch1Ohm140 = isAllActive;
+            ActiveSettings.Ch1Ohm1 = isAllActive;
+            ActiveSettings.Ch1Ohm2 = isAllActive;
+            ActiveSettings.Ch1Ohm3 = isAllActive;
+            ActiveSettings.Ch1Ohm4 = isAllActive;
+            ActiveSettings.Ch1Ohm5 = isAllActive;
         }
 
         private void IsAllCh2Click()
         {
             var isAllActive = !ActiveSettings.IsAllCh2Active;
-            ActiveSettings.Ch2Ohm80 = isAllActive;
-            ActiveSettings.Ch2Ohm90 = isAllActive;
-            ActiveSettings.Ch2Ohm100 = isAllActive;
-            ActiveSettings.Ch2Ohm115 = isAllActive;
-            ActiveSettings.Ch2Ohm130 = isAllActive;
-            ActiveSettings.Ch2Ohm140 = isAllActive;
+            ActiveSettings.Ch2Ohm1 = isAllActive;
+            ActiveSettings.Ch2Ohm2 = isAllActive;
+            ActiveSettings.Ch2Ohm3 = isAllActive;
+            ActiveSettings.Ch2Ohm4 = isAllActive;
+            ActiveSettings.Ch2Ohm5 = isAllActive;
         }
 
         private void IsAllCh3Click()
@@ -92,11 +89,11 @@ namespace MAC.ViewModels
         private void IsAllCh6Click()
         {
             var isAllActive = !ActiveSettings.IsAllCh6Active;
+            ActiveSettings.Ch6Hz1 = isAllActive;
+            ActiveSettings.Ch6Hz2 = isAllActive;
+            ActiveSettings.Ch6Hz3 = isAllActive;
+            ActiveSettings.Ch6Hz4 = isAllActive;
             ActiveSettings.Ch6Hz5 = isAllActive;
-            ActiveSettings.Ch6Hz25 = isAllActive;
-            ActiveSettings.Ch6Hz50 = isAllActive;
-            ActiveSettings.Ch6Hz75 = isAllActive;
-            ActiveSettings.Ch6Hz100 = isAllActive;
         }
     }
 }

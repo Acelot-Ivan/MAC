@@ -141,29 +141,29 @@ namespace MAC.Models
 
             Ch0 = new ObservableCollection<IMacValue>
             {
-                new OhmValueMac(80, activeSettings.Ch0Ohm80),
-                new OhmValueMac(90, activeSettings.Ch0Ohm90),
-                new OhmValueMac(100, activeSettings.Ch0Ohm100),
-                new OhmValueMac(115, activeSettings.Ch0Ohm115),
-                new OhmValueMac(130, activeSettings.Ch0Ohm130),
+                new OhmValueMac(80, activeSettings.Ch0Ohm30),
+                new OhmValueMac(90, activeSettings.Ch0Ohm85),
+                new OhmValueMac(100, activeSettings.Ch0Ohm110),
+                new OhmValueMac(115, activeSettings.Ch0Ohm155),
+                new OhmValueMac(130, activeSettings.Ch0Ohm190),
                 new OhmValueMac(140, activeSettings.Ch0Ohm140)
             };
             Ch1 = new ObservableCollection<IMacValue>
             {
-                new OhmValueMac(80, activeSettings.Ch1Ohm80),
-                new OhmValueMac(90, activeSettings.Ch1Ohm90),
-                new OhmValueMac(100, activeSettings.Ch1Ohm100),
-                new OhmValueMac(115, activeSettings.Ch1Ohm115),
-                new OhmValueMac(130, activeSettings.Ch1Ohm130),
+                new OhmValueMac(80, activeSettings.Ch1Ohm30),
+                new OhmValueMac(90, activeSettings.Ch1Ohm85),
+                new OhmValueMac(100, activeSettings.Ch1Ohm110),
+                new OhmValueMac(115, activeSettings.Ch1Ohm155),
+                new OhmValueMac(130, activeSettings.Ch1Ohm190),
                 new OhmValueMac(140, activeSettings.Ch1Ohm140)
             };
             Ch2 = new ObservableCollection<IMacValue>
             {
-                new OhmValueMac(80, activeSettings.Ch2Ohm80),
-                new OhmValueMac(90, activeSettings.Ch2Ohm90),
-                new OhmValueMac(100, activeSettings.Ch2Ohm100),
-                new OhmValueMac(115, activeSettings.Ch2Ohm115),
-                new OhmValueMac(130, activeSettings.Ch2Ohm130),
+                new OhmValueMac(80, activeSettings.Ch2Ohm30),
+                new OhmValueMac(90, activeSettings.Ch2Ohm85),
+                new OhmValueMac(100, activeSettings.Ch2Ohm110),
+                new OhmValueMac(115, activeSettings.Ch2Ohm155),
+                new OhmValueMac(130, activeSettings.Ch2Ohm190),
                 new OhmValueMac(140, activeSettings.Ch2Ohm140)
             };
             Ch3 = new ObservableCollection<IMacValue>
@@ -184,11 +184,11 @@ namespace MAC.Models
             };
             Ch6 = new ObservableCollection<IMacValue>
             {
-                new HzValueMac(5, activeSettings.Ch6Hz5),
-                new HzValueMac(25, activeSettings.Ch6Hz25),
+                new HzValueMac(5, activeSettings.Ch6Hz55),
+                new HzValueMac(25, activeSettings.Ch6Hz250),
                 new HzValueMac(50, activeSettings.Ch6Hz50),
-                new HzValueMac(75, activeSettings.Ch6Hz75),
-                new HzValueMac(100, activeSettings.Ch6Hz100)
+                new HzValueMac(75, activeSettings.Ch6Hz750),
+                new HzValueMac(100, activeSettings.Ch6Hz1000)
             };
 
             #endregion
@@ -257,25 +257,25 @@ namespace MAC.Models
             CountActiveMeasurements = 0;
             TimeLeftOnAllMeasurements = new TimeSpan();
 
-            UpdateMeasurements(activeSettings.Ch0Ohm80, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch0Ohm90, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch0Ohm100, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch0Ohm115, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch0Ohm130, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch0Ohm30, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch0Ohm85, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch0Ohm110, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch0Ohm155, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch0Ohm190, TypeMeasurement.Ohm);
             UpdateMeasurements(activeSettings.Ch0Ohm140, TypeMeasurement.Ohm);
 
-            UpdateMeasurements(activeSettings.Ch1Ohm80, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch1Ohm90, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch1Ohm100, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch1Ohm115, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch1Ohm130, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch1Ohm30, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch1Ohm85, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch1Ohm110, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch1Ohm155, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch1Ohm190, TypeMeasurement.Ohm);
             UpdateMeasurements(activeSettings.Ch1Ohm140, TypeMeasurement.Ohm);
 
-            UpdateMeasurements(activeSettings.Ch2Ohm80, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch2Ohm90, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch2Ohm100, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch2Ohm115, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch2Ohm130, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch2Ohm30, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch2Ohm85, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch2Ohm110, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch2Ohm155, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ch2Ohm190, TypeMeasurement.Ohm);
             UpdateMeasurements(activeSettings.Ch2Ohm140, TypeMeasurement.Ohm);
 
             UpdateMeasurements(activeSettings.Ch3V1, TypeMeasurement.V);
@@ -290,11 +290,11 @@ namespace MAC.Models
             UpdateMeasurements(activeSettings.Ch5V4, TypeMeasurement.V);
             UpdateMeasurements(activeSettings.Ch5V5, TypeMeasurement.V);
 
-            UpdateMeasurements(activeSettings.Ch6Hz5, TypeMeasurement.Hz);
-            UpdateMeasurements(activeSettings.Ch6Hz25, TypeMeasurement.Hz);
+            UpdateMeasurements(activeSettings.Ch6Hz55, TypeMeasurement.Hz);
+            UpdateMeasurements(activeSettings.Ch6Hz250, TypeMeasurement.Hz);
             UpdateMeasurements(activeSettings.Ch6Hz50, TypeMeasurement.Hz);
-            UpdateMeasurements(activeSettings.Ch6Hz75, TypeMeasurement.Hz);
-            UpdateMeasurements(activeSettings.Ch6Hz100, TypeMeasurement.Hz);
+            UpdateMeasurements(activeSettings.Ch6Hz750, TypeMeasurement.Hz);
+            UpdateMeasurements(activeSettings.Ch6Hz1000, TypeMeasurement.Hz);
         }
 
         /// <summary>

@@ -199,7 +199,7 @@
     <Compile Include="Style\CustomControl\ChannelButton.xaml.cs">
       <DependentUpon>ChannelButton.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModels\SelectActiveSignalControllerVm.cs" />
+    <Compile Include="ViewModels\SelectActiveMacVm.cs" />
     <Compile Include="ViewModels\Services\SerialPort\CommutatorSerialPort.cs" />
     <Compile Include="ViewModels\Services\SerialPort\FlukeSerialPort.cs" />
     <Compile Include="ViewModels\Services\GlobalLog.cs" />

@@ -16,7 +16,7 @@ namespace MAC.Models.Value
         ///Вольт: 0.345, 1.325, 2.550, 3.775, 4.755
         ///Гц: 50, 250, 500, 750, 1000
         /// </summary>
-        int ValueMeasurement { get; set; }
+        decimal ValueMeasurement { get; set; }
 
         /// <summary>
         /// Итоговое полученное значение тестирования МАС

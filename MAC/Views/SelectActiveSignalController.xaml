@@ -8,7 +8,7 @@
         xmlns:gif="http://wpfanimatedgif.codeplex.com"
         ResizeMode="NoResize"
         mc:Ignorable="d"
-        d:DataContext="{d:DesignInstance Type=viewModels:SelectActiveSignalControllerVm}"
+        d:DataContext="{d:DesignInstance Type=viewModels:SelectActiveMacVm}"
         Title="Выбор активных МАС для тестирования"
         Height="310"
         Width="620">
@@ -39,7 +39,7 @@
                     CornerRadius="5"
                     BorderThickness="1"
                     BorderBrush="Black">
-                <ItemsControl ItemsSource="{Binding SignalControllerItems , UpdateSourceTrigger=PropertyChanged}"
+                <ItemsControl ItemsSource="{Binding MacItems , UpdateSourceTrigger=PropertyChanged}"
                               Padding="5,0">
                     <ItemsControl.ItemTemplate>
                         <DataTemplate DataType="{x:Type models:ComConnectItem}">
@@ -70,7 +70,7 @@
                                         </Grid>
                                         <Grid Grid.Column="3">
                                             <Button Style="{StaticResource IconBackgroundButton}"
-                                                    Command="{Binding RelativeSource={ RelativeSource Mode=FindAncestor , AncestorType= Window} , Path=DataContext.GetSerialNumberScCommand}"
+                                                    Command="{Binding RelativeSource={ RelativeSource Mode=FindAncestor , AncestorType= Window} , Path=DataContext.GetSerialNumberMacCommand}"
                                                     CommandParameter="{Binding  }"
                                                     Height="25"
                                                     VerticalAlignment="Center"

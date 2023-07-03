@@ -230,7 +230,7 @@ namespace MAC.ViewModels
         private bool SetActiveSignalController()
         {
             var selectActiveSignalController =
-                new SelectActiveSignalController(new SelectActiveSignalControllerVm(AllComConnect.Skip(2)));
+                new SelectActiveSignalController(new SelectActiveMacVm(AllComConnect.Skip(2)));
             selectActiveSignalController.ShowDialog();
             var isContinue = selectActiveSignalController.ViewModels.IsContinue;
             selectActiveSignalController.Close();

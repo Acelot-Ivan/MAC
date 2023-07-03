@@ -7,12 +7,12 @@ namespace MAC.Views
     /// </summary>
     public partial class SelectActiveSignalController
     {
-        public SelectActiveSignalControllerVm ViewModels => (SelectActiveSignalControllerVm)DataContext;
-        public SelectActiveSignalController(SelectActiveSignalControllerVm selectActiveSignalControllerVm)
+        public SelectActiveMacVm ViewModels => (SelectActiveMacVm)DataContext;
+        public SelectActiveSignalController(SelectActiveMacVm selectActiveMacVm)
         {
             InitializeComponent();
 
-            DataContext = selectActiveSignalControllerVm;
+            DataContext = selectActiveMacVm;
 
             ViewModels.CloseWindow = CloseWindow;
         }

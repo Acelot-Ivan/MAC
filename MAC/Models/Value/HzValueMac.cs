@@ -7,7 +7,7 @@ namespace MAC.Models.Value
     public class HzValueMac : BaseVm, IMacValue
     {
         public TypeMeasurement TypeMeasurement { get; set; }
-        public int ValueMeasurement { get; set; }
+        public decimal ValueMeasurement { get; set; }
         public decimal? ResultValue { get; set; }
         public bool IsActive { get; set; }
         public bool IsСheckedNow { get; set; }

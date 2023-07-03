@@ -7,24 +7,24 @@ using MAC.ViewModels.Base;
 
 namespace MAC.ViewModels
 {
-    public class SelectActiveSignalControllerVm
+    public class SelectActiveMacVm
     {
         public Action CloseWindow;
         public RelayCommand ContinueCommand => new RelayCommand(Continue, ContinueValidation);
         public RelayCommand CancelCommand => new RelayCommand(Cancel);
-        public RelayCommand GetSerialNumberScCommand => new RelayCommand(GetSerialNumber);
-        public ObservableCollection<ComConnectItem> SignalControllerItems { get; set; }
+        public RelayCommand GetSerialNumberMacCommand => new RelayCommand(GetSerialNumber);
+        public ObservableCollection<ComConnectItem> MacItems { get; set; }
 
         object locker = new object();
         public bool IsContinue { get; set; }
 
-        public SelectActiveSignalControllerVm(IEnumerable<ComConnectItem> signalControllerItems)
+        public SelectActiveMacVm(IEnumerable<ComConnectItem> signalControllerItems)
         {
-            SignalControllerItems = new ObservableCollection<ComConnectItem>(signalControllerItems);
+            MacItems = new ObservableCollection<ComConnectItem>(signalControllerItems);
 
             Task.Run(async () => await Task.Run(() =>
             {
-                foreach (var item in SignalControllerItems)
+                foreach (var item in MacItems)
                 {
                     item.CheckComConnectAsync();
                 }
@@ -60,7 +60,7 @@ namespace MAC.ViewModels
         {
             var isActiveOneSignalController = false;
 
-            foreach (var item in SignalControllerItems)
+            foreach (var item in MacItems)
             {
                 if (item.IsActiveTest)
                     isActiveOneSignalController = true;

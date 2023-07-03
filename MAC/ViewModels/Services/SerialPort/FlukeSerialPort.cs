@@ -81,10 +81,15 @@ namespace MAC.ViewModels.Services.SerialPort
         {
             Send("STBY");
         }
-
-        public void SetOhmValue(int value, bool isOnOper = true)
+        /// <summary>
+        /// 30, 85, 110, 155, 190Ом
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="isOnOper"></param>
+        /// <exception cref="ArgumentException"></exception>
+        public void SetOhmValue(decimal value, bool isOnOper = true)
         {
-            var validationOhmList = new List<int> {80, 90, 100, 115, 120, 130, 140,200};
+            var validationOhmList = new List<decimal> { 30, 85, 110, 115, 155, 190, 200};
             if (!validationOhmList.Contains(value))
                 throw new ArgumentException();
 
@@ -101,9 +106,15 @@ namespace MAC.ViewModels.Services.SerialPort
             SetOhmValue(pointValue);
         }
 
-        public void SetVoltValue(int value, bool isOnOper = true)
+        /// <summary>
+        /// 0.345, 1.325, 2.550, 3.775, 4.755
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="isOnOper"></param>
+        /// <exception cref="ArgumentException"></exception>
+        public void SetVoltValue(decimal value, bool isOnOper = true)
         {
-            var validationVoltList = new List<int> {1, 2, 3, 4, 5};
+            var validationVoltList = new List<decimal> {0.345m, 1.325m, 2.550m, 3.775m, 4.755m};
             if (!validationVoltList.Contains(value))
                 throw new ArgumentException();
 
@@ -115,9 +126,9 @@ namespace MAC.ViewModels.Services.SerialPort
             );
         }
 
-        public void SetHzValue(int value, bool isOnOper = true)
+        public void SetHzValue(decimal value, bool isOnOper = true)
         {
-            var validationHzList = new List<int> {5, 25, 50, 75, 100};
+            var validationHzList = new List<decimal> {50, 250, 500, 750, 1000};
             if (!validationHzList.Contains(value))
                 throw new ArgumentException();
 
