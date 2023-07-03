@@ -113,7 +113,7 @@
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0">
                             <Grid>
-                                <TextBlock Text="80 Ом"
+                                <TextBlock Text="30 Ом"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -137,7 +137,7 @@
                         </Border>
                         <Border Grid.Column="4">
                             <Grid>
-                                <TextBlock Text="1 V"
+                                <TextBlock Text="0.345 V"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -157,7 +157,7 @@
                         </Border>
                         <Border Grid.Column="7">
                             <Grid>
-                                <TextBlock Text="5 Hz"
+                                <TextBlock Text="50 Hz"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -188,7 +188,7 @@
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0">
                             <Grid>
-                                <TextBlock Text="90 Ом"
+                                <TextBlock Text="85 Ом"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -212,7 +212,7 @@
                         </Border>
                         <Border Grid.Column="4">
                             <Grid>
-                                <TextBlock Text="2 V"
+                                <TextBlock Text="1.325 V"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -232,7 +232,7 @@
                         </Border>
                         <Border Grid.Column="7">
                             <Grid>
-                                <TextBlock Text="25 Hz"
+                                <TextBlock Text="250 Hz"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -263,7 +263,7 @@
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0">
                             <Grid>
-                                <TextBlock Text="100 Ом"
+                                <TextBlock Text="110 Ом"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -287,7 +287,7 @@
                         </Border>
                         <Border Grid.Column="4">
                             <Grid>
-                                <TextBlock Text="3 V"
+                                <TextBlock Text="2.250 V"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -307,7 +307,7 @@
                         </Border>
                         <Border Grid.Column="7">
                             <Grid>
-                                <TextBlock Text="50 Hz"
+                                <TextBlock Text="500 Hz"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -338,7 +338,7 @@
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0">
                             <Grid>
-                                <TextBlock Text="115 Ом"
+                                <TextBlock Text="155 Ом"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -362,7 +362,7 @@
                         </Border>
                         <Border Grid.Column="4">
                             <Grid>
-                                <TextBlock Text="4 V"
+                                <TextBlock Text="3.775 V"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -382,7 +382,7 @@
                         </Border>
                         <Border Grid.Column="7">
                             <Grid>
-                                <TextBlock Text="75 Hz"
+                                <TextBlock Text="750 Hz"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -413,7 +413,7 @@
                         </Grid.ColumnDefinitions>
                         <Border Grid.Column="0">
                             <Grid>
-                                <TextBlock Text="130 Ом"
+                                <TextBlock Text="190 Ом"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -437,7 +437,7 @@
                         </Border>
                         <Border Grid.Column="4">
                             <Grid>
-                                <TextBlock Text="5 V"
+                                <TextBlock Text="4.755 V"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -457,7 +457,7 @@
                         </Border>
                         <Border Grid.Column="7">
                             <Grid>
-                                <TextBlock Text="100 Hz"
+                                <TextBlock Text="1000 Hz"
                                            Style="{StaticResource HeaderTextBlock}" />
                             </Grid>
                         </Border>
@@ -486,32 +486,6 @@
                             <ColumnDefinition Width="1*" />
                             <ColumnDefinition Width="1*" />
                         </Grid.ColumnDefinitions>
-                        <Border Grid.Column="0">
-                            <Grid>
-                                <TextBlock Text="140 Ом"
-                                           Style="{StaticResource HeaderTextBlock}" />
-                            </Grid>
-                        </Border>
-                        <Border Grid.Column="1">
-                            <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm140}"
-                                          Style="{StaticResource ResultCheckBox}" />
-                            </Grid>
-                        </Border>
-                        <Border Grid.Column="2">
-                            <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm140}"
-                                          Style="{StaticResource ResultCheckBox}" />
-                            </Grid>
-                        </Border>
-                        <Border Grid.Column="3">
-                            <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm140}"
-                                          Style="{StaticResource ResultCheckBox}" />
-                            </Grid>
-                        </Border>
-
-
                     </Grid>
                 </Border>
 
