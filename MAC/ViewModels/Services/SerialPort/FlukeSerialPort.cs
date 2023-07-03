@@ -125,7 +125,12 @@ namespace MAC.ViewModels.Services.SerialPort
                     : $"OUT {value} V"
             );
         }
-
+        /// <summary>
+        /// 50, 250, 500, 750, 1000
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="isOnOper"></param>
+        /// <exception cref="ArgumentException"></exception>
         public void SetHzValue(decimal value, bool isOnOper = true)
         {
             var validationHzList = new List<decimal> {50, 250, 500, 750, 1000};

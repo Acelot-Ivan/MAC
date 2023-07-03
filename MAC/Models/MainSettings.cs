@@ -10,8 +10,8 @@ namespace MAC.Models
 
         public List<ScVersionList> ScVersionList { get; set; } = new List<ScVersionList>
         {
-            new ScVersionList("До 12.1.9 (Включительно)", ScVersion.Old),
-            new ScVersionList("С 12.1.11 (Включительно)", ScVersion.New),
+            new ScVersionList("До 12.1.9 (Включительно)", MacVersion.Old),
+            new ScVersionList("С 12.1.11 (Включительно)", MacVersion.New),
         };
 
         public MainSettingsModel()
@@ -22,7 +22,7 @@ namespace MAC.Models
             FullLogPath = Settings.Default.FullLogPath;
             IsUseAverageValue = Settings.Default.IsUseAverageValue;
             CountAverageValue = Settings.Default.CountAverageValue;
-            ScVersion = (ScVersion)Settings.Default.ScVersion;
+            MacVersion = (MacVersion)Settings.Default.ScVersion;
             IsOnCalibration = Settings.Default.IsOnCalibration;
 
         }
@@ -200,18 +200,18 @@ namespace MAC.Models
 
         #endregion
 
-        #region ScVersion
+        #region MacVersion
 
-        private ScVersion _scVersion;
+        private MacVersion _macVersion;
 
-        public ScVersion ScVersion
+        public MacVersion MacVersion
         {
-            get => _scVersion;
+            get => _macVersion;
             set
             {
-                _scVersion = value;
-                OnPropertyChanged(nameof(ScVersion));
-                Settings.Default.ScVersion = Convert.ToInt32(ScVersion);
+                _macVersion = value;
+                OnPropertyChanged(nameof(MacVersion));
+                Settings.Default.ScVersion = Convert.ToInt32(MacVersion);
                 Settings.Default.Save();
             }
         }
@@ -221,13 +221,13 @@ namespace MAC.Models
 
     public class ScVersionList
     {
-        public ScVersionList(string name, ScVersion scVersion)
+        public ScVersionList(string name, MacVersion macVersion)
         {
-            ScVersion = scVersion;
+            MacVersion = macVersion;
             Name = name;
         }
 
-        public ScVersion ScVersion { get; set; }
+        public MacVersion MacVersion { get; set; }
         public string Name { get; set; }
     }
 }

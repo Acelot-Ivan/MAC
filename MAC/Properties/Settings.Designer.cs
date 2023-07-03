@@ -122,288 +122,252 @@ namespace MAC.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Не выбрано")]
-        public string Sc1ComPort {
+        public string Mac1ComPort {
             get {
-                return ((string)(this["Sc1ComPort"]));
+                return ((string)(this["Mac1ComPort"]));
             }
             set {
-                this["Sc1ComPort"] = value;
+                this["Mac1ComPort"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Не выбрано")]
-        public string Sc2ComPort {
+        public string Mac2ComPort {
             get {
-                return ((string)(this["Sc2ComPort"]));
+                return ((string)(this["Mac2ComPort"]));
             }
             set {
-                this["Sc2ComPort"] = value;
+                this["Mac2ComPort"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Не выбрано")]
-        public string Sc3ComPort {
+        public string Mac3ComPort {
             get {
-                return ((string)(this["Sc3ComPort"]));
+                return ((string)(this["Mac3ComPort"]));
             }
             set {
-                this["Sc3ComPort"] = value;
+                this["Mac3ComPort"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Не выбрано")]
-        public string Sc4ComPort {
+        public string Mac4ComPort {
             get {
-                return ((string)(this["Sc4ComPort"]));
+                return ((string)(this["Mac4ComPort"]));
             }
             set {
-                this["Sc4ComPort"] = value;
+                this["Mac4ComPort"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Не выбрано")]
-        public string Sc5ComPort {
+        public string Mac5ComPort {
             get {
-                return ((string)(this["Sc5ComPort"]));
+                return ((string)(this["Mac5ComPort"]));
             }
             set {
-                this["Sc5ComPort"] = value;
+                this["Mac5ComPort"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("Не выбрано")]
-        public string Sc6ComPort {
+        public string Mac6ComPort {
             get {
-                return ((string)(this["Sc6ComPort"]));
+                return ((string)(this["Mac6ComPort"]));
             }
             set {
-                this["Sc6ComPort"] = value;
+                this["Mac6ComPort"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch0Ohm80IsActive {
+        public bool Ch0Ohm1IsActive {
             get {
-                return ((bool)(this["Ch0Ohm80IsActive"]));
+                return ((bool)(this["Ch0Ohm1IsActive"]));
             }
             set {
-                this["Ch0Ohm80IsActive"] = value;
+                this["Ch0Ohm1IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch0Ohm90IsActive {
+        public bool Ch0Ohm2IsActive {
             get {
-                return ((bool)(this["Ch0Ohm90IsActive"]));
+                return ((bool)(this["Ch0Ohm2IsActive"]));
             }
             set {
-                this["Ch0Ohm90IsActive"] = value;
+                this["Ch0Ohm2IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch0Ohm100IsActive {
+        public bool Ch0Ohm3IsActive {
             get {
-                return ((bool)(this["Ch0Ohm100IsActive"]));
+                return ((bool)(this["Ch0Ohm3IsActive"]));
             }
             set {
-                this["Ch0Ohm100IsActive"] = value;
+                this["Ch0Ohm3IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch0Ohm115IsActive {
+        public bool Ch0Ohm4IsActive {
             get {
-                return ((bool)(this["Ch0Ohm115IsActive"]));
+                return ((bool)(this["Ch0Ohm4IsActive"]));
             }
             set {
-                this["Ch0Ohm115IsActive"] = value;
+                this["Ch0Ohm4IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch0Ohm130IsActive {
+        public bool Ch0Ohm5IsActive {
             get {
-                return ((bool)(this["Ch0Ohm130IsActive"]));
+                return ((bool)(this["Ch0Ohm5IsActive"]));
             }
             set {
-                this["Ch0Ohm130IsActive"] = value;
+                this["Ch0Ohm5IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch0Ohm140IsActive {
+        public bool Ch1Ohm1IsActive {
             get {
-                return ((bool)(this["Ch0Ohm140IsActive"]));
+                return ((bool)(this["Ch1Ohm1IsActive"]));
             }
             set {
-                this["Ch0Ohm140IsActive"] = value;
+                this["Ch1Ohm1IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch1Ohm80IsActive {
+        public bool Ch1Ohm2IsActive {
             get {
-                return ((bool)(this["Ch1Ohm80IsActive"]));
+                return ((bool)(this["Ch1Ohm2IsActive"]));
             }
             set {
-                this["Ch1Ohm80IsActive"] = value;
+                this["Ch1Ohm2IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch1Ohm90IsActive {
+        public bool Ch1Ohm3IsActive {
             get {
-                return ((bool)(this["Ch1Ohm90IsActive"]));
+                return ((bool)(this["Ch1Ohm3IsActive"]));
             }
             set {
-                this["Ch1Ohm90IsActive"] = value;
+                this["Ch1Ohm3IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch1Ohm100IsActive {
+        public bool Ch1Ohm4IsActive {
             get {
-                return ((bool)(this["Ch1Ohm100IsActive"]));
+                return ((bool)(this["Ch1Ohm4IsActive"]));
             }
             set {
-                this["Ch1Ohm100IsActive"] = value;
+                this["Ch1Ohm4IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch1Ohm115IsActive {
+        public bool Ch1Ohm5IsActive {
             get {
-                return ((bool)(this["Ch1Ohm115IsActive"]));
+                return ((bool)(this["Ch1Ohm5IsActive"]));
             }
             set {
-                this["Ch1Ohm115IsActive"] = value;
+                this["Ch1Ohm5IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch1Ohm130IsActive {
+        public bool Ch2Ohm1IsActive {
             get {
-                return ((bool)(this["Ch1Ohm130IsActive"]));
+                return ((bool)(this["Ch2Ohm1IsActive"]));
             }
             set {
-                this["Ch1Ohm130IsActive"] = value;
+                this["Ch2Ohm1IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch1Ohm140IsActive {
+        public bool Ch2Ohm2IsActive {
             get {
-                return ((bool)(this["Ch1Ohm140IsActive"]));
+                return ((bool)(this["Ch2Ohm2IsActive"]));
             }
             set {
-                this["Ch1Ohm140IsActive"] = value;
+                this["Ch2Ohm2IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch2Ohm80IsActive {
+        public bool Ch2Ohm3IsActive {
             get {
-                return ((bool)(this["Ch2Ohm80IsActive"]));
+                return ((bool)(this["Ch2Ohm3IsActive"]));
             }
             set {
-                this["Ch2Ohm80IsActive"] = value;
+                this["Ch2Ohm3IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch2Ohm90IsActive {
+        public bool Ch2Ohm4IsActive {
             get {
-                return ((bool)(this["Ch2Ohm90IsActive"]));
+                return ((bool)(this["Ch2Ohm4IsActive"]));
             }
             set {
-                this["Ch2Ohm90IsActive"] = value;
+                this["Ch2Ohm4IsActive"] = value;
             }
         }
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch2Ohm100IsActive {
+        public bool Ch2Ohm5IsActive {
             get {
-                return ((bool)(this["Ch2Ohm100IsActive"]));
+                return ((bool)(this["Ch2Ohm5IsActive"]));
             }
             set {
-                this["Ch2Ohm100IsActive"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch2Ohm115IsActive {
-            get {
-                return ((bool)(this["Ch2Ohm115IsActive"]));
-            }
-            set {
-                this["Ch2Ohm115IsActive"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch2Ohm130IsActive {
-            get {
-                return ((bool)(this["Ch2Ohm130IsActive"]));
-            }
-            set {
-                this["Ch2Ohm130IsActive"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch2Ohm140IsActive {
-            get {
-                return ((bool)(this["Ch2Ohm140IsActive"]));
-            }
-            set {
-                this["Ch2Ohm140IsActive"] = value;
+                this["Ch2Ohm5IsActive"] = value;
             }
         }
         
@@ -530,60 +494,60 @@ namespace MAC.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Ch6Hz1IsActive {
+            get {
+                return ((bool)(this["Ch6Hz1IsActive"]));
+            }
+            set {
+                this["Ch6Hz1IsActive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Ch6Hz2IsActive {
+            get {
+                return ((bool)(this["Ch6Hz2IsActive"]));
+            }
+            set {
+                this["Ch6Hz2IsActive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Ch6Hz3IsActive {
+            get {
+                return ((bool)(this["Ch6Hz3IsActive"]));
+            }
+            set {
+                this["Ch6Hz3IsActive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
+        public bool Ch6Hz4IsActive {
+            get {
+                return ((bool)(this["Ch6Hz4IsActive"]));
+            }
+            set {
+                this["Ch6Hz4IsActive"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool Ch6Hz5IsActive {
             get {
                 return ((bool)(this["Ch6Hz5IsActive"]));
             }
             set {
                 this["Ch6Hz5IsActive"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch6Hz25IsActive {
-            get {
-                return ((bool)(this["Ch6Hz25IsActive"]));
-            }
-            set {
-                this["Ch6Hz25IsActive"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch6Hz50IsActive {
-            get {
-                return ((bool)(this["Ch6Hz50IsActive"]));
-            }
-            set {
-                this["Ch6Hz50IsActive"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch6Hz75IsActive {
-            get {
-                return ((bool)(this["Ch6Hz75IsActive"]));
-            }
-            set {
-                this["Ch6Hz75IsActive"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("True")]
-        public bool Ch6Hz100IsActive {
-            get {
-                return ((bool)(this["Ch6Hz100IsActive"]));
-            }
-            set {
-                this["Ch6Hz100IsActive"] = value;
             }
         }
         
@@ -1040,6 +1004,18 @@ namespace MAC.Properties {
             }
             set {
                 this["IsOnCalibration"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("1")]
+        public string MacVersion {
+            get {
+                return ((string)(this["MacVersion"]));
+            }
+            set {
+                this["MacVersion"] = value;
             }
         }
     }

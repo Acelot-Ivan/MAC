@@ -7,25 +7,25 @@ namespace MAC.Models
     {
         public ActiveSettingsModel()
         {
-            Ch0Ohm1 = Settings.Default.Ch0Ohm80IsActive;
-            Ch0Ohm2 = Settings.Default.Ch0Ohm90IsActive;
-            Ch0Ohm3 = Settings.Default.Ch0Ohm100IsActive;
-            Ch0Ohm4 = Settings.Default.Ch0Ohm115IsActive;
-            Ch0Ohm5 = Settings.Default.Ch0Ohm130IsActive;
+            Ch0Ohm1 = Settings.Default.Ch0Ohm1IsActive;
+            Ch0Ohm2 = Settings.Default.Ch0Ohm2IsActive;
+            Ch0Ohm3 = Settings.Default.Ch0Ohm3IsActive;
+            Ch0Ohm4 = Settings.Default.Ch0Ohm4IsActive;
+            Ch0Ohm5 = Settings.Default.Ch0Ohm5IsActive;
 
 
-            Ch1Ohm1 = Settings.Default.Ch1Ohm80IsActive;
-            Ch1Ohm2 = Settings.Default.Ch1Ohm90IsActive;
-            Ch1Ohm3 = Settings.Default.Ch1Ohm100IsActive;
-            Ch1Ohm4 = Settings.Default.Ch1Ohm115IsActive;
-            Ch1Ohm5 = Settings.Default.Ch1Ohm130IsActive;
+            Ch1Ohm1 = Settings.Default.Ch1Ohm1IsActive;
+            Ch1Ohm2 = Settings.Default.Ch1Ohm2IsActive;
+            Ch1Ohm3 = Settings.Default.Ch1Ohm3IsActive;
+            Ch1Ohm4 = Settings.Default.Ch1Ohm4IsActive;
+            Ch1Ohm5 = Settings.Default.Ch1Ohm5IsActive;
 
 
-            Ch2Ohm1 = Settings.Default.Ch2Ohm80IsActive;
-            Ch2Ohm2 = Settings.Default.Ch2Ohm90IsActive;
-            Ch2Ohm3 = Settings.Default.Ch2Ohm100IsActive;
-            Ch2Ohm4 = Settings.Default.Ch2Ohm115IsActive;
-            Ch2Ohm5 = Settings.Default.Ch2Ohm130IsActive;
+            Ch2Ohm1 = Settings.Default.Ch2Ohm1IsActive;
+            Ch2Ohm2 = Settings.Default.Ch2Ohm2IsActive;
+            Ch2Ohm3 = Settings.Default.Ch2Ohm3IsActive;
+            Ch2Ohm4 = Settings.Default.Ch2Ohm4IsActive;
+            Ch2Ohm5 = Settings.Default.Ch2Ohm5IsActive;
 
             Ch3V1 = Settings.Default.Ch3V1IsActive;
             Ch3V2 = Settings.Default.Ch3V2IsActive;
@@ -39,11 +39,11 @@ namespace MAC.Models
             Ch5V4 = Settings.Default.Ch5V4IsActive;
             Ch5V5 = Settings.Default.Ch5V5IsActive;
 
-            Ch6Hz1 = Settings.Default.Ch6Hz5IsActive;
-            Ch6Hz2 = Settings.Default.Ch6Hz25IsActive;
-            Ch6Hz3 = Settings.Default.Ch6Hz50IsActive;
-            Ch6Hz4 = Settings.Default.Ch6Hz75IsActive;
-            Ch6Hz5 = Settings.Default.Ch6Hz100IsActive;
+            Ch6Hz1 = Settings.Default.Ch6Hz1IsActive;
+            Ch6Hz2 = Settings.Default.Ch6Hz2IsActive;
+            Ch6Hz3 = Settings.Default.Ch6Hz3IsActive;
+            Ch6Hz4 = Settings.Default.Ch6Hz4IsActive;
+            Ch6Hz5 = Settings.Default.Ch6Hz1IsActive;
         }
 
 
@@ -63,7 +63,7 @@ namespace MAC.Models
             {
                 _ch0Ohm1 = value;
                 OnPropertyChanged(nameof(Ch0Ohm1));
-                Settings.Default.Ch0Ohm80IsActive = value;
+                Settings.Default.Ch0Ohm1IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -75,7 +75,7 @@ namespace MAC.Models
             {
                 _ch0Ohm2 = value;
                 OnPropertyChanged(nameof(Ch0Ohm2));
-                Settings.Default.Ch0Ohm90IsActive = value;
+                Settings.Default.Ch0Ohm2IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -87,7 +87,7 @@ namespace MAC.Models
             {
                 _ch0Ohm3 = value;
                 OnPropertyChanged(nameof(Ch0Ohm3));
-                Settings.Default.Ch0Ohm100IsActive = value;
+                Settings.Default.Ch0Ohm3IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -99,7 +99,7 @@ namespace MAC.Models
             {
                 _ch0Ohm4 = value;
                 OnPropertyChanged(nameof(Ch0Ohm4));
-                Settings.Default.Ch0Ohm115IsActive = value;
+                Settings.Default.Ch0Ohm4IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -111,7 +111,7 @@ namespace MAC.Models
             {
                 _ch0Ohm5 = value;
                 OnPropertyChanged(nameof(Ch0Ohm5));
-                Settings.Default.Ch0Ohm130IsActive = value;
+                Settings.Default.Ch0Ohm5IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -133,7 +133,7 @@ namespace MAC.Models
             {
                 _ch1Ohm1 = value;
                 OnPropertyChanged(nameof(Ch1Ohm1));
-                Settings.Default.Ch1Ohm80IsActive = value;
+                Settings.Default.Ch1Ohm1IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -145,7 +145,7 @@ namespace MAC.Models
             {
                 _ch1Ohm2 = value;
                 OnPropertyChanged(nameof(Ch1Ohm2));
-                Settings.Default.Ch1Ohm90IsActive = value;
+                Settings.Default.Ch1Ohm2IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -157,7 +157,7 @@ namespace MAC.Models
             {
                 _ch1Ohm3 = value;
                 OnPropertyChanged(nameof(Ch1Ohm3));
-                Settings.Default.Ch1Ohm100IsActive = value;
+                Settings.Default.Ch1Ohm3IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -169,7 +169,7 @@ namespace MAC.Models
             {
                 _ch1Ohm4 = value;
                 OnPropertyChanged(nameof(Ch1Ohm4));
-                Settings.Default.Ch1Ohm115IsActive = value;
+                Settings.Default.Ch1Ohm4IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -181,7 +181,7 @@ namespace MAC.Models
             {
                 _ch1Ohm5 = value;
                 OnPropertyChanged(nameof(Ch1Ohm5));
-                Settings.Default.Ch1Ohm130IsActive = value;
+                Settings.Default.Ch1Ohm5IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -202,7 +202,7 @@ namespace MAC.Models
             {
                 _ch2Ohm1 = value;
                 OnPropertyChanged(nameof(Ch2Ohm1));
-                Settings.Default.Ch2Ohm80IsActive = value;
+                Settings.Default.Ch2Ohm1IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -214,7 +214,7 @@ namespace MAC.Models
             {
                 _ch2Ohm2 = value;
                 OnPropertyChanged(nameof(Ch2Ohm2));
-                Settings.Default.Ch2Ohm90IsActive = value;
+                Settings.Default.Ch2Ohm2IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -226,7 +226,7 @@ namespace MAC.Models
             {
                 _ch2Ohm3 = value;
                 OnPropertyChanged(nameof(Ch2Ohm3));
-                Settings.Default.Ch2Ohm100IsActive = value;
+                Settings.Default.Ch2Ohm3IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -238,7 +238,7 @@ namespace MAC.Models
             {
                 _ch2Ohm4 = value;
                 OnPropertyChanged(nameof(Ch2Ohm4));
-                Settings.Default.Ch2Ohm115IsActive = value;
+                Settings.Default.Ch2Ohm4IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -250,7 +250,7 @@ namespace MAC.Models
             {
                 _ch2Ohm5 = value;
                 OnPropertyChanged(nameof(Ch2Ohm5));
-                Settings.Default.Ch2Ohm130IsActive = value;
+                Settings.Default.Ch2Ohm5IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -412,7 +412,7 @@ namespace MAC.Models
             {
                 _ch6Hz1 = value;
                 OnPropertyChanged(nameof(Ch6Hz1));
-                Settings.Default.Ch6Hz5IsActive = value;
+                Settings.Default.Ch6Hz1IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -424,7 +424,7 @@ namespace MAC.Models
             {
                 _ch6Hz2 = value;
                 OnPropertyChanged(nameof(Ch6Hz2));
-                Settings.Default.Ch6Hz25IsActive = value;
+                Settings.Default.Ch6Hz2IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -436,7 +436,7 @@ namespace MAC.Models
             {
                 _ch6Hz3 = value;
                 OnPropertyChanged(nameof(Ch6Hz3));
-                Settings.Default.Ch6Hz50IsActive = value;
+                Settings.Default.Ch6Hz3IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -448,7 +448,7 @@ namespace MAC.Models
             {
                 _ch6Hz4 = value;
                 OnPropertyChanged(nameof(Ch6Hz4));
-                Settings.Default.Ch6Hz75IsActive = value;
+                Settings.Default.Ch6Hz4IsActive = value;
                 Settings.Default.Save();
             }
         }
@@ -460,7 +460,7 @@ namespace MAC.Models
             {
                 _ch6Hz5 = value;
                 OnPropertyChanged(nameof(Ch6Hz5));
-                Settings.Default.Ch6Hz100IsActive = value;
+                Settings.Default.Ch6Hz1IsActive = value;
                 Settings.Default.Save();
             }
         }

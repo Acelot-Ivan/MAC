@@ -57,22 +57,22 @@ namespace MAC.Models
                 switch (Number)
                 {
                     case 1:
-                        Settings.Default.Sc1ComPort = ComPort;
+                        Settings.Default.Mac1ComPort = ComPort;
                         break;
                     case 2:
-                        Settings.Default.Sc2ComPort = ComPort;
+                        Settings.Default.Mac2ComPort = ComPort;
                         break;
                     case 3:
-                        Settings.Default.Sc3ComPort = ComPort;
+                        Settings.Default.Mac3ComPort = ComPort;
                         break;
                     case 4:
-                        Settings.Default.Sc4ComPort = ComPort;
+                        Settings.Default.Mac4ComPort = ComPort;
                         break;
                     case 5:
-                        Settings.Default.Sc5ComPort = ComPort;
+                        Settings.Default.Mac5ComPort = ComPort;
                         break;
                     case 6:
-                        Settings.Default.Sc6ComPort = ComPort;
+                        Settings.Default.Mac6ComPort = ComPort;
                         break;
                     default:
                         throw new ArgumentException();

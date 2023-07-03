@@ -165,7 +165,7 @@ namespace MAC.ViewModels.Services.SerialPort
             return serialNumber;
         }
 
-        public (ScVersion, Version) GetVersionSc()
+        public (MacVersion, Version) GetVersionMac()
         {
             OpenSession();
 
@@ -183,7 +183,7 @@ namespace MAC.ViewModels.Services.SerialPort
             Send("close");
 
   
-            return (ScVersion.New, currentVersion);
+            return (MacVersion.New, currentVersion);
         }
 
         #region Send
