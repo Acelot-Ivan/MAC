@@ -4,7 +4,7 @@ using MAC.ViewModels.Services.SerialPort;
 
 namespace MAC.Models.Value
 {
-    public class HzValueSc : BaseVm, IScValue
+    public class OhmValueMac : BaseVm, IMacValue
     {
         public TypeMeasurement TypeMeasurement { get; set; }
         public int ValueMeasurement { get; set; }
@@ -16,19 +16,27 @@ namespace MAC.Models.Value
         public decimal ErrorValue { get; set; }
         public TimeSpan TimeMeasurements { get; set; }
 
-        public HzValueSc(int valueMeasurement, bool isActive)
+        /// <summary>
+        /// допустимая погрешность
+        /// </summary
+        private const decimal AdmissibleErrorValue = 0.01m;
+
+        public OhmValueMac(int valueMeasurement, bool isActive)
         {
-            TypeMeasurement = TypeMeasurement.Hz;
+            TypeMeasurement = TypeMeasurement.Ohm;
             ValueMeasurement = valueMeasurement;
             IsActive = isActive;
         }
 
+
         public void SetFlukeSettings(FlukeSerialPort fluke, bool isOnOper)
         {
-            fluke.SetHzValue(ValueMeasurement, isOnOper);
+            fluke.SetOhmValue(ValueMeasurement , isOnOper);
         }
 
+
         public bool CheckedValidationDifferenceValue(decimal differenceValue) =>
-            0.05m >= differenceValue && differenceValue >= -0.05m;
+            AdmissibleErrorValue >= differenceValue && differenceValue >= -AdmissibleErrorValue;
+
     }
 }

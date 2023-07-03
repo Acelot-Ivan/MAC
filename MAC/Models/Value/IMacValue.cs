@@ -3,7 +3,7 @@ using MAC.ViewModels.Services.SerialPort;
 
 namespace MAC.Models.Value
 {
-    public interface IScValue
+    public interface IMacValue
     {
         /// <summary>
         /// Тип проверяемого значения
@@ -12,9 +12,9 @@ namespace MAC.Models.Value
 
         /// <summary>
         /// Проверяемое значение типа  TypeMeasurement
-        /// Ohm : 80 , 90 , 100 , 115 , 130 , 140
-        /// V : 1 , 2 , 3 , 4 , 5
-        /// Hz : 5 , 25 , 50 , 75 , 100
+        ///Ом: 30, 85, 110, 155, 190Ом
+        ///Вольт: 0.345, 1.325, 2.550, 3.775, 4.755
+        ///Гц: 50, 250, 500, 750, 1000
         /// </summary>
         int ValueMeasurement { get; set; }
 

@@ -1,35 +1,36 @@
-﻿using OfficeOpenXml;
-using MAC.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
+using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows;
 using MAC.Models.Value;
+using MAC.Properties;
 using MAC.ViewModels;
 using MAC.ViewModels.Base;
 using MAC.ViewModels.Services;
 using MAC.ViewModels.Services.SerialPort;
+using OfficeOpenXml;
 
 namespace MAC.Models
 {
-    public class ScResultItem : BaseVm
+    public class MacResultItem : BaseVm
     {
         private readonly FlukeSerialPort _fluke;
         private readonly CommutatorSerialPort _comm;
-        private readonly ScSerialPort123 _sc;
-        private readonly int _numberSc;
+        private readonly MacSerialPort _mac;
+        private readonly int _numberMac;
         private readonly string _startTestStringDateTime;
         private readonly MainSettingsModel _mainSettingsModel;
         private readonly ActiveSettingsModel _activeSettingsModel;
         private MeasurementsData _measurementsData;
 
         public Action SetIsWaitCancelFalse;
-
 
         private readonly Dictionary<string, string> _channelName = new Dictionary<string, string>
         {
@@ -41,7 +42,6 @@ namespace MAC.Models
             {"CH6", "ДВС"}
         };
 
-
         /// <summary>
         /// Примерное время для считывания одного значения
         /// Необходимо для расчета времени при использовании среднего значения.
@@ -50,20 +50,19 @@ namespace MAC.Models
         const int TimeGetValue = 10;
 
         /// <summary>
-        /// Время калибровки на каждую точку при калибровке новых версий кс в секундах.
+        /// Время калибровки на каждую точку при калибровке новых версий mac в секундах.
         /// </summary>
         private const int TimeOutCalibrationNewSc = 60;
 
         /// <summary>
         /// Имя заданное лаборантом
         /// </summary>
-        public string NameSc { get; set; }
+        public string NameMac { get; set; }
 
         /// <summary>
         /// Считываемая версия Контролера
         /// </summary>
-        public Version VersionSc { get; set; }
-
+        public Version VersionMac { get; set; }
 
         /// <summary>
         /// Свойство для отслеживания действия при отмене задачи теста.
@@ -108,10 +107,9 @@ namespace MAC.Models
             $"{CurrentActiveMeasurement} / {CountActiveMeasurements}";
 
         /// <summary>
-        /// Показатель, проверяется ли сейчас КС
+        /// Показатель, проверяется ли сейчас Mac
         /// </summary>
         public bool IsCheckedNow { get; set; }
-
 
         /// <summary>
         /// Конструкстор при создании итемов КС
@@ -123,7 +121,7 @@ namespace MAC.Models
         /// <param name="activeSettings"></param>
         /// <param name="typeCancelTask"></param>
         /// <param name="setIsWaitCancelFalse"></param>
-        public ScResultItem(FlukeSerialPort fluke, CommutatorSerialPort comm, ComConnectItem sc,
+        public MacResultItem(FlukeSerialPort fluke, CommutatorSerialPort comm, ComConnectItem mac,
             MainSettingsModel mainSettingsModel,
             ActiveSettingsModel activeSettings, TypeCancelTask typeCancelTask, Action setIsWaitCancelFalse)
         {
@@ -132,11 +130,11 @@ namespace MAC.Models
             TypeCancelTask = typeCancelTask;
             _mainSettingsModel = mainSettingsModel;
             _startTestStringDateTime = $"_{DateTime.Now:dd.MM.yyyy_HH-mm-ss}";
-            _numberSc = sc.Number;
-            NameSc = sc.Name;
+            _numberMac = mac.Number;
+            NameMac = mac.Name;
             _fluke = fluke;
             _comm = comm;
-            _sc = new ScSerialPort123(sc);
+            _mac = new MacSerialPort(mac);
 
 
             #region Заполнение коллекций CH
@@ -299,35 +297,33 @@ namespace MAC.Models
             UpdateMeasurements(activeSettings.Ch6Hz100, TypeMeasurement.Hz);
         }
 
-
         /// <summary>
         /// Заполняю итемы значений, значениями погрешности.
         /// </summary>
         private void SetErrorValue()
         {
-            var channelName = $"Sc{_numberSc}";
+            var channelName = $"Sc{_numberMac}";
 
             foreach (var itemCh in Ch0)
-                itemCh.ErrorValue = (decimal) Settings.Default[$"{channelName}Ch0Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch0Error"];
 
             foreach (var itemCh in Ch1)
-                itemCh.ErrorValue = (decimal) Settings.Default[$"{channelName}Ch1Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch1Error"];
 
             foreach (var itemCh in Ch2)
-                itemCh.ErrorValue = (decimal) Settings.Default[$"{channelName}Ch2Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch2Error"];
 
             foreach (var itemCh in Ch3)
-                itemCh.ErrorValue = (decimal) Settings.Default[$"{channelName}Ch3Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch3Error"];
 
             foreach (var itemCh in Ch5)
-                itemCh.ErrorValue = (decimal) Settings.Default[$"{channelName}Ch5Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch5Error"];
         }
-
 
         #region Const Channel 
 
         //Для Comm 1,2,3,4,5,6 
-        //Для   Sc 0,1,2,3,5,6 соответственно коммутатору
+        //Для   Mac 0,1,2,3,5,6 соответственно коммутатору
 
         private const int ChannelCh0 = 1;
         private const int ChannelCh1 = 2;
@@ -342,39 +338,39 @@ namespace MAC.Models
 
         public ObservableCollection<int> ChOhm { get; set; } = new ObservableCollection<int>
         {
-            80, 90, 100, 115, 130, 140
+            30, 85, 110, 155, 190
         };
 
-        public ObservableCollection<int> ChV { get; set; } = new ObservableCollection<int>
+        public ObservableCollection<decimal> ChV { get; set; } = new ObservableCollection<decimal>
         {
-            1, 2, 3, 4, 5
+            0.345m, 1.325m, 2.550m, 3.775m, 4.755m
         };
 
         public ObservableCollection<int> ChHz { get; set; } = new ObservableCollection<int>
         {
-            5, 25, 50, 75, 100
+            50, 250, 500, 750, 1000
         };
 
         #endregion
 
-        public void MainStartMeasurements(CancellationTokenSource ctSource , MeasurementsData measurementsData)
+        public void MainStartMeasurements(CancellationTokenSource ctSource, MeasurementsData measurementsData)
         {
             _measurementsData = measurementsData;
 
-            _sc.OpenSerialPort();
+            _mac.OpenSerialPort();
             _fluke.OpenFlukePort();
             _comm.OpenCommPort();
 
-            var (scVersion, version) = _sc.GetVersionSc();
+            var (scVersion, version) = _mac.GetVersionSc();
 
-            VersionSc = version;
+            VersionMac = version;
 
-            var folderPath = Path.Combine(_mainSettingsModel.FullLogPath, $"{NameSc}{_startTestStringDateTime}");
+            var folderPath = Path.Combine(_mainSettingsModel.FullLogPath, $"{NameMac}{_startTestStringDateTime}");
 
             switch (scVersion)
             {
                 case ScVersion.Old:
-                    StartMeasurementsOldVersion(ctSource, folderPath);
+                    //StartMeasurementsOldVersion(ctSource, folderPath);
                     break;
                 case ScVersion.New:
                     StartMeasurementNewVersion(ctSource, folderPath);
@@ -423,7 +419,7 @@ namespace MAC.Models
 
             try
             {
-                _sc.Close();
+                _mac.Close();
             }
             catch
             {
@@ -433,196 +429,8 @@ namespace MAC.Models
             #endregion
         }
 
-        public void StartMeasurementsOldVersion(CancellationTokenSource ctSource, string folderPath)
-        {
-            IsCheckedNow = true;
-
-            _comm.OnPowerIndex(_numberSc);
-
-            var ch0IsActiveCollection = Ch0.Select(item => item.IsActive).ToList();
-            var ch1IsActiveCollection = Ch1.Select(item => item.IsActive).ToList();
-            var ch2IsActiveCollection = Ch2.Select(item => item.IsActive).ToList();
-
-            #region Добавляю время калибровки к общему времени
-
-            if (ch0IsActiveCollection.Contains(true))
-            {
-                if (_mainSettingsModel.IsUseAverageValue)
-                {
-                    TimeLeftOnAllMeasurements +=
-                        TimeSpan.FromSeconds(_mainSettingsModel.TimeOutOhm +
-                                             TimeGetValue * _mainSettingsModel.CountAverageValue);
-                }
-                else
-                    TimeLeftOnAllMeasurements +=
-                        TimeSpan.FromSeconds(_mainSettingsModel.TimeOutOhm);
-            }
-
-            if (ch1IsActiveCollection.Contains(true))
-            {
-                if (_mainSettingsModel.IsUseAverageValue)
-                {
-                    TimeLeftOnAllMeasurements +=
-                        TimeSpan.FromSeconds(_mainSettingsModel.TimeOutOhm +
-                                             TimeGetValue * _mainSettingsModel.CountAverageValue);
-                }
-                else
-                    TimeLeftOnAllMeasurements +=
-                        TimeSpan.FromSeconds(_mainSettingsModel.TimeOutOhm);
-            }
-
-            if (ch2IsActiveCollection.Contains(true))
-            {
-                if (_mainSettingsModel.IsUseAverageValue)
-                {
-                    TimeLeftOnAllMeasurements +=
-                        TimeSpan.FromSeconds(_mainSettingsModel.TimeOutOhm +
-                                             TimeGetValue * _mainSettingsModel.CountAverageValue);
-                }
-                else
-                    TimeLeftOnAllMeasurements +=
-                        TimeSpan.FromSeconds(_mainSettingsModel.TimeOutOhm);
-            }
-
-            #endregion
-
-            //Создаем папку для данной КС
-            Directory.CreateDirectory(folderPath);
-
-            //CH0 Ohm
-            if (ch0IsActiveCollection.Contains(true))
-            {
-                try
-                {
-                    //Если калибровка выключена или если калибровка прошла = true
-                    var resCalibrationOhm0 =
-                        !_mainSettingsModel.IsOnCalibration || CalibrationOhm(ChannelCh0, ctSource);
-
-                    if (IsCancellationRequested(ctSource)) return;
-
-                    if (resCalibrationOhm0)
-                    {
-                        ChannelMeasurements(ChannelCh0, Ch0, ctSource, Channel.Ch0);
-                        if (IsCancellationRequested(ctSource)) return;
-                    }
-                }
-                catch (Exception e)
-                {
-                    GlobalLog.Log.Debug(e, e.Message);
-                }
-                finally
-                {
-                    CreateLogFile(folderPath, ChannelCh0);
-                }
-            }
-
-            //CH1 Ohm
-            if (ch1IsActiveCollection.Contains(true))
-            {
-                try
-                {
-                    var resCalibrationOhm1 =
-                        !_mainSettingsModel.IsOnCalibration || CalibrationOhm(ChannelCh1, ctSource);
-
-                    if (IsCancellationRequested(ctSource)) return;
-
-                    if (resCalibrationOhm1)
-                    {
-                        ChannelMeasurements(ChannelCh1, Ch1, ctSource, Channel.Ch1);
-                        if (IsCancellationRequested(ctSource)) return;
-                    }
-                }
-                catch (Exception e)
-                {
-                    GlobalLog.Log.Debug(e, e.Message);
-                }
-                finally
-                {
-                    CreateLogFile(folderPath, ChannelCh1);
-                }
-            }
-
-            //CH2 Ohm
-            if (ch2IsActiveCollection.Contains(true))
-            {
-                try
-                {
-                    var resCalibrationOhm2 =
-                        !_mainSettingsModel.IsOnCalibration || CalibrationOhm(ChannelCh2, ctSource);
-
-                    if (IsCancellationRequested(ctSource)) return;
-
-                    if (resCalibrationOhm2)
-                    {
-                        ChannelMeasurements(ChannelCh2, Ch2, ctSource, Channel.Ch2);
-                        if (IsCancellationRequested(ctSource)) return;
-                    }
-                }
-                catch (Exception e)
-                {
-                    GlobalLog.Log.Debug(e, e.Message);
-                }
-                finally
-                {
-                    CreateLogFile(folderPath, ChannelCh2);
-                }
-            }
-
-            //CH3 Volt
-            try
-            {
-                ChannelMeasurements(ChannelCh3, Ch3, ctSource, Channel.Ch3);
-            }
-            catch (Exception e)
-            {
-                GlobalLog.Log.Debug(e, e.Message);
-            }
-            finally
-            {
-                CreateLogFile(folderPath, ChannelCh3);
-            }
-
-            if (IsCancellationRequested(ctSource)) return;
-
-            //CH5 Volt
-            try
-            {
-                ChannelMeasurements(ChannelCh5, Ch5, ctSource, Channel.Ch5);
-            }
-            catch (Exception e)
-            {
-                GlobalLog.Log.Debug(e, e.Message);
-            }
-            finally
-            {
-                CreateLogFile(folderPath, ChannelCh5);
-            }
-
-            if (IsCancellationRequested(ctSource)) return;
-
-            //CH6 Hz
-            try
-            {
-                ChannelMeasurements(ChannelCh6, Ch6, ctSource, Channel.Ch6);
-            }
-            catch (Exception e)
-            {
-                GlobalLog.Log.Debug(e, e.Message);
-            }
-            finally
-            {
-                CreateLogFile(folderPath, ChannelCh6);
-            }
-
-            if (IsCancellationRequested(ctSource)) return;
-
-            CurrentChannel = Channel.None;
-
-            IsCheckedNow = false;
-        }
-
         /// <summary>
-        /// Запуст теста для новой версии кс
+        /// Запуст теста Mac
         /// </summary>
         /// <param name="ctSource"></param>
         /// <param name="folderPath"></param>
@@ -630,9 +438,7 @@ namespace MAC.Models
         {
             IsCheckedNow = true;
 
-            //NameSc = _sc.GetSerialNumberSc(_mainSettingsModel.ScVersion);
-
-            _comm.OnPowerIndex(_numberSc);
+            _comm.OnPowerIndex(_numberMac);
 
             var ch0IsActiveCollection = Ch0.Select(item => item.IsActive).ToList();
             var ch1IsActiveCollection = Ch1.Select(item => item.IsActive).ToList();
@@ -657,7 +463,7 @@ namespace MAC.Models
 
             #endregion
 
-            //Создаем папку для данной КС
+            //Создаем папку для данной MAC
             Directory.CreateDirectory(folderPath);
 
             //CH0 Ohm
@@ -667,7 +473,7 @@ namespace MAC.Models
                 {
                     if (_mainSettingsModel.IsOnCalibration)
                     {
-                        CalibrationOhmChannelScNewVersion(ChannelCh0, ctSource);
+                        CalibrationOhmChannelNewVersion(ChannelCh0, ctSource);
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
@@ -688,7 +494,7 @@ namespace MAC.Models
                 {
                     if (_mainSettingsModel.IsOnCalibration)
                     {
-                        CalibrationOhmChannelScNewVersion(ChannelCh1, ctSource);
+                        CalibrationOhmChannelNewVersion(ChannelCh1, ctSource);
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
@@ -709,7 +515,7 @@ namespace MAC.Models
                 {
                     if (_mainSettingsModel.IsOnCalibration)
                     {
-                        CalibrationOhmChannelScNewVersion(ChannelCh2, ctSource);
+                        CalibrationOhmChannelNewVersion(ChannelCh2, ctSource);
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
@@ -765,9 +571,9 @@ namespace MAC.Models
         }
 
         /// <summary>
-        /// Калибровка для новой версии кс
+        /// Калибровка Mac
         /// </summary>
-        private void CalibrationOhmChannelScNewVersion(int channel, CancellationTokenSource ctSource)
+        private void CalibrationOhmChannelNewVersion(int channel, CancellationTokenSource ctSource)
         {
             var nameChannel = channel < 5
                 ? _channelName[$"CH{channel - 1}"]
@@ -776,15 +582,15 @@ namespace MAC.Models
             CurrentActTest = $"Калибровка {nameChannel}";
 
 
-            _comm.OnPowerIndex(_numberSc);
+            _comm.OnPowerIndex(_numberMac);
             _comm.OnСhannel(channel);
 
-            _sc.OpenSession();
-            _sc.Send($"fcalt {channel - 1} 200");
-            _sc.SendWithOutN("y");
+            _mac.OpenSession();
+            _mac.Send($"fcalt {channel - 1} 200");
+            _mac.SendWithOutN("y");
 
             _fluke.FlukeOff();
-            _fluke.SetOhmValue(80);
+            _fluke.SetOhmValueCalibration();
 
             var timeOutSleep = TimeOutCalibrationNewSc;
             while (timeOutSleep != 0)
@@ -797,8 +603,8 @@ namespace MAC.Models
                 Thread.Sleep(1000);
             }
 
-            _sc.SendWithOutN("80");
-            _sc.SendEnter();
+            _mac.SendWithOutN("80");
+            _mac.SendEnter();
 
             _fluke.FlukeOff();
             _fluke.SetOhmValue(120);
@@ -814,8 +620,8 @@ namespace MAC.Models
                 Thread.Sleep(1000);
             }
 
-            _sc.SendWithOutN("120");
-            _sc.SendWithOutN("\r\n");
+            _mac.SendWithOutN("120");
+            _mac.SendWithOutN("\r\n");
         }
 
         /// <summary>
@@ -853,14 +659,14 @@ namespace MAC.Models
 
                 _comm.OnСhannel(channel);
 
-                itemCh.SetFlukeSettings(_fluke , isStartChannelMeasurement);
+                itemCh.SetFlukeSettings(_fluke, isStartChannelMeasurement);
 
                 isStartChannelMeasurement = false;
 
                 if (IsCancellationRequested(ctSource)) return;
                 var value = _mainSettingsModel.IsUseAverageValue
-                    ? SignalControllerAverageDataRead(channel, ctSource)
-                    : SignalControllerDataRead(channel, ctSource);
+                    ? AverageDataRead(channel, ctSource)
+                    : DataRead(channel, ctSource);
 
                 if (value == null)
                     return;
@@ -870,7 +676,7 @@ namespace MAC.Models
                 if (itemCh.TypeMeasurement == TypeMeasurement.V)
                 {
                     value /= 1000;
-                    value = decimal.Round((decimal) value, 3);
+                    value = decimal.Round((decimal)value, 3);
                 }
 
 
@@ -900,11 +706,12 @@ namespace MAC.Models
             CurrentChannel = Channel.None;
         }
 
+
         #region Методы для перезапуска Sc
 
         /// <summary>
         /// Метод, что бы очистить все записаные значения ResultValue в колекциях всех каналов.
-        /// Необходимо при перезапуске тестирования КС
+        /// Необходимо при перезапуске тестирования Mac
         /// </summary>
         public void ClearAllResultsValue()
         {
@@ -930,6 +737,7 @@ namespace MAC.Models
         }
 
         #endregion
+
 
         /// <summary>
         /// Возвращает время измерения, взависимости от его типа
@@ -972,8 +780,8 @@ namespace MAC.Models
                 _fluke.Send("OUT 100 OHM;OPER");
                 _comm.OnСhannel(channel);
 
-                _sc.OpenSession();
-                _sc.StartTest();
+                _mac.OpenSession();
+                _mac.StartTest();
 
                 if (IsCancellationRequested(ctSource)) return false;
 
@@ -987,13 +795,13 @@ namespace MAC.Models
                     Thread.Sleep(1000);
                 }
 
-                _sc.StopTest();
-                _sc.CloseSession();
+                _mac.StopTest();
+                _mac.CloseSession();
 
 
                 if (_mainSettingsModel.IsUseAverageValue)
                 {
-                    var averageValue = SignalControllerAverageDataRead(channel, ctSource, true);
+                    var averageValue = AverageDataRead(channel, ctSource, true);
                     if (averageValue >= 99.99m && averageValue <= 100.01m)
                     {
                         TimeLeftOnAllMeasurements -= TimeSpan.FromSeconds(
@@ -1004,7 +812,7 @@ namespace MAC.Models
                 }
                 else if (!_mainSettingsModel.IsUseAverageValue)
                 {
-                    var value = SignalControllerDataRead(channel, ctSource, true);
+                    var value = DataRead(channel, ctSource, true);
                     if (value == 100m)
                     {
                         TimeLeftOnAllMeasurements -= TimeSpan.FromSeconds(_mainSettingsModel.TimeOutOhm);
@@ -1014,16 +822,16 @@ namespace MAC.Models
             }
         }
 
-        #region Чтения значения с КС и его обработка
+        #region Чтения значения с Mac и его обработка
 
         /// <summary>
-        /// Чтение одного значения с КС
+        /// Чтение одного значения с Mac
         /// </summary>
         /// <param name="channel"></param>
         /// <param name="ctSource"></param>
         /// <param name="isCalibration"></param>
         /// <returns></returns>
-        private decimal? SignalControllerDataRead(int channel, CancellationTokenSource ctSource,
+        private decimal? DataRead(int channel, CancellationTokenSource ctSource,
             bool isCalibration = false)
         {
             //Выбранный канал , для КС это 0-1-2 . Для Коммутатора 1-2-3 соответсвенно
@@ -1032,8 +840,8 @@ namespace MAC.Models
                 : channel;
 
 
-            _sc.OpenSession();
-            _sc.StartTest();
+            _mac.OpenSession();
+            _mac.StartTest();
 
             //Выбор времени теста по каналу
             switch (channelSignalController)
@@ -1044,9 +852,9 @@ namespace MAC.Models
                     //Если это каллибровка
                     if (isCalibration)
                     {
-                        _sc.StopTest();
+                        _mac.StopTest();
                         Thread.Sleep(200);
-                        _sc.Send($"Cal t{channelSignalController}");
+                        _mac.Send($"Cal t{channelSignalController}");
                     }
 
                     var timeOutOhm = _mainSettingsModel.TimeOutOhm * 1000;
@@ -1092,10 +900,10 @@ namespace MAC.Models
             }
 
 
-            _sc.StopTest();
-            _sc.CloseSession();
+            _mac.StopTest();
+            _mac.CloseSession();
 
-            var currentData = _sc.GetCurrentData();
+            var currentData = _mac.GetCurrentData();
             //Удаляю все пробелы, во измежание проблем.
             //Так как КС может добавить мусорные пробелы при перепадах напряжения.
             currentData = currentData.Replace(" ", "");
@@ -1124,14 +932,14 @@ namespace MAC.Models
         }
 
         /// <summary>
-        /// Чтения нескольких(кол-во определяется в настройках пользователем) значений с КС
+        /// Чтения нескольких(кол-во определяется в настройках пользователем) значений с Mac
         /// и получение среднего.
         /// </summary>
         /// <param name="channel"></param>
         /// <param name="ctSource"></param>
         /// <param name="isCalibration"></param>
         /// <returns></returns>
-        private decimal? SignalControllerAverageDataRead(int channel, CancellationTokenSource ctSource,
+        private decimal? AverageDataRead(int channel, CancellationTokenSource ctSource,
             bool isCalibration = false)
         {
             var collectionDataDecimal = new List<decimal>();
@@ -1143,8 +951,8 @@ namespace MAC.Models
                 : channel;
 
 
-            _sc.OpenSession();
-            _sc.StartTest();
+            _mac.OpenSession();
+            _mac.StartTest();
 
             //Выбор времени теста по каналу
             switch (channelSignalController)
@@ -1155,7 +963,7 @@ namespace MAC.Models
                     //Если это каллибровка
                     if (isCalibration)
                     {
-                        _sc.Send($"Cal t{channelSignalController}");
+                        _mac.Send($"Cal t{channelSignalController}");
                     }
 
                     var timeOutOhm =
@@ -1204,15 +1012,15 @@ namespace MAC.Models
             }
 
 
-            _sc.StopTest();
-            _sc.CloseSession();
+            _mac.StopTest();
+            _mac.CloseSession();
 
-            var currentData = _sc.GetCurrentData();
+            var currentData = _mac.GetCurrentData();
 
             currentData = currentData.Replace(" ", "");
 
 
-            var delimiters = new[] {"\r\n\r\n"};
+            var delimiters = new[] { "\r\n\r\n" };
             var collectionDataString = currentData.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).ToList();
 
 
@@ -1247,10 +1055,9 @@ namespace MAC.Models
             return valueAverage;
         }
 
-
         public static IEnumerable<string> SplitAndKeep(string s, params string[] delims)
         {
-            var rows = new List<string>() {s};
+            var rows = new List<string>() { s };
             foreach (var delim in delims) //delimiter counter
             {
                 for (var i = 0; i < rows.Count; i++) //row counter
@@ -1270,9 +1077,8 @@ namespace MAC.Models
             return rows;
         }
 
-
         /// <summary>
-        /// Получение после выполнения SignalControllerDataRead, возвращает значения по выбранному каналу.
+        /// Получение после выполнения DataRead, возвращает значения по выбранному каналу.
         /// </summary>
         /// <returns>Значения теста по выбранному каналу.</returns>
         private string DataClear(string data, int channel)
@@ -1373,7 +1179,7 @@ namespace MAC.Models
 
             try
             {
-                _sc.Close();
+                _mac.Close();
             }
             catch
             {
@@ -1382,7 +1188,6 @@ namespace MAC.Models
 
             #endregion
         }
-
 
         #region Write Log and Measurement Result
 
@@ -1424,9 +1229,9 @@ namespace MAC.Models
             {
                 var ws = package.Workbook.Worksheets.First();
 
-                ws.Cells[14, 6].Value = NameSc;
+                ws.Cells[14, 6].Value = NameMac;
 
-                ws.Cells[55 , 22].Value = $"{DateTime.Now:dd.MM.yyyy}";
+                ws.Cells[55, 22].Value = $"{DateTime.Now:dd.MM.yyyy}";
 
                 ws.Cells[55, 16].Value = _measurementsData.Verifier;
 
@@ -1511,7 +1316,7 @@ namespace MAC.Models
 
                 #endregion
 
-                var xlsxCombinePath = Path.Combine(folderPath, $"{NameSc}.xlsx");
+                var xlsxCombinePath = Path.Combine(folderPath, $"{NameMac}.xlsx");
 
                 package.SaveAs(new FileInfo(xlsxCombinePath));
             }
@@ -1567,7 +1372,7 @@ namespace MAC.Models
 
             #endregion
 
-            var csvPath = Path.Combine(folderPath, $"{NameSc}.csv");
+            var csvPath = Path.Combine(folderPath, $"{NameMac}.csv");
             if (File.Exists(csvPath)) File.Delete(csvPath);
             File.AppendAllText(csvPath, csvContent.ToString());
         }
@@ -1579,7 +1384,7 @@ namespace MAC.Models
         /// <param name="channel"></param>
         private void CreateLogFile(string folderPath, int channel)
         {
-            var content = _sc.GetFullData();
+            var content = _mac.GetFullData();
 
             var fileName = channel < 5
                 ? $"CH{channel - 1}.txt"
@@ -1593,35 +1398,35 @@ namespace MAC.Models
             if (!File.Exists(folderLogPath))
                 Directory.CreateDirectory(folderLogPath);
             File.WriteAllText(path, content);
-            _sc.ClearFullData();
+            _mac.ClearFullData();
         }
 
         #endregion
     }
 
-    ///// <summary>
-    ///// Енум каналов
-    ///// </summary>
-    //public enum Channel
-    //{
-    //    None = 0,
-    //    Ch0 = 1,
-    //    Ch1 = 2,
-    //    Ch2 = 3,
-    //    Ch3 = 4,
+    /// <summary>
+    /// Енум каналов
+    /// </summary>
+    public enum Channel
+    {
+        None = 0,
+        Ch0 = 1,
+        Ch1 = 2,
+        Ch2 = 3,
+        Ch3 = 4,
 
-    //    //4-ой не существует. Гениальная задумка изобретателя ксочной хреновины. 
-    //    Ch5 = 5,
-    //    Ch6 = 6
-    //}
+        //4-ой не существует. Гениальная задумка изобретателя ксочной хреновины. 
+        Ch5 = 5,
+        Ch6 = 6
+    }
 
-    ///// <summary>
-    ///// Enum на будущее, если потребуется поддержка следующих версий
-    ///// Для распределения действий алгоритма для кс разных версий.
-    ///// </summary>
-    //public enum ScVersion
-    //{
-    //    New,
-    //    Old
-    //}
+    /// <summary>
+    /// Enum на будущее, если потребуется поддержка следующих версий
+    /// Для распределения действий алгоритма для кс разных версий.
+    /// </summary>
+    public enum ScVersion
+    {
+        New,
+        Old
+    }
 }

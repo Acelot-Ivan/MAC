@@ -51,7 +51,7 @@
                     Value="2" />
         </Style>
 
-        <DataTemplate DataType="{x:Type value:IScValue}"
+        <DataTemplate DataType="{x:Type value:IMacValue}"
                       x:Key="ValueDataTemplate">
             <Border Height="27">
                 <Grid>

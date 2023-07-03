@@ -84,7 +84,7 @@ namespace MAC.ViewModels.Services.SerialPort
 
         public void SetOhmValue(int value, bool isOnOper = true)
         {
-            var validationOhmList = new List<int> {80, 90, 100, 115, 120, 130, 140};
+            var validationOhmList = new List<int> {80, 90, 100, 115, 120, 130, 140,200};
             if (!validationOhmList.Contains(value))
                 throw new ArgumentException();
 
@@ -93,6 +93,12 @@ namespace MAC.ViewModels.Services.SerialPort
                     ? $"OUT {value} OHM;OPER"
                     : $"OUT {value} OHM"
             );
+        }
+
+        public void SetOhmValueCalibration()
+        {
+            var pointValue = 200;
+            SetOhmValue(pointValue);
         }
 
         public void SetVoltValue(int value, bool isOnOper = true)

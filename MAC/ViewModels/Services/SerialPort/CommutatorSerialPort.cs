@@ -69,14 +69,14 @@ namespace MAC.ViewModels.Services.SerialPort
         }
 
         /// <summary>
-        /// Включаем подачу питания на указанному КС по индексу
+        /// Включаем подачу питания на указанному Mac по индексу
         /// </summary>
-        /// <param name="indexSignalController">Номер КС от 1 до 6</param>
-        public void OnSignalController(int indexSignalController)
+        /// <param name="index">Номер КС от 1 до 6</param>
+        public void OnPowerIndex(int index)
         {
 
             //Для первой КС(мастер), включение выполняется командой on  без индекса.
-            if (indexSignalController > 6)
+            if (index > 6)
                 throw new ArgumentException();
 
             Send("voltageon");
@@ -84,14 +84,14 @@ namespace MAC.ViewModels.Services.SerialPort
             //Для следующих кс(слейв), включение выполняется командой с указанием индекса.
             //Так же, если коммутатор уже ключен, voltageon не обязателен.
             //Индексы слейв кс начинаются с 1 ... и до 5
-            if (indexSignalController > 1)
-                Send($"voltage {indexSignalController - 1}");
+            if (index > 1)
+                Send($"voltage {index - 1}");
         }
 
         /// <summary>
-        /// Включаем напряжение на указанный канал КС
+        /// Включаем напряжение на указанный канал Mac
         /// </summary>
-        /// <param name="channel"> Канал КС от 1 до 6</param>
+        /// <param name="channel"> Канал Mac от 1 до 6</param>
         public void OnСhannel(int channel)
         {
             Send($"MUX {channel}");

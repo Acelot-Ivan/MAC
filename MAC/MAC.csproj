@@ -186,13 +186,14 @@
     </ApplicationDefinition>
     <Compile Include="Models\ComConnectItem.cs" />
     <Compile Include="Models\ActiveSettingsModel.cs" />
+    <Compile Include="Models\MacResultItem.cs" />
     <Compile Include="Models\MeasurementsData.cs" />
     <Compile Include="Models\ScResultItem.cs" />
     <Compile Include="Models\ErrorSettingsModel.cs" />
-    <Compile Include="Models\Value\HzValueSc.cs" />
-    <Compile Include="Models\Value\OhmValueSc.cs" />
-    <Compile Include="Models\Value\IScValue.cs" />
-    <Compile Include="Models\Value\VoltValueSc.cs" />
+    <Compile Include="Models\Value\HzValueMac.cs" />
+    <Compile Include="Models\Value\OhmValueMac.cs" />
+    <Compile Include="Models\Value\IMacValue.cs" />
+    <Compile Include="Models\Value\VoltValue.cs" />
     <Compile Include="Style\Converter\BooleanConverter.cs" />
     <Compile Include="Models\MainSettings.cs" />
     <Compile Include="Style\Converter\MilliSecToSec.cs" />
