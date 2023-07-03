@@ -65,11 +65,11 @@ namespace MAC.ViewModels.Services.SerialPort
                     }
                     break;
                 case ComType.Commutator:
-                    _serialPort.WriteLine("Hello");
+                    _serialPort.WriteLine("Who");
                     Thread.Sleep(200);
                     getData = ReadData();
                     if (getData == null) return false;
-                    if (getData.Contains("ERROR"))
+                    if (getData.Contains("MAC") && getData.Contains("KOMMYTATOP"))
                     {
                         CloseConnect();
                         return true;
