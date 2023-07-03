@@ -65,7 +65,7 @@ namespace MAC.ViewModels.Services.SerialPort
                     }
                     break;
                 case ComType.Commutator:
-                    _serialPort.WriteLine("Who");
+                    _serialPort.WriteLine("Who\r\n");
                     Thread.Sleep(200);
                     getData = ReadData();
                     if (getData == null) return false;
