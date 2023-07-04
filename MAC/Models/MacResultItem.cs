@@ -608,6 +608,25 @@ namespace MAC.Models
             _mac.SendWithOutN("\r\n");
         }
 
+        private void CalibrationOhmChannel(int channel, CancellationTokenSource ctSource)
+        {
+            var nameChannel = channel < 5
+                ? _channelName[$"CH{channel - 1}"]
+                : _channelName[$"CH{channel}"];
+
+            CurrentActTest = $"Калибровка {nameChannel}";
+
+
+            _comm.OnPowerIndex(_numberMac);
+            _comm.OnСhannel(channel);
+
+            _mac.OpenSession();
+            _mac.SendWithOutN("init def");
+            
+            //check  "DO YOU WANT TO PERFORM REINITIALIZATION (Y/N)? "
+            _mac.SendWithOutN("y");
+        }
+
         /// <summary>
         /// Запуск тестирования указанного канала 
         /// </summary>
