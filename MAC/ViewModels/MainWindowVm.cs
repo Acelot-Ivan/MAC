@@ -207,8 +207,6 @@ namespace MAC.ViewModels
             //Проверка наличия пути сохранения для логов
             CheckPathLog();
 
-            return;
-
             _ctsTask = new CancellationTokenSource();
             var token = _ctsTask.Token;
             //Начало теста

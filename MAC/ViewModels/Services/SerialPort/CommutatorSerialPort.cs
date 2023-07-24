@@ -71,7 +71,7 @@ namespace MAC.ViewModels.Services.SerialPort
         }
 
         /// <summary>
-        /// Включаем подачу питания на указанному Mac по индексу
+        /// Включаем подачу питания (ch1-6) на указанному Mac по индексу
         /// </summary>
         /// <param name="index">Номер МАС от 1 до 6</param>
         public void OnPowerIndex(int index)

@@ -353,7 +353,12 @@ namespace MAC.Models
 
             _fluke.OpenFlukePort();
             _comm.OpenCommPort();
+
+            _comm.OnPowerIndex(_numberMac);
+
             _mac.OpenSerialPort();
+
+            throw new Exception();
 
             var (macVersion, version) = _mac.GetVersionMac();
 
