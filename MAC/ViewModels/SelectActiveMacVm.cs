@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Threading;
 using System.Threading.Tasks;
 using MAC.Models;
 using MAC.ViewModels.Base;
+using MAC.ViewModels.Services.SerialPort;
 
 namespace MAC.ViewModels
 {
@@ -18,16 +20,25 @@ namespace MAC.ViewModels
         object locker = new object();
         public bool IsContinue { get; set; }
 
-        public SelectActiveMacVm(IEnumerable<ComConnectItem> macItems)
+        public SelectActiveMacVm(IEnumerable<ComConnectItem> macItems, CommutatorSerialPort comm)
         {
             MacItems = new ObservableCollection<ComConnectItem>(macItems);
 
             Task.Run(async () => await Task.Run(() =>
             {
+
+                comm.OpenCommPort();
+
                 foreach (var item in MacItems)
                 {
+                    comm.OnPowerIndex(item.Number);
+                    Thread.Sleep(200);
                     item.CheckComConnectAsync();
+                    comm.OffCommAll();
+                    Thread.Sleep(200);
                 }
+
+                comm.Close();   
             }));
         }
 

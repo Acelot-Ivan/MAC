@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO.Ports;
+using System.Runtime.Remoting.Channels;
 using System.Threading;
 using System.Windows;
 using MAC.Models;
@@ -91,6 +92,11 @@ namespace MAC.ViewModels.Services.SerialPort
             Send($"MUX {channel}");
         }
 
+        public void OffCommAll()
+        {
+            Send($"off");
+        }
+
         /// <summary>
         /// Закрыть порт и освободить ресурсы
         /// </summary>
@@ -98,7 +104,7 @@ namespace MAC.ViewModels.Services.SerialPort
         {
             try
             {
-                _commutator?.WriteLine("voltageoff\r\n");
+                _commutator?.WriteLine("off\r\n");
                 Thread.Sleep(400);
                 _commutator?.Close();
                 _commutator?.Dispose();

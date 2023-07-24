@@ -193,30 +193,31 @@ namespace MAC.ViewModels
 
         private void StartTestMac()
         {
-            SetActiveSignalController();
-
-
             if (CheckValidationFlukeAndCommutator()) return;
 
-            //On ch channel что бы проверить мас
+            //Создаю класс подключения Fluke and Comm
+            var fluke = new FlukeSerialPort(Fluke);
+            var comm = new CommutatorSerialPort(Comm);
 
             //Открываем меню выбора доступных МАС. И выставляем активные для теста.
-            if (SetActiveSignalController()) return;
-
-
-            //Здесь должна быть провека валидности выбранных Мас
-
+            if (SetActiveSignalController(comm)) return;
 
             if (OpenMeasurementsData()) return;
 
             //Проверка наличия пути сохранения для логов
             CheckPathLog();
 
+            return;
+
             _ctsTask = new CancellationTokenSource();
             var token = _ctsTask.Token;
             //Начало теста
 
-            Task.Run(StartTest, token);
+            Task.Run(async () => await Task.Run(() =>
+            {
+                StartTest(fluke, comm);
+            }), token);
+
         }
 
         private bool OpenMeasurementsData()
@@ -236,22 +237,18 @@ namespace MAC.ViewModels
         }
 
         // ReSharper disable once UnusedMember.Local
-        private bool SetActiveSignalController()
+        private bool SetActiveSignalController(CommutatorSerialPort comm)
         {
             var selectActiveSignalController =
-                new SelectActiveSignalController(new SelectActiveMacVm(AllComConnect.Skip(2)));
+                new SelectActiveSignalController(new SelectActiveMacVm(AllComConnect.Skip(2) , comm));
             selectActiveSignalController.ShowDialog();
             var isContinue = selectActiveSignalController.ViewModels.IsContinue;
             selectActiveSignalController.Close();
             return !isContinue;
         }
 
-        private void StartTest()
+        private void StartTest(FlukeSerialPort fluke, CommutatorSerialPort comm)
         {
-            //Создаю класс подключения Fluke
-            var fluke = new FlukeSerialPort(Fluke);
-            var comm = new CommutatorSerialPort(Comm);
-
             //Получаю список выставленных МАС
             var activeMacResultItems = AllComConnect.Skip(2).Where(item => item.IsActiveTest)
                 .Select(item =>
