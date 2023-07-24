@@ -358,8 +358,6 @@ namespace MAC.Models
 
             _mac.OpenSerialPort();
 
-            throw new Exception();
-
             var (macVersion, version) = _mac.GetVersionMac();
 
             VersionMac = version;
@@ -426,8 +424,6 @@ namespace MAC.Models
         public void StartMeasurementNewVersion(CancellationTokenSource ctSource, string folderPath)
         {
             IsCheckedNow = true;
-
-            _comm.OnPowerIndex(_numberMac);
 
             var ch0IsActiveCollection = Ch0.Select(item => item.IsActive).ToList();
             var ch1IsActiveCollection = Ch1.Select(item => item.IsActive).ToList();
