@@ -151,7 +151,8 @@ namespace MAC.Models
         public async void CheckComConnectAsync()
         {
             IsChecked = true;
-            await Task.Run(CheckComConnect);
+            CheckComConnect();
+            //await Task.Run(CheckComConnect);
             IsChecked = false;
         }
 

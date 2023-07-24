@@ -47,6 +47,7 @@ namespace MAC.ViewModels.Services.SerialPort
                 {
                     _commutator.WriteLine($"{text}\r\n");
                     Thread.Sleep(500);
+                    var x =_commutator.ReadExisting();
                     return;
                 }
                 catch (Exception ex)

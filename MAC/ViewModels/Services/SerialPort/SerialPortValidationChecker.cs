@@ -24,9 +24,10 @@ namespace MAC.ViewModels.Services.SerialPort
 
             _serialPort.Open();
 
+            Thread.Sleep(200);
+
             if (comType == ComType.Mac)
             {
-                _serialPort.WriteLine("");
                 _serialPort.WriteLine("close\r\n");
             }
 
@@ -37,19 +38,20 @@ namespace MAC.ViewModels.Services.SerialPort
             string getData;
             var comType = GetComType(comName);
 
-            Open(portName, comType == ComType.Fluke ? 9600 : 115200, comType);
+            Open(portName, comType == ComType.Commutator ? 115200 : 9600, comType);
 
 
             switch (comType)
             {
                 case ComType.Mac:
+                    Thread.Sleep(200);
                     _serialPort.WriteLine("open mas *\r\n");
                     Thread.Sleep(200);
                     _serialPort.WriteLine("close\r\n");
                     Thread.Sleep(100);
                     getData = ReadData();
                     if (getData == null) return false;
-                    if (getData.Contains("MAS"))
+                    if (getData.Contains("SESSION"))
                     {
                         CloseConnect();
                         return true;
