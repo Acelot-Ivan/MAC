@@ -12,8 +12,9 @@ namespace MAC.ViewModels
     public class ConnectSettingsVm : BaseVm
     {
         #region RelayCommand
+        //Кнопка под эту команду отключена
 
-        public RelayCommand CheckComConnectCommand => new RelayCommand(CheckComConnect);
+        //public RelayCommand CheckComConnectCommand => new RelayCommand(CheckComConnect);
 
         #endregion
 
@@ -46,11 +47,11 @@ namespace MAC.ViewModels
             UpdateAvailableComPorts();
         }
 
-        private void CheckComConnect(object obj)
-        {
-            var comConnectItem = obj as ComConnectItem;
-            comConnectItem?.CheckComConnectAsync();
-        }
+        //private void CheckComConnect(object obj)
+        //{
+        //    var comConnectItem = obj as ComConnectItem;
+        //    comConnectItem?.CheckComConnectAsync();
+        //}
 
 
         /// <summary>

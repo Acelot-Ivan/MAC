@@ -18,9 +18,9 @@ namespace MAC.ViewModels
         object locker = new object();
         public bool IsContinue { get; set; }
 
-        public SelectActiveMacVm(IEnumerable<ComConnectItem> signalControllerItems)
+        public SelectActiveMacVm(IEnumerable<ComConnectItem> macItems)
         {
-            MacItems = new ObservableCollection<ComConnectItem>(signalControllerItems);
+            MacItems = new ObservableCollection<ComConnectItem>(macItems);
 
             Task.Run(async () => await Task.Run(() =>
             {

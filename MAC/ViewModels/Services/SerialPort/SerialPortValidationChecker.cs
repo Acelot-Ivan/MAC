@@ -24,7 +24,7 @@ namespace MAC.ViewModels.Services.SerialPort
 
             _serialPort.Open();
 
-            if (comType == ComType.SignalController)
+            if (comType == ComType.Mac)
             {
                 _serialPort.WriteLine("");
                 _serialPort.WriteLine("close\r\n");
@@ -42,7 +42,7 @@ namespace MAC.ViewModels.Services.SerialPort
 
             switch (comType)
             {
-                case ComType.SignalController:
+                case ComType.Mac:
                     _serialPort.WriteLine("open mas *\r\n");
                     Thread.Sleep(200);
                     _serialPort.WriteLine("close\r\n");
@@ -115,7 +115,7 @@ namespace MAC.ViewModels.Services.SerialPort
         private ComType GetComType(string portName)
         {
             if (portName.Contains(MainConst.NameTypeSignalController))
-                return ComType.SignalController;
+                return ComType.Mac;
             if (portName.Contains(MainConst.NameTypeFluke))
                 return ComType.Fluke;
             if (portName.Contains(MainConst.NameTypeComm))
@@ -132,7 +132,7 @@ namespace MAC.ViewModels.Services.SerialPort
 
     public enum ComType
     {
-        SignalController,
+        Mac,
         Fluke,
         Commutator
     }

@@ -351,9 +351,9 @@ namespace MAC.Models
         {
             _measurementsData = measurementsData;
 
-            _mac.OpenSerialPort();
             _fluke.OpenFlukePort();
             _comm.OpenCommPort();
+            _mac.OpenSerialPort();
 
             var (macVersion, version) = _mac.GetVersionMac();
 

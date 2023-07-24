@@ -107,7 +107,7 @@ namespace MAC.ViewModels
 
         #endregion
 
-        public RelayCommand StartTestSignalControllersCommand => new RelayCommand(StartTestSignalController);
+        public RelayCommand StartTestSignalControllersCommand => new RelayCommand(StartTestMac);
         public RelayCommand PauseTestSignalControllersCommand { get; set; }
         public RelayCommand StopTestSignalControllersCommand => new RelayCommand(StopTest);
         public RelayCommand RestartTestOneSignalControllerCommand => new RelayCommand(RestartTestOneSignalController);
@@ -133,16 +133,17 @@ namespace MAC.ViewModels
         {
             SelectedPage = SelectedPage.MainWindow;
 
+            // MAC 2-6 пока отключены, пока не коммутатор не сможет с ними работать
             AllComConnect = new ObservableCollection<ComConnectItem>
             {
                 new ComConnectItem(MainConst.NameTypeFluke, 0, Settings.Default.FlukeComPort),
                 new ComConnectItem(MainConst.NameTypeComm, 0, Settings.Default.CommComPort),
                 new ComConnectItem(MainConst.NameTypeSignalController, 1, Settings.Default.Mac1ComPort),
-                new ComConnectItem(MainConst.NameTypeSignalController, 2, Settings.Default.Mac2ComPort),
-                new ComConnectItem(MainConst.NameTypeSignalController, 3, Settings.Default.Mac3ComPort),
-                new ComConnectItem(MainConst.NameTypeSignalController, 4, Settings.Default.Mac4ComPort),
-                new ComConnectItem(MainConst.NameTypeSignalController, 5, Settings.Default.Mac5ComPort),
-                new ComConnectItem(MainConst.NameTypeSignalController, 6, Settings.Default.Mac6ComPort)
+                //new ComConnectItem(MainConst.NameTypeSignalController, 2, Settings.Default.Mac2ComPort),
+                //new ComConnectItem(MainConst.NameTypeSignalController, 3, Settings.Default.Mac3ComPort),
+                //new ComConnectItem(MainConst.NameTypeSignalController, 4, Settings.Default.Mac4ComPort),
+                //new ComConnectItem(MainConst.NameTypeSignalController, 5, Settings.Default.Mac5ComPort),
+                //new ComConnectItem(MainConst.NameTypeSignalController, 6, Settings.Default.Mac6ComPort)
             };
 
             ErrorValueVm = new ErrorValueVm(IsErrorActive, ErrorSettingsModel, ContentGridHeight, ContentGridWidth,
@@ -190,12 +191,20 @@ namespace MAC.ViewModels
 
         #endregion
 
-        private void StartTestSignalController()
+        private void StartTestMac()
         {
+            SetActiveSignalController();
+
+
             if (CheckValidationFlukeAndCommutator()) return;
+
+            //On ch channel что бы проверить мас
 
             //Открываем меню выбора доступных МАС. И выставляем активные для теста.
             if (SetActiveSignalController()) return;
+
+
+            //Здесь должна быть провека валидности выбранных Мас
 
 
             if (OpenMeasurementsData()) return;

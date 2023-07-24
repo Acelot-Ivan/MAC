@@ -44,7 +44,7 @@ namespace MAC.Models
 
                 OnPropertyChanged(nameof(ComPort));
 
-                CheckComConnectAsync();
+                //CheckComConnectAsync();
 
                 UpdatePropertySettingsComPort();
             }

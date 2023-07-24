@@ -79,13 +79,7 @@ namespace MAC.ViewModels.Services.SerialPort
             if (index > 6)
                 throw new ArgumentException();
 
-            Send("voltageon");
-
-            //Для следующих Мас(слейв), включение выполняется командой с указанием индекса.
-            //Так же, если коммутатор уже ключен, voltageon не обязателен.
-            //Индексы слейв мас начинаются с 1 ... и до 5
-            if (index > 1)
-                Send($"voltage {index - 1}");
+            Send($"ch{index}");
         }
 
         /// <summary>

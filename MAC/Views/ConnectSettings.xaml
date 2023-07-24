@@ -70,7 +70,7 @@
                                 </ComboBox.ItemContainerStyle>
                             </ComboBox>
                         </Grid>
-                        <Grid Grid.Column="2">
+                        <!--<Grid Grid.Column="2">
                             <Button Style="{StaticResource IconBackgroundButton}"
                                     Command="{Binding RelativeSource={ RelativeSource Mode=FindAncestor , AncestorType= UserControl} , Path=DataContext.CheckComConnectCommand}"
                                     CommandParameter="{Binding  }"
@@ -101,7 +101,7 @@
                                    gif:ImageBehavior.RepeatBehavior="Forever"
                                    gif:ImageBehavior.AnimateInDesignMode="True" />
 
-                        </Grid>
+                        </Grid>-->
 
                     </Grid>
                 </Border>
