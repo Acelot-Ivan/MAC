@@ -33,8 +33,7 @@ namespace MAC.ViewModels
                 {
                     comm.OnPowerIndex(item.Number);
                     Thread.Sleep(200);
-                    item.CheckComConnectAsync();
-                    item.GerSerialNumberSc();
+                    item.CheckComConnectAsyncGetSerial();
                     comm.OffCommAll();
                     Thread.Sleep(200);
                 }

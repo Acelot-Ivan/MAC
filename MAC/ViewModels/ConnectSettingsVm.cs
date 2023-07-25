@@ -50,7 +50,7 @@ namespace MAC.ViewModels
         //private void CheckComConnect(object obj)
         //{
         //    var comConnectItem = obj as ComConnectItem;
-        //    comConnectItem?.CheckComConnectAsync();
+        //    comConnectItem?.CheckComConnectAsyncGetSerial();
         //}
 
 

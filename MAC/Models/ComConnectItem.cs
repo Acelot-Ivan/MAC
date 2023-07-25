@@ -44,7 +44,7 @@ namespace MAC.Models
 
                 OnPropertyChanged(nameof(ComPort));
 
-                //CheckComConnectAsync();
+                //CheckComConnectAsyncGetSerial();
 
                 UpdatePropertySettingsComPort();
             }
@@ -148,10 +148,11 @@ namespace MAC.Models
         /// <summary>
         /// Асинхронный запуск CheckComConnect. Необходимо учитывать, что сеттер завершается раньше чем запущенная из него проверка.
         /// </summary>
-        public async void CheckComConnectAsync()
+        public async void CheckComConnectAsyncGetSerial()
         {
             IsChecked = true;
             CheckComConnect();
+            GerSerialNumberSc();
             //await Task.Run(CheckComConnect);
             IsChecked = false;
         }
