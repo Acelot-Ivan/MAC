@@ -32,7 +32,7 @@ namespace MAC.ViewModels.Services.SerialPort
             _mac = new System.IO.Ports.SerialPort
             {
                 PortName = _comPort,
-                BaudRate = 115200,
+                BaudRate = 9600,
                 Parity = Parity.None,
                 DataBits = 8,
                 StopBits = StopBits.One,
