@@ -368,7 +368,7 @@ namespace MAC.Models
 
             try
             {
-                CreateMeasurement(folderPath);
+                //CreateMeasurement(folderPath);
             }
             catch (Exception e)
             {
@@ -631,13 +631,15 @@ namespace MAC.Models
 
             _mac.SendWithOutN("test");
 
-            Thread.Sleep(30000);
+            Thread.Sleep(5000);
 
             _mac.SendWithOutN(" ");
 
             _mac.SendWithOutN($"fcal {channel} 200");
 
             _mac.SendWithOutN("y");
+
+            var x = _mac.GetCurrentData();
         }
 
         /// <summary>
@@ -924,7 +926,7 @@ namespace MAC.Models
             //Так как МАС может добавить мусорные пробелы при перепадах напряжения.
             currentData = currentData.Replace(" ", "");
 
-            var firstIndex = currentData.LastIndexOf("CH0", StringComparison.Ordinal);
+            var firstIndex = currentData.LastIndexOf("X", StringComparison.Ordinal);
             var lastIndex = currentData.LastIndexOf("[Hz]", StringComparison.Ordinal);
 
             string data = string.Empty;
