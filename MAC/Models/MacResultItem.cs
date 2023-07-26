@@ -34,12 +34,12 @@ namespace MAC.Models
 
         private readonly Dictionary<string, string> _channelName = new Dictionary<string, string>
         {
-            {"CH0", "t возд"},
-            {"CH1", "t дор"},
-            {"CH2", "t п/п"},
-            {"CH3", "Влаж"},
-            {"CH5", "ДНВ"},
-            {"CH6", "ДВС"}
+            {"X1", "t возд"},
+            {"X2", "t дор"},
+            {"X3", "t п/п"},
+            {"X4", "Влаж"},
+            {"X5", "ДНВ"},
+            {"X6", "ДВС"}
         };
 
         /// <summary>
@@ -71,10 +71,10 @@ namespace MAC.Models
 
         public Channel CurrentChannel { get; set; } = Channel.None;
 
-        public ObservableCollection<IMacValue> Ch0 { get; set; }
         public ObservableCollection<IMacValue> Ch1 { get; set; }
         public ObservableCollection<IMacValue> Ch2 { get; set; }
         public ObservableCollection<IMacValue> Ch3 { get; set; }
+        public ObservableCollection<IMacValue> Ch4 { get; set; }
         public ObservableCollection<IMacValue> Ch5 { get; set; }
         public ObservableCollection<IMacValue> Ch6 { get; set; }
 
@@ -139,7 +139,7 @@ namespace MAC.Models
 
             #region Заполнение коллекций CH
 
-            Ch0 = new ObservableCollection<IMacValue>
+            Ch1 = new ObservableCollection<IMacValue>
             {
                 new OhmValueMac(30, activeSettings.Ch0Ohm1),
                 new OhmValueMac(85, activeSettings.Ch0Ohm2),
@@ -147,7 +147,7 @@ namespace MAC.Models
                 new OhmValueMac(155, activeSettings.Ch0Ohm4),
                 new OhmValueMac(190, activeSettings.Ch0Ohm5),
             };
-            Ch1 = new ObservableCollection<IMacValue>
+            Ch2 = new ObservableCollection<IMacValue>
             {
                 new OhmValueMac(30, activeSettings.Ch1Ohm1),
                 new OhmValueMac(85, activeSettings.Ch1Ohm2),
@@ -155,7 +155,7 @@ namespace MAC.Models
                 new OhmValueMac(155, activeSettings.Ch1Ohm4),
                 new OhmValueMac(190, activeSettings.Ch1Ohm5),
             };
-            Ch2 = new ObservableCollection<IMacValue>
+            Ch3 = new ObservableCollection<IMacValue>
             {
                 new OhmValueMac(30, activeSettings.Ch2Ohm1),
                 new OhmValueMac(85, activeSettings.Ch2Ohm2),
@@ -163,7 +163,7 @@ namespace MAC.Models
                 new OhmValueMac(155, activeSettings.Ch2Ohm4),
                 new OhmValueMac(190, activeSettings.Ch2Ohm5),
             };
-            Ch3 = new ObservableCollection<IMacValue>
+            Ch4 = new ObservableCollection<IMacValue>
             {
                 new VoltValue(0.345m, activeSettings.Ch3V1),
                 new VoltValue(1.325m, activeSettings.Ch3V2),
@@ -298,16 +298,16 @@ namespace MAC.Models
         {
             var channelName = $"Sc{_numberMac}";
 
-            foreach (var itemCh in Ch0)
+            foreach (var itemCh in Ch1)
                 itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch0Error"];
 
-            foreach (var itemCh in Ch1)
+            foreach (var itemCh in Ch2)
                 itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch1Error"];
 
-            foreach (var itemCh in Ch2)
+            foreach (var itemCh in Ch3)
                 itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch2Error"];
 
-            foreach (var itemCh in Ch3)
+            foreach (var itemCh in Ch4)
                 itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch3Error"];
 
             foreach (var itemCh in Ch5)
@@ -425,9 +425,9 @@ namespace MAC.Models
         {
             IsCheckedNow = true;
 
-            var ch0IsActiveCollection = Ch0.Select(item => item.IsActive).ToList();
-            var ch1IsActiveCollection = Ch1.Select(item => item.IsActive).ToList();
-            var ch2IsActiveCollection = Ch2.Select(item => item.IsActive).ToList();
+            var ch0IsActiveCollection = Ch1.Select(item => item.IsActive).ToList();
+            var ch1IsActiveCollection = Ch2.Select(item => item.IsActive).ToList();
+            var ch2IsActiveCollection = Ch3.Select(item => item.IsActive).ToList();
 
             #region Добавляю время калибровки к общему времени
 
@@ -462,7 +462,7 @@ namespace MAC.Models
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
-                    ChannelMeasurements(ChannelCh0, Ch0, ctSource, Channel.Ch0);
+                    ChannelMeasurements(ChannelCh0, Ch1, ctSource, Channel.Ch0);
                 }
                 finally
                 {
@@ -483,7 +483,7 @@ namespace MAC.Models
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
-                    ChannelMeasurements(ChannelCh1, Ch1, ctSource, Channel.Ch1);
+                    ChannelMeasurements(ChannelCh1, Ch2, ctSource, Channel.Ch1);
                 }
                 finally
                 {
@@ -504,7 +504,7 @@ namespace MAC.Models
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
-                    ChannelMeasurements(ChannelCh2, Ch2, ctSource, Channel.Ch2);
+                    ChannelMeasurements(ChannelCh2, Ch3, ctSource, Channel.Ch2);
                 }
                 finally
                 {
@@ -517,7 +517,7 @@ namespace MAC.Models
             //CH3 Volt
             try
             {
-                ChannelMeasurements(ChannelCh3, Ch3, ctSource, Channel.Ch3);
+                ChannelMeasurements(ChannelCh3, Ch4, ctSource, Channel.Ch3);
             }
             finally
             {
@@ -733,10 +733,10 @@ namespace MAC.Models
         /// </summary>
         public void ClearAllResultsValue()
         {
-            ClearChannelResultsValue(Ch0);
             ClearChannelResultsValue(Ch1);
             ClearChannelResultsValue(Ch2);
             ClearChannelResultsValue(Ch3);
+            ClearChannelResultsValue(Ch4);
             ClearChannelResultsValue(Ch5);
             ClearChannelResultsValue(Ch6);
 
@@ -777,69 +777,6 @@ namespace MAC.Models
             }
         }
 
-        /// <summary>
-        /// Калибровка необходимая для тестировая Ohm каналов
-        /// </summary>
-        /// <param name="channel">Индекс тестируемого канала</param>
-        /// <param name="ctSource"></param>
-        /// <returns>Результат каллибровки</returns>
-        private bool CalibrationOhm(int channel, CancellationTokenSource ctSource)
-        {
-            var countAttempt = 0;
-            CurrentActTest = channel < 5
-                ? $"Калибровка CH{channel - 1}"
-                : $"Калибровка CH{channel}";
-
-            while (true)
-            {
-                if (countAttempt++ == 3) return false;
-
-                //Выставляю на fluke  нужное значение и включаю его
-                _fluke.Send("OUT 100 OHM;OPER");
-                _comm.OnСhannel(channel);
-
-                _mac.OpenSession();
-                _mac.StartTest();
-
-                if (IsCancellationRequested(ctSource)) return false;
-
-
-                var timeOutOhm = _mainSettingsModel.TimeOutOhm * 1000;
-
-                while (timeOutOhm != 0)
-                {
-                    if (IsCancellationRequested(ctSource)) return false;
-                    timeOutOhm -= 1000;
-                    Thread.Sleep(1000);
-                }
-
-                _mac.StopTest();
-                _mac.CloseSession();
-
-
-                if (_mainSettingsModel.IsUseAverageValue)
-                {
-                    var averageValue = AverageDataRead(channel, ctSource, true);
-                    if (averageValue >= 99.99m && averageValue <= 100.01m)
-                    {
-                        TimeLeftOnAllMeasurements -= TimeSpan.FromSeconds(
-                            GetTimeOnTypeMeasurements(TypeMeasurement.Ohm) +
-                            TimeGetValue * _mainSettingsModel.CountAverageValue);
-                        return true;
-                    }
-                }
-                else if (!_mainSettingsModel.IsUseAverageValue)
-                {
-                    var value = DataRead(channel, ctSource, true);
-                    if (value == 100m)
-                    {
-                        TimeLeftOnAllMeasurements -= TimeSpan.FromSeconds(_mainSettingsModel.TimeOutOhm);
-                        return true;
-                    }
-                }
-            }
-        }
-
         #region Чтения значения с Mac и его обработка
 
         /// <summary>
@@ -849,32 +786,17 @@ namespace MAC.Models
         /// <param name="ctSource"></param>
         /// <param name="isCalibration"></param>
         /// <returns></returns>
-        private decimal? DataRead(int channel, CancellationTokenSource ctSource,
-            bool isCalibration = false)
+        private decimal? DataRead(int channel, CancellationTokenSource ctSource)
         {
-            //Выбранный канал , для МАС это 0-1-2 . Для Коммутатора 1-2-3 соответсвенно
-            var channelSignalController = channel < 5
-                ? channel - 1
-                : channel;
-
-
             _mac.OpenSession();
             _mac.StartTest();
 
             //Выбор времени теста по каналу
-            switch (channelSignalController)
+            switch (channel)
             {
-                case 0:
                 case 1:
                 case 2:
-                    //Если это каллибровка
-                    if (isCalibration)
-                    {
-                        _mac.StopTest();
-                        Thread.Sleep(200);
-                        _mac.Send($"Cal t{channelSignalController}");
-                    }
-
+                case 3:
                     var timeOutOhm = _mainSettingsModel.TimeOutOhm * 1000;
 
                     while (timeOutOhm != 0)
@@ -886,7 +808,7 @@ namespace MAC.Models
                     }
 
                     break;
-                case 3:
+                case 4:
                 case 5:
 
                     var timeOutV = _mainSettingsModel.TimeOutV * 1000;
@@ -941,7 +863,7 @@ namespace MAC.Models
             }
 
             //Получаю значение по выбранному каналу.
-            var clearData = DataClear(data, channelSignalController);
+            var clearData = DataClear(data, channel);
 
             var value = decimal.Parse(clearData, CultureInfo.InvariantCulture);
 
@@ -957,33 +879,20 @@ namespace MAC.Models
         /// <param name="ctSource"></param>
         /// <param name="isCalibration"></param>
         /// <returns></returns>
-        private decimal? AverageDataRead(int channel, CancellationTokenSource ctSource,
-            bool isCalibration = false)
+        private decimal? AverageDataRead(int channel, CancellationTokenSource ctSource)
         {
             var collectionDataDecimal = new List<decimal>();
             var countAverage = _mainSettingsModel.CountAverageValue;
-
-            //Выбранный канал , для МАС это 0-1-2 . Для Коммутатора 1-2-3 соответсвенно
-            var channelSignalController = channel < 5
-                ? channel - 1
-                : channel;
-
 
             _mac.OpenSession();
             _mac.StartTest();
 
             //Выбор времени теста по каналу
-            switch (channelSignalController)
+            switch (channel)
             {
-                case 0:
                 case 1:
                 case 2:
-                    //Если это каллибровка
-                    if (isCalibration)
-                    {
-                        _mac.Send($"Cal t{channelSignalController}");
-                    }
-
+                case 3:
                     var timeOutOhm =
                         (_mainSettingsModel.TimeOutOhm + _mainSettingsModel.CountAverageValue * TimeGetValue) * 1000;
 
@@ -996,7 +905,7 @@ namespace MAC.Models
                     }
 
                     break;
-                case 3:
+                case 4:
                 case 5:
 
                     var timeOutV = (_mainSettingsModel.TimeOutV + _mainSettingsModel.CountAverageValue * TimeGetValue) *
@@ -1054,13 +963,13 @@ namespace MAC.Models
 
             foreach (string item in collectionDataString)
             {
-                var firstIndex = item.LastIndexOf("CH0", StringComparison.Ordinal);
+                var firstIndex = item.LastIndexOf("X1", StringComparison.Ordinal);
                 var lastIndex = item.LastIndexOf("[Hz]", StringComparison.Ordinal);
 
                 var data = item.Substring(firstIndex, lastIndex - firstIndex + "[Hz]".Length);
 
                 //Получаю значение по выбранному каналу.
-                var clearData = DataClear(data, channelSignalController);
+                var clearData = DataClear(data, channel);
 
                 var value = decimal.Parse(clearData, CultureInfo.InvariantCulture);
                 collectionDataDecimal.Add(value);
@@ -1269,46 +1178,46 @@ namespace MAC.Models
 
                 #region Set Result Value
 
-                #region Ch0
-
-                ws.Cells[8, 13].Value = ConvertResultForXlsx(Ch0[0].ResultValue);
-                ws.Cells[9, 13].Value = ConvertResultForXlsx(Ch0[1].ResultValue);
-                ws.Cells[10, 13].Value = ConvertResultForXlsx(Ch0[2].ResultValue);
-                ws.Cells[11, 13].Value = ConvertResultForXlsx(Ch0[3].ResultValue);
-                ws.Cells[12, 13].Value = ConvertResultForXlsx(Ch0[4].ResultValue);
-                ws.Cells[13, 13].Value = ConvertResultForXlsx(Ch0[5].ResultValue);
-
-                #endregion
-
                 #region Ch1
 
-                ws.Cells[8, 16].Value = ConvertResultForXlsx(Ch1[0].ResultValue);
-                ws.Cells[9, 16].Value = ConvertResultForXlsx(Ch1[1].ResultValue);
-                ws.Cells[10, 16].Value = ConvertResultForXlsx(Ch1[2].ResultValue);
-                ws.Cells[11, 16].Value = ConvertResultForXlsx(Ch1[3].ResultValue);
-                ws.Cells[12, 16].Value = ConvertResultForXlsx(Ch1[4].ResultValue);
-                ws.Cells[13, 16].Value = ConvertResultForXlsx(Ch1[5].ResultValue);
+                ws.Cells[8, 13].Value = ConvertResultForXlsx(Ch1[0].ResultValue);
+                ws.Cells[9, 13].Value = ConvertResultForXlsx(Ch1[1].ResultValue);
+                ws.Cells[10, 13].Value = ConvertResultForXlsx(Ch1[2].ResultValue);
+                ws.Cells[11, 13].Value = ConvertResultForXlsx(Ch1[3].ResultValue);
+                ws.Cells[12, 13].Value = ConvertResultForXlsx(Ch1[4].ResultValue);
+                ws.Cells[13, 13].Value = ConvertResultForXlsx(Ch1[5].ResultValue);
 
                 #endregion
 
                 #region Ch2
 
-                ws.Cells[8, 19].Value = ConvertResultForXlsx(Ch2[0].ResultValue);
-                ws.Cells[9, 19].Value = ConvertResultForXlsx(Ch2[1].ResultValue);
-                ws.Cells[10, 19].Value = ConvertResultForXlsx(Ch2[2].ResultValue);
-                ws.Cells[11, 19].Value = ConvertResultForXlsx(Ch2[3].ResultValue);
-                ws.Cells[12, 19].Value = ConvertResultForXlsx(Ch2[4].ResultValue);
-                ws.Cells[13, 19].Value = ConvertResultForXlsx(Ch2[5].ResultValue);
+                ws.Cells[8, 16].Value = ConvertResultForXlsx(Ch2[0].ResultValue);
+                ws.Cells[9, 16].Value = ConvertResultForXlsx(Ch2[1].ResultValue);
+                ws.Cells[10, 16].Value = ConvertResultForXlsx(Ch2[2].ResultValue);
+                ws.Cells[11, 16].Value = ConvertResultForXlsx(Ch2[3].ResultValue);
+                ws.Cells[12, 16].Value = ConvertResultForXlsx(Ch2[4].ResultValue);
+                ws.Cells[13, 16].Value = ConvertResultForXlsx(Ch2[5].ResultValue);
 
                 #endregion
 
                 #region Ch3
 
-                ws.Cells[17, 14].Value = ConvertResultForXlsx(Ch3[0].ResultValue);
-                ws.Cells[18, 14].Value = ConvertResultForXlsx(Ch3[1].ResultValue);
-                ws.Cells[19, 14].Value = ConvertResultForXlsx(Ch3[2].ResultValue);
-                ws.Cells[20, 14].Value = ConvertResultForXlsx(Ch3[3].ResultValue);
-                ws.Cells[21, 14].Value = ConvertResultForXlsx(Ch3[4].ResultValue);
+                ws.Cells[8, 19].Value = ConvertResultForXlsx(Ch3[0].ResultValue);
+                ws.Cells[9, 19].Value = ConvertResultForXlsx(Ch3[1].ResultValue);
+                ws.Cells[10, 19].Value = ConvertResultForXlsx(Ch3[2].ResultValue);
+                ws.Cells[11, 19].Value = ConvertResultForXlsx(Ch3[3].ResultValue);
+                ws.Cells[12, 19].Value = ConvertResultForXlsx(Ch3[4].ResultValue);
+                ws.Cells[13, 19].Value = ConvertResultForXlsx(Ch3[5].ResultValue);
+
+                #endregion
+
+                #region Ch4
+
+                ws.Cells[17, 14].Value = ConvertResultForXlsx(Ch4[0].ResultValue);
+                ws.Cells[18, 14].Value = ConvertResultForXlsx(Ch4[1].ResultValue);
+                ws.Cells[19, 14].Value = ConvertResultForXlsx(Ch4[2].ResultValue);
+                ws.Cells[20, 14].Value = ConvertResultForXlsx(Ch4[3].ResultValue);
+                ws.Cells[21, 14].Value = ConvertResultForXlsx(Ch4[4].ResultValue);
 
                 #endregion
 
@@ -1349,44 +1258,44 @@ namespace MAC.Models
 
             csvContent.AppendLine("OHM;R[0];R[1];R[2];V;V[3];V[5];Hz;Hz[6]");
             csvContent.AppendLine("80;" +
-                                  Ch0[0].ResultValue + ";" +
                                   Ch1[0].ResultValue + ";" +
-                                  Ch2[0].ResultValue + ";1;" +
-                                  Ch3[0].ResultValue + ";" +
+                                  Ch2[0].ResultValue + ";" +
+                                  Ch3[0].ResultValue + ";1;" +
+                                  Ch4[0].ResultValue + ";" +
                                   Ch5[0].ResultValue + ";5;" +
                                   Ch6[0].ResultValue);
             csvContent.AppendLine("90;" +
-                                  Ch0[1].ResultValue + ";" +
                                   Ch1[1].ResultValue + ";" +
-                                  Ch2[1].ResultValue + ";2;" +
-                                  Ch3[1].ResultValue + ";" +
+                                  Ch2[1].ResultValue + ";" +
+                                  Ch3[1].ResultValue + ";2;" +
+                                  Ch4[1].ResultValue + ";" +
                                   Ch5[1].ResultValue + ";25;" +
                                   Ch6[1].ResultValue);
             csvContent.AppendLine("100;" +
-                                  Ch0[2].ResultValue + ";" +
                                   Ch1[2].ResultValue + ";" +
-                                  Ch2[2].ResultValue + ";3;" +
-                                  Ch3[2].ResultValue + ";" +
+                                  Ch2[2].ResultValue + ";" +
+                                  Ch3[2].ResultValue + ";3;" +
+                                  Ch4[2].ResultValue + ";" +
                                   Ch5[2].ResultValue + ";50;" +
                                   Ch6[2].ResultValue);
             csvContent.AppendLine("115;" +
-                                  Ch0[3].ResultValue + ";" +
                                   Ch1[3].ResultValue + ";" +
-                                  Ch2[3].ResultValue + ";4;" +
-                                  Ch3[3].ResultValue + ";" +
+                                  Ch2[3].ResultValue + ";" +
+                                  Ch3[3].ResultValue + ";4;" +
+                                  Ch4[3].ResultValue + ";" +
                                   Ch5[3].ResultValue + ";75;" +
                                   Ch6[3].ResultValue);
             csvContent.AppendLine("130;" +
-                                  Ch0[4].ResultValue + ";" +
                                   Ch1[4].ResultValue + ";" +
-                                  Ch2[4].ResultValue + ";5;" +
-                                  Ch3[4].ResultValue + ";" +
+                                  Ch2[4].ResultValue + ";" +
+                                  Ch3[4].ResultValue + ";5;" +
+                                  Ch4[4].ResultValue + ";" +
                                   Ch5[4].ResultValue + ";100;" +
                                   Ch6[4].ResultValue);
             csvContent.AppendLine("140;" +
-                                  Ch0[5].ResultValue + ";" +
                                   Ch1[5].ResultValue + ";" +
-                                  Ch2[5].ResultValue);
+                                  Ch2[5].ResultValue + ";" +
+                                  Ch3[5].ResultValue);
 
             #endregion
 
