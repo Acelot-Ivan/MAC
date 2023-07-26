@@ -926,7 +926,7 @@ namespace MAC.Models
             //Так как МАС может добавить мусорные пробелы при перепадах напряжения.
             currentData = currentData.Replace(" ", "");
 
-            var firstIndex = currentData.LastIndexOf("X", StringComparison.Ordinal);
+            var firstIndex = currentData.LastIndexOf("X1", StringComparison.Ordinal);
             var lastIndex = currentData.LastIndexOf("[Hz]", StringComparison.Ordinal);
 
             string data = string.Empty;
