@@ -479,7 +479,7 @@ namespace MAC.Models
                 {
                     if (_mainSettingsModel.IsOnCalibration)
                     {
-                        CalibrationOhmChannelNewVersion(ChannelCh1, ctSource);
+                        CalibrationOhmChannelMac(ChannelCh1, ctSource);
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
@@ -500,7 +500,7 @@ namespace MAC.Models
                 {
                     if (_mainSettingsModel.IsOnCalibration)
                     {
-                        CalibrationOhmChannelNewVersion(ChannelCh2, ctSource);
+                        CalibrationOhmChannelMac(ChannelCh2, ctSource);
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
@@ -611,9 +611,7 @@ namespace MAC.Models
 
         private void CalibrationOhmChannelMac(int channel, CancellationTokenSource ctSource)
         {
-            var nameChannel = channel < 5
-                ? _channelName[$"CH{channel - 1}"]
-                : _channelName[$"CH{channel}"];
+            var nameChannel = _channelName[$"X{channel}"];
 
             CurrentActTest = $"Калибровка {nameChannel}";
 
@@ -661,9 +659,7 @@ namespace MAC.Models
                 if (!itemCh.IsActive) continue;
 
 
-                var nameChannel = channel < 5
-                    ? _channelName[$"CH{channel - 1}"]
-                    : _channelName[$"CH{channel}"];
+                var nameChannel = _channelName[$"X{channel}"];
 
                 CurrentActTest = $"{nameChannel} : {itemCh.ValueMeasurement} {itemCh.TypeMeasurement}";
 
