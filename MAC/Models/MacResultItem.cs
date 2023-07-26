@@ -631,7 +631,7 @@ namespace MAC.Models
 
             _mac.SendWithOutN("test");
 
-            Thread.Sleep(5000);
+            Thread.Sleep(30000);
 
             _mac.SendWithOutN(" ");
 
@@ -1103,11 +1103,11 @@ namespace MAC.Models
         {
             //Каналов всего 7. И канал CH4  не используется в тестах.
             //Так что все невалидные индексы канала приводят к ошибке.
-            if (channel > 7 || channel == 4)
+            if (channel > 7)
                 throw new ArgumentException();
 
             //channel - 1 , так как отсчет идет с 0.
-            var ch = string.Concat("CH", $"{channel}");
+            var ch = string.Concat("X", $"{channel}");
             var chFirstIndex = data.IndexOf(ch, StringComparison.Ordinal);
             var clearData = data.Substring(chFirstIndex);
             //У канала  CH6  нет \r\n , так как это последняя строка
@@ -1120,11 +1120,11 @@ namespace MAC.Models
 
             switch (channel)
             {
-                case 0:
                 case 1:
                 case 2:
-                    return SubstringValue("[avg]", "[ohm]", clearData);
                 case 3:
+                    return SubstringValue("[avg]", "[ohm]", clearData);
+                case 4:
                     return SubstringValue("[avg]", "[mV]", clearData);
                 case 5:
                     return SubstringValue("[raw]", "[mV]", clearData);
