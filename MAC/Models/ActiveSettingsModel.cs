@@ -469,39 +469,39 @@ namespace MAC.Models
 
 
         /// <summary>
-        /// Флаг показывающий, выбран весь канал Ch1 или нет.
+        /// Флаг показывающий, выбран весь канал X1 или нет.
         /// </summary>
         public bool IsAllCh0Active => Ch0Ohm1 && Ch0Ohm2 &&
                                       Ch0Ohm3 && Ch0Ohm4 &&
                                       Ch0Ohm5;
 
         /// <summary>
-        /// Флаг показывающий, выбран весь канал Ch2 или нет.
+        /// Флаг показывающий, выбран весь канал X2 или нет.
         /// </summary>
         public bool IsAllCh1Active => Ch1Ohm1 && Ch1Ohm2 &&
                                       Ch1Ohm3 && Ch1Ohm4 &&
                                       Ch1Ohm5;
         /// <summary>
-        /// Флаг показывающий, выбран весь канал Ch3 или нет.
+        /// Флаг показывающий, выбран весь канал X3 или нет.
         /// </summary>
         public bool IsAllCh2Active => Ch2Ohm1 && Ch2Ohm2 &&
                                       Ch2Ohm3 && Ch2Ohm4 &&
                                       Ch2Ohm5;
 
         /// <summary>
-        /// Флаг показывающий, выбран весь канал Ch4 или нет.
+        /// Флаг показывающий, выбран весь канал X4 или нет.
         /// </summary>
         public bool IsAllCh3Active => Ch3V1 && Ch3V2 &&
                                       Ch3V3 && Ch3V4 &&
                                       Ch3V5;
         /// <summary>
-        /// Флаг показывающий, выбран весь канал Ch5 или нет.
+        /// Флаг показывающий, выбран весь канал X5 или нет.
         /// </summary>
         public bool IsAllCh5Active => Ch5V1 && Ch5V2 &&
                                       Ch5V3 && Ch5V4 &&
                                       Ch5V5;
         /// <summary>
-        /// Флаг показывающий, выбран весь канал Ch6 или нет.
+        /// Флаг показывающий, выбран весь канал X6 или нет.
         /// </summary>
         public bool IsAllCh6Active => Ch6Hz1 && Ch6Hz2 &&
                                       Ch6Hz3 && Ch6Hz4 &&

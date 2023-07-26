@@ -292,7 +292,7 @@
                                                                             </Grid>
                                                                         </Border>
                                                                         <Border Grid.Row="1">
-                                                                            <ItemsControl ItemsSource="{Binding Ch1}"
+                                                                            <ItemsControl ItemsSource="{Binding X1}"
                                                                                           ItemTemplate="{StaticResource ValueDataTemplate}">
                                                                                 <ItemsControl.ItemsPanel>
                                                                                     <ItemsPanelTemplate>
@@ -321,7 +321,7 @@
                                                                             </Grid>
                                                                         </Border>
                                                                         <Border Grid.Row="1">
-                                                                            <ItemsControl ItemsSource="{Binding Ch2}"
+                                                                            <ItemsControl ItemsSource="{Binding X2}"
                                                                                           ItemTemplate="{StaticResource ValueDataTemplate}">
                                                                                 <ItemsControl.ItemsPanel>
                                                                                     <ItemsPanelTemplate>
@@ -349,7 +349,7 @@
                                                                             </Grid>
                                                                         </Border>
                                                                         <Border Grid.Row="1">
-                                                                            <ItemsControl ItemsSource="{Binding Ch3}"
+                                                                            <ItemsControl ItemsSource="{Binding X3}"
                                                                                           ItemTemplate="{StaticResource ValueDataTemplate}">
                                                                                 <ItemsControl.ItemsPanel>
                                                                                     <ItemsPanelTemplate>
@@ -425,7 +425,7 @@
                                                                             </Grid>
                                                                         </Border>
                                                                         <Border Grid.Row="1">
-                                                                            <ItemsControl ItemsSource="{Binding Ch4}"
+                                                                            <ItemsControl ItemsSource="{Binding X4}"
                                                                                           ItemTemplate="{StaticResource ValueDataTemplate}">
                                                                                 <ItemsControl.ItemsPanel>
                                                                                     <ItemsPanelTemplate>
@@ -453,7 +453,7 @@
                                                                             </Grid>
                                                                         </Border>
                                                                         <Border Grid.Row="1">
-                                                                            <ItemsControl ItemsSource="{Binding Ch5}"
+                                                                            <ItemsControl ItemsSource="{Binding X5}"
                                                                                           ItemTemplate="{StaticResource ValueDataTemplate}">
                                                                                 <ItemsControl.ItemsPanel>
                                                                                     <ItemsPanelTemplate>
@@ -529,7 +529,7 @@
                                                                             </Grid>
                                                                         </Border>
                                                                         <Border Grid.Row="1">
-                                                                            <ItemsControl ItemsSource="{Binding Ch6}"
+                                                                            <ItemsControl ItemsSource="{Binding X6}"
                                                                                           ItemTemplate="{StaticResource ValueDataTemplate}">
                                                                                 <ItemsControl.ItemsPanel>
                                                                                     <ItemsPanelTemplate>

@@ -71,12 +71,12 @@ namespace MAC.Models
 
         public Channel CurrentChannel { get; set; } = Channel.None;
 
-        public ObservableCollection<IMacValue> Ch1 { get; set; }
-        public ObservableCollection<IMacValue> Ch2 { get; set; }
-        public ObservableCollection<IMacValue> Ch3 { get; set; }
-        public ObservableCollection<IMacValue> Ch4 { get; set; }
-        public ObservableCollection<IMacValue> Ch5 { get; set; }
-        public ObservableCollection<IMacValue> Ch6 { get; set; }
+        public ObservableCollection<IMacValue> X1 { get; set; }
+        public ObservableCollection<IMacValue> X2 { get; set; }
+        public ObservableCollection<IMacValue> X3 { get; set; }
+        public ObservableCollection<IMacValue> X4 { get; set; }
+        public ObservableCollection<IMacValue> X5 { get; set; }
+        public ObservableCollection<IMacValue> X6 { get; set; }
 
         /// <summary>
         /// Максимальное кол-во измерений для данного теста
@@ -139,7 +139,7 @@ namespace MAC.Models
 
             #region Заполнение коллекций CH
 
-            Ch1 = new ObservableCollection<IMacValue>
+            X1 = new ObservableCollection<IMacValue>
             {
                 new OhmValueMac(30, activeSettings.Ch0Ohm1),
                 new OhmValueMac(85, activeSettings.Ch0Ohm2),
@@ -147,7 +147,7 @@ namespace MAC.Models
                 new OhmValueMac(155, activeSettings.Ch0Ohm4),
                 new OhmValueMac(190, activeSettings.Ch0Ohm5),
             };
-            Ch2 = new ObservableCollection<IMacValue>
+            X2 = new ObservableCollection<IMacValue>
             {
                 new OhmValueMac(30, activeSettings.Ch1Ohm1),
                 new OhmValueMac(85, activeSettings.Ch1Ohm2),
@@ -155,7 +155,7 @@ namespace MAC.Models
                 new OhmValueMac(155, activeSettings.Ch1Ohm4),
                 new OhmValueMac(190, activeSettings.Ch1Ohm5),
             };
-            Ch3 = new ObservableCollection<IMacValue>
+            X3 = new ObservableCollection<IMacValue>
             {
                 new OhmValueMac(30, activeSettings.Ch2Ohm1),
                 new OhmValueMac(85, activeSettings.Ch2Ohm2),
@@ -163,7 +163,7 @@ namespace MAC.Models
                 new OhmValueMac(155, activeSettings.Ch2Ohm4),
                 new OhmValueMac(190, activeSettings.Ch2Ohm5),
             };
-            Ch4 = new ObservableCollection<IMacValue>
+            X4 = new ObservableCollection<IMacValue>
             {
                 new VoltValue(0.345m, activeSettings.Ch3V1),
                 new VoltValue(1.325m, activeSettings.Ch3V2),
@@ -171,7 +171,7 @@ namespace MAC.Models
                 new VoltValue(3.775m, activeSettings.Ch3V4),
                 new VoltValue(4.775m, activeSettings.Ch3V5)
             };
-            Ch5 = new ObservableCollection<IMacValue>
+            X5 = new ObservableCollection<IMacValue>
             {
                 new VoltValue(0.345m, activeSettings.Ch5V1),
                 new VoltValue(1.325m, activeSettings.Ch5V2),
@@ -179,7 +179,7 @@ namespace MAC.Models
                 new VoltValue(3.775m, activeSettings.Ch5V4),
                 new VoltValue(4.775m, activeSettings.Ch5V5)
             };
-            Ch6 = new ObservableCollection<IMacValue>
+            X6 = new ObservableCollection<IMacValue>
             {
                 new HzValueMac(50, activeSettings.Ch6Hz1),
                 new HzValueMac(250, activeSettings.Ch6Hz2),
@@ -298,33 +298,30 @@ namespace MAC.Models
         {
             var channelName = $"Sc{_numberMac}";
 
-            foreach (var itemCh in Ch1)
+            foreach (var itemCh in X1)
                 itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch0Error"];
 
-            foreach (var itemCh in Ch2)
+            foreach (var itemCh in X2)
                 itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch1Error"];
 
-            foreach (var itemCh in Ch3)
+            foreach (var itemCh in X3)
                 itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch2Error"];
 
-            foreach (var itemCh in Ch4)
+            foreach (var itemCh in X4)
                 itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch3Error"];
 
-            foreach (var itemCh in Ch5)
+            foreach (var itemCh in X5)
                 itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch5Error"];
         }
 
         #region Const Channel 
 
-        //Для Comm 1,2,3,4,5,6 
-        //Для   Mac 0,1,2,3,5,6 соответственно коммутатору
-
-        private const int ChannelCh0 = 1;
-        private const int ChannelCh1 = 2;
-        private const int ChannelCh2 = 3;
-        private const int ChannelCh3 = 4;
-        private const int ChannelCh5 = 5;
-        private const int ChannelCh6 = 6;
+        private const int ChannelX1 = 1;
+        private const int ChannelX2 = 2;
+        private const int ChannelX3 = 3;
+        private const int ChannelX4 = 4;
+        private const int ChannelX5 = 5;
+        private const int ChannelX6 = 6;
 
         #endregion
 
@@ -425,9 +422,9 @@ namespace MAC.Models
         {
             IsCheckedNow = true;
 
-            var ch0IsActiveCollection = Ch1.Select(item => item.IsActive).ToList();
-            var ch1IsActiveCollection = Ch2.Select(item => item.IsActive).ToList();
-            var ch2IsActiveCollection = Ch3.Select(item => item.IsActive).ToList();
+            var ch0IsActiveCollection = X1.Select(item => item.IsActive).ToList();
+            var ch1IsActiveCollection = X2.Select(item => item.IsActive).ToList();
+            var ch2IsActiveCollection = X3.Select(item => item.IsActive).ToList();
 
             #region Добавляю время калибровки к общему времени
 
@@ -451,101 +448,101 @@ namespace MAC.Models
             //Создаем папку для данной MAC
             Directory.CreateDirectory(folderPath);
 
-            //CH0 Ohm
+            //X1 Ohm
             if (ch0IsActiveCollection.Contains(true))
             {
                 try
                 {
                     if (_mainSettingsModel.IsOnCalibration)
                     {
-                        CalibrationOhmChannelMac(ChannelCh0, ctSource);
+                        CalibrationOhmChannelMac(ChannelX1, ctSource);
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
-                    ChannelMeasurements(ChannelCh0, Ch1, ctSource, Channel.Ch0);
+                    ChannelMeasurements(ChannelX1, X1, ctSource, Channel.Ch0);
                 }
                 finally
                 {
-                    CreateLogFile(folderPath, ChannelCh0);
+                    CreateLogFile(folderPath, ChannelX1);
                 }
 
                 if (IsCancellationRequested(ctSource)) return;
             }
 
-            //CH1 Ohm
+            //X2 Ohm
             if (ch1IsActiveCollection.Contains(true))
             {
                 try
                 {
                     if (_mainSettingsModel.IsOnCalibration)
                     {
-                        CalibrationOhmChannelMac(ChannelCh1, ctSource);
+                        CalibrationOhmChannelMac(ChannelX2, ctSource);
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
-                    ChannelMeasurements(ChannelCh1, Ch2, ctSource, Channel.Ch1);
+                    ChannelMeasurements(ChannelX2, X2, ctSource, Channel.Ch1);
                 }
                 finally
                 {
-                    CreateLogFile(folderPath, ChannelCh1);
+                    CreateLogFile(folderPath, ChannelX2);
                 }
 
                 if (IsCancellationRequested(ctSource)) return;
             }
 
-            //CH2 Ohm
+            //X3 Ohm
             if (ch2IsActiveCollection.Contains(true))
             {
                 try
                 {
                     if (_mainSettingsModel.IsOnCalibration)
                     {
-                        CalibrationOhmChannelMac(ChannelCh2, ctSource);
+                        CalibrationOhmChannelMac(ChannelX3, ctSource);
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
-                    ChannelMeasurements(ChannelCh2, Ch3, ctSource, Channel.Ch2);
+                    ChannelMeasurements(ChannelX3, X3, ctSource, Channel.Ch2);
                 }
                 finally
                 {
-                    CreateLogFile(folderPath, ChannelCh2);
+                    CreateLogFile(folderPath, ChannelX3);
                 }
 
                 if (IsCancellationRequested(ctSource)) return;
             }
 
-            //CH3 Volt
+            //X4 Volt
             try
             {
-                ChannelMeasurements(ChannelCh3, Ch4, ctSource, Channel.Ch3);
+                ChannelMeasurements(ChannelX4, X4, ctSource, Channel.Ch3);
             }
             finally
             {
-                CreateLogFile(folderPath, ChannelCh3);
+                CreateLogFile(folderPath, ChannelX4);
             }
 
             if (IsCancellationRequested(ctSource)) return;
 
-            //CH5 Volt
+            //X5 Volt
             try
             {
-                ChannelMeasurements(ChannelCh5, Ch5, ctSource, Channel.Ch5);
+                ChannelMeasurements(ChannelX5, X5, ctSource, Channel.Ch5);
             }
             finally
             {
-                CreateLogFile(folderPath, ChannelCh5);
+                CreateLogFile(folderPath, ChannelX5);
             }
 
             if (IsCancellationRequested(ctSource)) return;
 
-            //CH6 Hz
+            //X6 Hz
             try
             {
-                ChannelMeasurements(ChannelCh6, Ch6, ctSource, Channel.Ch6);
+                ChannelMeasurements(ChannelX6, X6, ctSource, Channel.Ch6);
             }
             finally
             {
-                CreateLogFile(folderPath, ChannelCh6);
+                CreateLogFile(folderPath, ChannelX6);
             }
 
             if (IsCancellationRequested(ctSource)) return;
@@ -729,12 +726,12 @@ namespace MAC.Models
         /// </summary>
         public void ClearAllResultsValue()
         {
-            ClearChannelResultsValue(Ch1);
-            ClearChannelResultsValue(Ch2);
-            ClearChannelResultsValue(Ch3);
-            ClearChannelResultsValue(Ch4);
-            ClearChannelResultsValue(Ch5);
-            ClearChannelResultsValue(Ch6);
+            ClearChannelResultsValue(X1);
+            ClearChannelResultsValue(X2);
+            ClearChannelResultsValue(X3);
+            ClearChannelResultsValue(X4);
+            ClearChannelResultsValue(X5);
+            ClearChannelResultsValue(X6);
 
             CurrentActiveMeasurement = 0;
             SetCountAndTimeMeasurements(_activeSettingsModel, _mainSettingsModel);
@@ -1174,66 +1171,66 @@ namespace MAC.Models
 
                 #region Set Result Value
 
-                #region Ch1
+                #region X1
 
-                ws.Cells[8, 13].Value = ConvertResultForXlsx(Ch1[0].ResultValue);
-                ws.Cells[9, 13].Value = ConvertResultForXlsx(Ch1[1].ResultValue);
-                ws.Cells[10, 13].Value = ConvertResultForXlsx(Ch1[2].ResultValue);
-                ws.Cells[11, 13].Value = ConvertResultForXlsx(Ch1[3].ResultValue);
-                ws.Cells[12, 13].Value = ConvertResultForXlsx(Ch1[4].ResultValue);
-                ws.Cells[13, 13].Value = ConvertResultForXlsx(Ch1[5].ResultValue);
-
-                #endregion
-
-                #region Ch2
-
-                ws.Cells[8, 16].Value = ConvertResultForXlsx(Ch2[0].ResultValue);
-                ws.Cells[9, 16].Value = ConvertResultForXlsx(Ch2[1].ResultValue);
-                ws.Cells[10, 16].Value = ConvertResultForXlsx(Ch2[2].ResultValue);
-                ws.Cells[11, 16].Value = ConvertResultForXlsx(Ch2[3].ResultValue);
-                ws.Cells[12, 16].Value = ConvertResultForXlsx(Ch2[4].ResultValue);
-                ws.Cells[13, 16].Value = ConvertResultForXlsx(Ch2[5].ResultValue);
+                ws.Cells[8, 13].Value = ConvertResultForXlsx(X1[0].ResultValue);
+                ws.Cells[9, 13].Value = ConvertResultForXlsx(X1[1].ResultValue);
+                ws.Cells[10, 13].Value = ConvertResultForXlsx(X1[2].ResultValue);
+                ws.Cells[11, 13].Value = ConvertResultForXlsx(X1[3].ResultValue);
+                ws.Cells[12, 13].Value = ConvertResultForXlsx(X1[4].ResultValue);
+                ws.Cells[13, 13].Value = ConvertResultForXlsx(X1[5].ResultValue);
 
                 #endregion
 
-                #region Ch3
+                #region X2
 
-                ws.Cells[8, 19].Value = ConvertResultForXlsx(Ch3[0].ResultValue);
-                ws.Cells[9, 19].Value = ConvertResultForXlsx(Ch3[1].ResultValue);
-                ws.Cells[10, 19].Value = ConvertResultForXlsx(Ch3[2].ResultValue);
-                ws.Cells[11, 19].Value = ConvertResultForXlsx(Ch3[3].ResultValue);
-                ws.Cells[12, 19].Value = ConvertResultForXlsx(Ch3[4].ResultValue);
-                ws.Cells[13, 19].Value = ConvertResultForXlsx(Ch3[5].ResultValue);
-
-                #endregion
-
-                #region Ch4
-
-                ws.Cells[17, 14].Value = ConvertResultForXlsx(Ch4[0].ResultValue);
-                ws.Cells[18, 14].Value = ConvertResultForXlsx(Ch4[1].ResultValue);
-                ws.Cells[19, 14].Value = ConvertResultForXlsx(Ch4[2].ResultValue);
-                ws.Cells[20, 14].Value = ConvertResultForXlsx(Ch4[3].ResultValue);
-                ws.Cells[21, 14].Value = ConvertResultForXlsx(Ch4[4].ResultValue);
+                ws.Cells[8, 16].Value = ConvertResultForXlsx(X2[0].ResultValue);
+                ws.Cells[9, 16].Value = ConvertResultForXlsx(X2[1].ResultValue);
+                ws.Cells[10, 16].Value = ConvertResultForXlsx(X2[2].ResultValue);
+                ws.Cells[11, 16].Value = ConvertResultForXlsx(X2[3].ResultValue);
+                ws.Cells[12, 16].Value = ConvertResultForXlsx(X2[4].ResultValue);
+                ws.Cells[13, 16].Value = ConvertResultForXlsx(X2[5].ResultValue);
 
                 #endregion
 
-                #region Ch5
+                #region X3
 
-                ws.Cells[17, 17].Value = ConvertResultForXlsx(Ch5[0].ResultValue);
-                ws.Cells[18, 17].Value = ConvertResultForXlsx(Ch5[1].ResultValue);
-                ws.Cells[19, 17].Value = ConvertResultForXlsx(Ch5[2].ResultValue);
-                ws.Cells[20, 17].Value = ConvertResultForXlsx(Ch5[3].ResultValue);
-                ws.Cells[21, 17].Value = ConvertResultForXlsx(Ch5[4].ResultValue);
+                ws.Cells[8, 19].Value = ConvertResultForXlsx(X3[0].ResultValue);
+                ws.Cells[9, 19].Value = ConvertResultForXlsx(X3[1].ResultValue);
+                ws.Cells[10, 19].Value = ConvertResultForXlsx(X3[2].ResultValue);
+                ws.Cells[11, 19].Value = ConvertResultForXlsx(X3[3].ResultValue);
+                ws.Cells[12, 19].Value = ConvertResultForXlsx(X3[4].ResultValue);
+                ws.Cells[13, 19].Value = ConvertResultForXlsx(X3[5].ResultValue);
 
                 #endregion
 
-                #region Ch6
+                #region X4
 
-                ws.Cells[25, 16].Value = ConvertResultForXlsx(Ch6[0].ResultValue);
-                ws.Cells[26, 16].Value = ConvertResultForXlsx(Ch6[1].ResultValue);
-                ws.Cells[27, 16].Value = ConvertResultForXlsx(Ch6[2].ResultValue);
-                ws.Cells[28, 16].Value = ConvertResultForXlsx(Ch6[3].ResultValue);
-                ws.Cells[29, 16].Value = ConvertResultForXlsx(Ch6[4].ResultValue);
+                ws.Cells[17, 14].Value = ConvertResultForXlsx(X4[0].ResultValue);
+                ws.Cells[18, 14].Value = ConvertResultForXlsx(X4[1].ResultValue);
+                ws.Cells[19, 14].Value = ConvertResultForXlsx(X4[2].ResultValue);
+                ws.Cells[20, 14].Value = ConvertResultForXlsx(X4[3].ResultValue);
+                ws.Cells[21, 14].Value = ConvertResultForXlsx(X4[4].ResultValue);
+
+                #endregion
+
+                #region X5
+
+                ws.Cells[17, 17].Value = ConvertResultForXlsx(X5[0].ResultValue);
+                ws.Cells[18, 17].Value = ConvertResultForXlsx(X5[1].ResultValue);
+                ws.Cells[19, 17].Value = ConvertResultForXlsx(X5[2].ResultValue);
+                ws.Cells[20, 17].Value = ConvertResultForXlsx(X5[3].ResultValue);
+                ws.Cells[21, 17].Value = ConvertResultForXlsx(X5[4].ResultValue);
+
+                #endregion
+
+                #region X6
+
+                ws.Cells[25, 16].Value = ConvertResultForXlsx(X6[0].ResultValue);
+                ws.Cells[26, 16].Value = ConvertResultForXlsx(X6[1].ResultValue);
+                ws.Cells[27, 16].Value = ConvertResultForXlsx(X6[2].ResultValue);
+                ws.Cells[28, 16].Value = ConvertResultForXlsx(X6[3].ResultValue);
+                ws.Cells[29, 16].Value = ConvertResultForXlsx(X6[4].ResultValue);
 
                 #endregion
 
@@ -1254,44 +1251,44 @@ namespace MAC.Models
 
             csvContent.AppendLine("OHM;R[0];R[1];R[2];V;V[3];V[5];Hz;Hz[6]");
             csvContent.AppendLine("80;" +
-                                  Ch1[0].ResultValue + ";" +
-                                  Ch2[0].ResultValue + ";" +
-                                  Ch3[0].ResultValue + ";1;" +
-                                  Ch4[0].ResultValue + ";" +
-                                  Ch5[0].ResultValue + ";5;" +
-                                  Ch6[0].ResultValue);
+                                  X1[0].ResultValue + ";" +
+                                  X2[0].ResultValue + ";" +
+                                  X3[0].ResultValue + ";1;" +
+                                  X4[0].ResultValue + ";" +
+                                  X5[0].ResultValue + ";5;" +
+                                  X6[0].ResultValue);
             csvContent.AppendLine("90;" +
-                                  Ch1[1].ResultValue + ";" +
-                                  Ch2[1].ResultValue + ";" +
-                                  Ch3[1].ResultValue + ";2;" +
-                                  Ch4[1].ResultValue + ";" +
-                                  Ch5[1].ResultValue + ";25;" +
-                                  Ch6[1].ResultValue);
+                                  X1[1].ResultValue + ";" +
+                                  X2[1].ResultValue + ";" +
+                                  X3[1].ResultValue + ";2;" +
+                                  X4[1].ResultValue + ";" +
+                                  X5[1].ResultValue + ";25;" +
+                                  X6[1].ResultValue);
             csvContent.AppendLine("100;" +
-                                  Ch1[2].ResultValue + ";" +
-                                  Ch2[2].ResultValue + ";" +
-                                  Ch3[2].ResultValue + ";3;" +
-                                  Ch4[2].ResultValue + ";" +
-                                  Ch5[2].ResultValue + ";50;" +
-                                  Ch6[2].ResultValue);
+                                  X1[2].ResultValue + ";" +
+                                  X2[2].ResultValue + ";" +
+                                  X3[2].ResultValue + ";3;" +
+                                  X4[2].ResultValue + ";" +
+                                  X5[2].ResultValue + ";50;" +
+                                  X6[2].ResultValue);
             csvContent.AppendLine("115;" +
-                                  Ch1[3].ResultValue + ";" +
-                                  Ch2[3].ResultValue + ";" +
-                                  Ch3[3].ResultValue + ";4;" +
-                                  Ch4[3].ResultValue + ";" +
-                                  Ch5[3].ResultValue + ";75;" +
-                                  Ch6[3].ResultValue);
+                                  X1[3].ResultValue + ";" +
+                                  X2[3].ResultValue + ";" +
+                                  X3[3].ResultValue + ";4;" +
+                                  X4[3].ResultValue + ";" +
+                                  X5[3].ResultValue + ";75;" +
+                                  X6[3].ResultValue);
             csvContent.AppendLine("130;" +
-                                  Ch1[4].ResultValue + ";" +
-                                  Ch2[4].ResultValue + ";" +
-                                  Ch3[4].ResultValue + ";5;" +
-                                  Ch4[4].ResultValue + ";" +
-                                  Ch5[4].ResultValue + ";100;" +
-                                  Ch6[4].ResultValue);
+                                  X1[4].ResultValue + ";" +
+                                  X2[4].ResultValue + ";" +
+                                  X3[4].ResultValue + ";5;" +
+                                  X4[4].ResultValue + ";" +
+                                  X5[4].ResultValue + ";100;" +
+                                  X6[4].ResultValue);
             csvContent.AppendLine("140;" +
-                                  Ch1[5].ResultValue + ";" +
-                                  Ch2[5].ResultValue + ";" +
-                                  Ch3[5].ResultValue);
+                                  X1[5].ResultValue + ";" +
+                                  X2[5].ResultValue + ";" +
+                                  X3[5].ResultValue);
 
             #endregion
 
