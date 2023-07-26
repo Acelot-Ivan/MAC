@@ -458,7 +458,7 @@ namespace MAC.Models
                 {
                     if (_mainSettingsModel.IsOnCalibration)
                     {
-                        CalibrationOhmChannelNewVersion(ChannelCh0, ctSource);
+                        CalibrationOhmChannelMac(ChannelCh0, ctSource);
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
@@ -609,7 +609,7 @@ namespace MAC.Models
             _mac.SendWithOutN("\r\n");
         }
 
-        private void CalibrationOhmChannel(int channel, CancellationTokenSource ctSource)
+        private void CalibrationOhmChannelMac(int channel, CancellationTokenSource ctSource)
         {
             var nameChannel = channel < 5
                 ? _channelName[$"CH{channel - 1}"]
@@ -618,6 +618,8 @@ namespace MAC.Models
             CurrentActTest = $"Калибровка {nameChannel}";
 
 
+            _fluke.SetOhmValueCalibration();
+
             _comm.OnPowerIndex(_numberMac);
             _comm.OnСhannel(channel);
 
@@ -625,6 +627,16 @@ namespace MAC.Models
             _mac.SendWithOutN("init def");
             
             //check  "DO YOU WANT TO PERFORM REINITIALIZATION (Y/N)? "
+            _mac.SendWithOutN("y");
+
+            _mac.SendWithOutN("test");
+
+            Thread.Sleep(30000);
+
+            _mac.SendWithOutN(" ");
+
+            _mac.SendWithOutN($"fcal {channel} 200");
+
             _mac.SendWithOutN("y");
         }
 
