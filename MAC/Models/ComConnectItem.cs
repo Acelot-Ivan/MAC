@@ -134,7 +134,6 @@ namespace MAC.Models
             try
             {
                 resultCheck = serialPort.StartCheck(ComPort, TechnicalName);
-                GerSerialNumberSc();
             }
             catch (Exception e)
             {
@@ -153,6 +152,7 @@ namespace MAC.Models
         {
             IsChecked = true;
             CheckComConnect();
+            GerSerialNumberSc();
             //await Task.Run(CheckComConnect);
             IsChecked = false;
         }
