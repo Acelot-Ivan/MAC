@@ -662,15 +662,18 @@ namespace MAC.Models
 
                 itemCh.IsСheckedNow = true;
 
+                _fluke.FlukeOff();
 
-                if (isStartChannelMeasurement)
-                {
-                    _fluke.FlukeOff();
-                }
+                //if (isStartChannelMeasurement)
+                //{
+                //    _fluke.FlukeOff();
+                //}
 
                 _comm.OnСhannel(channel);
 
-                itemCh.SetFlukeSettings(_fluke, isStartChannelMeasurement);
+                //itemCh.SetFlukeSettings(_fluke, isStartChannelMeasurement);
+
+                itemCh.SetFlukeSettings(_fluke, true);
 
                 isStartChannelMeasurement = false;
 
