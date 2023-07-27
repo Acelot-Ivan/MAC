@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.IO.Ports;
 using System.Threading;
 using System.Windows;
@@ -93,10 +94,12 @@ namespace MAC.ViewModels.Services.SerialPort
             if (!validationOhmList.Contains(value))
                 throw new ArgumentException();
 
+            var valueFix = value.ToString(CultureInfo.InvariantCulture).Replace(",",".");
+
             Send(
                 isOnOper
-                    ? $"OUT {value} OHM;OPER"
-                    : $"OUT {value} OHM"
+                    ? $"OUT {valueFix} OHM;OPER"
+                    : $"OUT {valueFix} OHM"
             );
         }
 
