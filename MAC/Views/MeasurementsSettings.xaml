@@ -164,7 +164,7 @@
                         <Border Grid.Column="8">
                             <Grid>
                                 <Grid>
-                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz3}"
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz1}"
                                               Style="{StaticResource ResultCheckBox}" />
                                 </Grid>
                             </Grid>
