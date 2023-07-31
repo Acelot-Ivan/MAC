@@ -51,7 +51,7 @@ namespace MAC.ViewModels.Services.SerialPort
             {
                 try
                 {
-                    _fluke.WriteLine(text + "\r\n");
+                    _fluke.WriteLine(text + "\r");
                     Thread.Sleep(500);
                     return;
                 }

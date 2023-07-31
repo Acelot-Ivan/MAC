@@ -169,7 +169,7 @@ namespace MAC.Models
                 new VoltValue(1.325m, activeSettings.Ch3V2),
                 new VoltValue(2.550m, activeSettings.Ch3V3),
                 new VoltValue(3.775m, activeSettings.Ch3V4),
-                new VoltValue(4.775m, activeSettings.Ch3V5)
+                new VoltValue(4.755m, activeSettings.Ch3V5)
             };
             X5 = new ObservableCollection<IMacValue>
             {
@@ -177,7 +177,7 @@ namespace MAC.Models
                 new VoltValue(1.325m, activeSettings.Ch5V2),
                 new VoltValue(2.550m, activeSettings.Ch5V3),
                 new VoltValue(3.775m, activeSettings.Ch5V4),
-                new VoltValue(4.775m, activeSettings.Ch5V5)
+                new VoltValue(4.755m, activeSettings.Ch5V5)
             };
             X6 = new ObservableCollection<IMacValue>
             {
@@ -1309,9 +1309,7 @@ namespace MAC.Models
         {
             var content = _mac.GetFullData();
 
-            var fileName = channel < 5
-                ? $"CH{channel - 1}.txt"
-                : $"CH{channel}.txt";
+            var fileName =  $"X{channel}.txt";
 
             var folderLogPath = Path.Combine(folderPath, "Log");
 
