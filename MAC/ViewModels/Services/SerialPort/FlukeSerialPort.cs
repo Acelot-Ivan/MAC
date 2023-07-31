@@ -94,12 +94,10 @@ namespace MAC.ViewModels.Services.SerialPort
             if (!validationOhmList.Contains(value))
                 throw new ArgumentException();
 
-            var valueFix = value.ToString(CultureInfo.InvariantCulture).Replace(",",".");
-
             Send(
                 isOnOper
-                    ? $"OUT {valueFix} OHM;OPER"
-                    : $"OUT {valueFix} OHM"
+                    ? $"OUT {value} OHM;OPER"
+                    : $"OUT {value} OHM"
             );
         }
 
@@ -121,11 +119,12 @@ namespace MAC.ViewModels.Services.SerialPort
             if (!validationVoltList.Contains(value))
                 throw new ArgumentException();
 
+            var valueFix = value.ToString(CultureInfo.InvariantCulture).Replace(",", ".");
 
             Send(
                 isOnOper
-                    ? $"OUT {value} V;OPER"
-                    : $"OUT {value} V"
+                    ? $"OUT {valueFix} V;OPER"
+                    : $"OUT {valueFix} V"
             );
         }
         /// <summary>
