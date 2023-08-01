@@ -119,19 +119,19 @@
                         </Border>
                         <Border Grid.Column="1">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm1}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm1X1}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="2">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm1}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm1X2}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="3">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm1}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm1X3}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
@@ -144,14 +144,14 @@
                         <Border Grid.Column="5">
                             <Grid>
                                 <Grid>
-                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch3V1}"
+                                    <CheckBox IsChecked="{Binding ActiveSettings.V1X4}"
                                               Style="{StaticResource ResultCheckBox}" />
                                 </Grid>
                             </Grid>
                         </Border>
                         <Border Grid.Column="6">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch5V1}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.V1X5}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
@@ -164,7 +164,7 @@
                         <Border Grid.Column="8">
                             <Grid>
                                 <Grid>
-                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz1}"
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Hz1X6}"
                                               Style="{StaticResource ResultCheckBox}" />
                                 </Grid>
                             </Grid>
@@ -194,19 +194,19 @@
                         </Border>
                         <Border Grid.Column="1">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm2}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm2X1}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="2">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm2}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm2X2}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="3">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm2}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm2X3}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
@@ -219,14 +219,14 @@
                         <Border Grid.Column="5">
                             <Grid>
                                 <Grid>
-                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch3V2}"
+                                    <CheckBox IsChecked="{Binding ActiveSettings.V2X4}"
                                               Style="{StaticResource ResultCheckBox}" />
                                 </Grid>
                             </Grid>
                         </Border>
                         <Border Grid.Column="6">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch5V2}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.V2X5}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
@@ -239,7 +239,7 @@
                         <Border Grid.Column="8">
                             <Grid>
                                 <Grid>
-                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz2}"
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Hz2X6}"
                                               Style="{StaticResource ResultCheckBox}" />
                                 </Grid>
                             </Grid>
@@ -269,19 +269,19 @@
                         </Border>
                         <Border Grid.Column="1">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm3}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm3X1}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="2">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm3}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm3X2}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="3">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm3}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm3X3}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
@@ -294,14 +294,14 @@
                         <Border Grid.Column="5">
                             <Grid>
                                 <Grid>
-                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch3V3}"
+                                    <CheckBox IsChecked="{Binding ActiveSettings.V3X4}"
                                               Style="{StaticResource ResultCheckBox}" />
                                 </Grid>
                             </Grid>
                         </Border>
                         <Border Grid.Column="6">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch5V3}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.V3X5}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
@@ -314,7 +314,7 @@
                         <Border Grid.Column="8">
                             <Grid>
                                 <Grid>
-                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz3}"
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Hz3X6}"
                                               Style="{StaticResource ResultCheckBox}" />
                                 </Grid>
                             </Grid>
@@ -344,19 +344,19 @@
                         </Border>
                         <Border Grid.Column="1">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm4}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm4X1}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="2">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm4}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm4X2}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="3">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm4}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm4X3}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
@@ -369,14 +369,14 @@
                         <Border Grid.Column="5">
                             <Grid>
                                 <Grid>
-                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch3V4}"
+                                    <CheckBox IsChecked="{Binding ActiveSettings.V4X4}"
                                               Style="{StaticResource ResultCheckBox}" />
                                 </Grid>
                             </Grid>
                         </Border>
                         <Border Grid.Column="6">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch5V4}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.V4X5}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
@@ -389,7 +389,7 @@
                         <Border Grid.Column="8">
                             <Grid>
                                 <Grid>
-                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz4}"
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Hz4X6}"
                                               Style="{StaticResource ResultCheckBox}" />
                                 </Grid>
                             </Grid>
@@ -419,19 +419,19 @@
                         </Border>
                         <Border Grid.Column="1">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch0Ohm5}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm5X1}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="2">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch1Ohm5}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm5X2}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
                         <Border Grid.Column="3">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch2Ohm5}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.Ohm5X3}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
@@ -444,14 +444,14 @@
                         <Border Grid.Column="5">
                             <Grid>
                                 <Grid>
-                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch3V5}"
+                                    <CheckBox IsChecked="{Binding ActiveSettings.V5X4}"
                                               Style="{StaticResource ResultCheckBox}" />
                                 </Grid>
                             </Grid>
                         </Border>
                         <Border Grid.Column="6">
                             <Grid>
-                                <CheckBox IsChecked="{Binding ActiveSettings.Ch5V5}"
+                                <CheckBox IsChecked="{Binding ActiveSettings.V5X5}"
                                           Style="{StaticResource ResultCheckBox}" />
                             </Grid>
                         </Border>
@@ -464,7 +464,7 @@
                         <Border Grid.Column="8">
                             <Grid>
                                 <Grid>
-                                    <CheckBox IsChecked="{Binding ActiveSettings.Ch6Hz5}"
+                                    <CheckBox IsChecked="{Binding ActiveSettings.Hz5X6}"
                                               Style="{StaticResource ResultCheckBox}" />
                                 </Grid>
                             </Grid>

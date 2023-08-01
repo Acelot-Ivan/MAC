@@ -7,110 +7,110 @@ namespace MAC.Models
     {
         public ActiveSettingsModel()
         {
-            Ch0Ohm1 = Settings.Default.Ch0Ohm1IsActive;
-            Ch0Ohm2 = Settings.Default.Ch0Ohm2IsActive;
-            Ch0Ohm3 = Settings.Default.Ch0Ohm3IsActive;
-            Ch0Ohm4 = Settings.Default.Ch0Ohm4IsActive;
-            Ch0Ohm5 = Settings.Default.Ch0Ohm5IsActive;
+            Ohm1X1 = Settings.Default.Ch0Ohm1IsActive;
+            Ohm2X1 = Settings.Default.Ch0Ohm2IsActive;
+            Ohm3X1 = Settings.Default.Ch0Ohm3IsActive;
+            Ohm4X1 = Settings.Default.Ch0Ohm4IsActive;
+            Ohm5X1 = Settings.Default.Ch0Ohm5IsActive;
 
 
-            Ch1Ohm1 = Settings.Default.Ch1Ohm1IsActive;
-            Ch1Ohm2 = Settings.Default.Ch1Ohm2IsActive;
-            Ch1Ohm3 = Settings.Default.Ch1Ohm3IsActive;
-            Ch1Ohm4 = Settings.Default.Ch1Ohm4IsActive;
-            Ch1Ohm5 = Settings.Default.Ch1Ohm5IsActive;
+            Ohm1X2 = Settings.Default.Ch1Ohm1IsActive;
+            Ohm2X2 = Settings.Default.Ch1Ohm2IsActive;
+            Ohm3X2 = Settings.Default.Ch1Ohm3IsActive;
+            Ohm4X2 = Settings.Default.Ch1Ohm4IsActive;
+            Ohm5X2 = Settings.Default.Ch1Ohm5IsActive;
 
 
-            Ch2Ohm1 = Settings.Default.Ch2Ohm1IsActive;
-            Ch2Ohm2 = Settings.Default.Ch2Ohm2IsActive;
-            Ch2Ohm3 = Settings.Default.Ch2Ohm3IsActive;
-            Ch2Ohm4 = Settings.Default.Ch2Ohm4IsActive;
-            Ch2Ohm5 = Settings.Default.Ch2Ohm5IsActive;
+            Ohm1X3 = Settings.Default.Ch2Ohm1IsActive;
+            Ohm2X3 = Settings.Default.Ch2Ohm2IsActive;
+            Ohm3X3 = Settings.Default.Ch2Ohm3IsActive;
+            Ohm4X3 = Settings.Default.Ch2Ohm4IsActive;
+            Ohm5X3 = Settings.Default.Ch2Ohm5IsActive;
 
-            Ch3V1 = Settings.Default.Ch3V1IsActive;
-            Ch3V2 = Settings.Default.Ch3V2IsActive;
-            Ch3V3 = Settings.Default.Ch3V3IsActive;
-            Ch3V4 = Settings.Default.Ch3V4IsActive;
-            Ch3V5 = Settings.Default.Ch3V5IsActive;
+            V1X4 = Settings.Default.Ch3V1IsActive;
+            V2X4 = Settings.Default.Ch3V2IsActive;
+            V3X4 = Settings.Default.Ch3V3IsActive;
+            V4X4 = Settings.Default.Ch3V4IsActive;
+            V5X4 = Settings.Default.Ch3V5IsActive;
 
-            Ch5V1 = Settings.Default.Ch5V1IsActive;
-            Ch5V2 = Settings.Default.Ch5V2IsActive;
-            Ch5V3 = Settings.Default.Ch5V3IsActive;
-            Ch5V4 = Settings.Default.Ch5V4IsActive;
-            Ch5V5 = Settings.Default.Ch5V5IsActive;
+            V1X5 = Settings.Default.Ch5V1IsActive;
+            V2X5 = Settings.Default.Ch5V2IsActive;
+            V3X5 = Settings.Default.Ch5V3IsActive;
+            V4X5 = Settings.Default.Ch5V4IsActive;
+            V5X5 = Settings.Default.Ch5V5IsActive;
 
-            Ch6Hz1 = Settings.Default.Ch6Hz1IsActive;
-            Ch6Hz2 = Settings.Default.Ch6Hz2IsActive;
-            Ch6Hz3 = Settings.Default.Ch6Hz3IsActive;
-            Ch6Hz4 = Settings.Default.Ch6Hz4IsActive;
-            Ch6Hz5 = Settings.Default.Ch6Hz1IsActive;
+            Hz1X6 = Settings.Default.Ch6Hz1IsActive;
+            Hz2X6 = Settings.Default.Ch6Hz2IsActive;
+            Hz3X6 = Settings.Default.Ch6Hz3IsActive;
+            Hz4X6 = Settings.Default.Ch6Hz4IsActive;
+            Hz5X6 = Settings.Default.Ch6Hz1IsActive;
         }
 
 
         #region CH0
 
-        private bool _ch0Ohm1;
-        private bool _ch0Ohm2;
-        private bool _ch0Ohm3;
-        private bool _ch0Ohm4;
-        private bool _ch0Ohm5;
+        private bool _ohm1X1;
+        private bool _ohm2X1;
+        private bool _ohm3X1;
+        private bool _ohm4X1;
+        private bool _ohm5X1;
 
 
-        public bool Ch0Ohm1
+        public bool Ohm1X1
         {
-            get => _ch0Ohm1;
+            get => _ohm1X1;
             set
             {
-                _ch0Ohm1 = value;
-                OnPropertyChanged(nameof(Ch0Ohm1));
+                _ohm1X1 = value;
+                OnPropertyChanged(nameof(Ohm1X1));
                 Settings.Default.Ch0Ohm1IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch0Ohm2
+        public bool Ohm2X1
         {
-            get => _ch0Ohm2;
+            get => _ohm2X1;
             set
             {
-                _ch0Ohm2 = value;
-                OnPropertyChanged(nameof(Ch0Ohm2));
+                _ohm2X1 = value;
+                OnPropertyChanged(nameof(Ohm2X1));
                 Settings.Default.Ch0Ohm2IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch0Ohm3
+        public bool Ohm3X1
         {
-            get => _ch0Ohm3;
+            get => _ohm3X1;
             set
             {
-                _ch0Ohm3 = value;
-                OnPropertyChanged(nameof(Ch0Ohm3));
+                _ohm3X1 = value;
+                OnPropertyChanged(nameof(Ohm3X1));
                 Settings.Default.Ch0Ohm3IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch0Ohm4
+        public bool Ohm4X1
         {
-            get => _ch0Ohm4;
+            get => _ohm4X1;
             set
             {
-                _ch0Ohm4 = value;
-                OnPropertyChanged(nameof(Ch0Ohm4));
+                _ohm4X1 = value;
+                OnPropertyChanged(nameof(Ohm4X1));
                 Settings.Default.Ch0Ohm4IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch0Ohm5
+        public bool Ohm5X1
         {
-            get => _ch0Ohm5;
+            get => _ohm5X1;
             set
             {
-                _ch0Ohm5 = value;
-                OnPropertyChanged(nameof(Ch0Ohm5));
+                _ohm5X1 = value;
+                OnPropertyChanged(nameof(Ohm5X1));
                 Settings.Default.Ch0Ohm5IsActive = value;
                 Settings.Default.Save();
             }
@@ -120,67 +120,67 @@ namespace MAC.Models
 
         #region CH1
 
-        private bool _ch1Ohm1;
-        private bool _ch1Ohm2;
-        private bool _ch1Ohm3;
-        private bool _ch1Ohm4;
-        private bool _ch1Ohm5;
+        private bool _ohm1X2;
+        private bool _ohm2X2;
+        private bool _ohm3X2;
+        private bool _ohm4X2;
+        private bool _ohm5X2;
 
-        public bool Ch1Ohm1
+        public bool Ohm1X2
         {
-            get => _ch1Ohm1;
+            get => _ohm1X2;
             set
             {
-                _ch1Ohm1 = value;
-                OnPropertyChanged(nameof(Ch1Ohm1));
+                _ohm1X2 = value;
+                OnPropertyChanged(nameof(Ohm1X2));
                 Settings.Default.Ch1Ohm1IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch1Ohm2
+        public bool Ohm2X2
         {
-            get => _ch1Ohm2;
+            get => _ohm2X2;
             set
             {
-                _ch1Ohm2 = value;
-                OnPropertyChanged(nameof(Ch1Ohm2));
+                _ohm2X2 = value;
+                OnPropertyChanged(nameof(Ohm2X2));
                 Settings.Default.Ch1Ohm2IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch1Ohm3
+        public bool Ohm3X2
         {
-            get => _ch1Ohm3;
+            get => _ohm3X2;
             set
             {
-                _ch1Ohm3 = value;
-                OnPropertyChanged(nameof(Ch1Ohm3));
+                _ohm3X2 = value;
+                OnPropertyChanged(nameof(Ohm3X2));
                 Settings.Default.Ch1Ohm3IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch1Ohm4
+        public bool Ohm4X2
         {
-            get => _ch1Ohm4;
+            get => _ohm4X2;
             set
             {
-                _ch1Ohm4 = value;
-                OnPropertyChanged(nameof(Ch1Ohm4));
+                _ohm4X2 = value;
+                OnPropertyChanged(nameof(Ohm4X2));
                 Settings.Default.Ch1Ohm4IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch1Ohm5
+        public bool Ohm5X2
         {
-            get => _ch1Ohm5;
+            get => _ohm5X2;
             set
             {
-                _ch1Ohm5 = value;
-                OnPropertyChanged(nameof(Ch1Ohm5));
+                _ohm5X2 = value;
+                OnPropertyChanged(nameof(Ohm5X2));
                 Settings.Default.Ch1Ohm5IsActive = value;
                 Settings.Default.Save();
             }
@@ -189,67 +189,67 @@ namespace MAC.Models
 
         #region CH2
 
-        private bool _ch2Ohm1;
-        private bool _ch2Ohm2;
-        private bool _ch2Ohm3;
-        private bool _ch2Ohm4;
-        private bool _ch2Ohm5;
+        private bool _ohm1X3;
+        private bool _ohm2X3;
+        private bool _ohm3X3;
+        private bool _ohm4X3;
+        private bool _ohm5X3;
 
-        public bool Ch2Ohm1
+        public bool Ohm1X3
         {
-            get => _ch2Ohm1;
+            get => _ohm1X3;
             set
             {
-                _ch2Ohm1 = value;
-                OnPropertyChanged(nameof(Ch2Ohm1));
+                _ohm1X3 = value;
+                OnPropertyChanged(nameof(Ohm1X3));
                 Settings.Default.Ch2Ohm1IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch2Ohm2
+        public bool Ohm2X3
         {
-            get => _ch2Ohm2;
+            get => _ohm2X3;
             set
             {
-                _ch2Ohm2 = value;
-                OnPropertyChanged(nameof(Ch2Ohm2));
+                _ohm2X3 = value;
+                OnPropertyChanged(nameof(Ohm2X3));
                 Settings.Default.Ch2Ohm2IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch2Ohm3
+        public bool Ohm3X3
         {
-            get => _ch2Ohm3;
+            get => _ohm3X3;
             set
             {
-                _ch2Ohm3 = value;
-                OnPropertyChanged(nameof(Ch2Ohm3));
+                _ohm3X3 = value;
+                OnPropertyChanged(nameof(Ohm3X3));
                 Settings.Default.Ch2Ohm3IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch2Ohm4
+        public bool Ohm4X3
         {
-            get => _ch2Ohm4;
+            get => _ohm4X3;
             set
             {
-                _ch2Ohm4 = value;
-                OnPropertyChanged(nameof(Ch2Ohm4));
+                _ohm4X3 = value;
+                OnPropertyChanged(nameof(Ohm4X3));
                 Settings.Default.Ch2Ohm4IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch2Ohm5
+        public bool Ohm5X3
         {
-            get => _ch2Ohm5;
+            get => _ohm5X3;
             set
             {
-                _ch2Ohm5 = value;
-                OnPropertyChanged(nameof(Ch2Ohm5));
+                _ohm5X3 = value;
+                OnPropertyChanged(nameof(Ohm5X3));
                 Settings.Default.Ch2Ohm5IsActive = value;
                 Settings.Default.Save();
             }
@@ -259,67 +259,67 @@ namespace MAC.Models
 
         #region CH3
 
-        private bool _ch3V1;
-        private bool _ch3V2;
-        private bool _ch3V3;
-        private bool _ch3V4;
-        private bool _ch3V5;
+        private bool _v1X4;
+        private bool _v2X4;
+        private bool _v3X4;
+        private bool _v4X4;
+        private bool _v5X4;
 
-        public bool Ch3V1
+        public bool V1X4
         {
-            get => _ch3V1;
+            get => _v1X4;
             set
             {
-                _ch3V1 = value;
-                OnPropertyChanged(nameof(Ch3V1));
+                _v1X4 = value;
+                OnPropertyChanged(nameof(V1X4));
                 Settings.Default.Ch3V1IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch3V2
+        public bool V2X4
         {
-            get => _ch3V2;
+            get => _v2X4;
             set
             {
-                _ch3V2 = value;
-                OnPropertyChanged(nameof(Ch3V2));
+                _v2X4 = value;
+                OnPropertyChanged(nameof(V2X4));
                 Settings.Default.Ch3V2IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch3V3
+        public bool V3X4
         {
-            get => _ch3V3;
+            get => _v3X4;
             set
             {
-                _ch3V3 = value;
-                OnPropertyChanged(nameof(Ch3V3));
+                _v3X4 = value;
+                OnPropertyChanged(nameof(V3X4));
                 Settings.Default.Ch3V3IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch3V4
+        public bool V4X4
         {
-            get => _ch3V4;
+            get => _v4X4;
             set
             {
-                _ch3V4 = value;
-                OnPropertyChanged(nameof(Ch3V4));
+                _v4X4 = value;
+                OnPropertyChanged(nameof(V4X4));
                 Settings.Default.Ch3V4IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch3V5
+        public bool V5X4
         {
-            get => _ch3V5;
+            get => _v5X4;
             set
             {
-                _ch3V5 = value;
-                OnPropertyChanged(nameof(Ch3V5));
+                _v5X4 = value;
+                OnPropertyChanged(nameof(V5X4));
                 Settings.Default.Ch3V5IsActive = value;
                 Settings.Default.Save();
             }
@@ -329,67 +329,67 @@ namespace MAC.Models
 
         #region CH5
 
-        private bool _ch5V1;
-        private bool _ch5V2;
-        private bool _ch5V3;
-        private bool _ch5V4;
-        private bool _ch5V5;
+        private bool _v1X5;
+        private bool _v2X5;
+        private bool _v3X5;
+        private bool _v4X5;
+        private bool _v5X5;
 
-        public bool Ch5V1
+        public bool V1X5
         {
-            get => _ch5V1;
+            get => _v1X5;
             set
             {
-                _ch5V1 = value;
-                OnPropertyChanged(nameof(Ch5V1));
+                _v1X5 = value;
+                OnPropertyChanged(nameof(V1X5));
                 Settings.Default.Ch5V1IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch5V2
+        public bool V2X5
         {
-            get => _ch5V2;
+            get => _v2X5;
             set
             {
-                _ch5V2 = value;
-                OnPropertyChanged(nameof(Ch5V2));
+                _v2X5 = value;
+                OnPropertyChanged(nameof(V2X5));
                 Settings.Default.Ch5V2IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch5V3
+        public bool V3X5
         {
-            get => _ch5V3;
+            get => _v3X5;
             set
             {
-                _ch5V3 = value;
-                OnPropertyChanged(nameof(Ch5V3));
+                _v3X5 = value;
+                OnPropertyChanged(nameof(V3X5));
                 Settings.Default.Ch5V3IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch5V4
+        public bool V4X5
         {
-            get => _ch5V4;
+            get => _v4X5;
             set
             {
-                _ch5V4 = value;
-                OnPropertyChanged(nameof(Ch5V4));
+                _v4X5 = value;
+                OnPropertyChanged(nameof(V4X5));
                 Settings.Default.Ch5V4IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch5V5
+        public bool V5X5
         {
-            get => _ch5V5;
+            get => _v5X5;
             set
             {
-                _ch5V5 = value;
-                OnPropertyChanged(nameof(Ch5V5));
+                _v5X5 = value;
+                OnPropertyChanged(nameof(V5X5));
                 Settings.Default.Ch5V5IsActive = value;
                 Settings.Default.Save();
             }
@@ -399,67 +399,67 @@ namespace MAC.Models
 
         #region CH6
 
-        private bool _ch6Hz1;
-        private bool _ch6Hz2;
-        private bool _ch6Hz3;
-        private bool _ch6Hz4;
-        private bool _ch6Hz5;
+        private bool _hz1X6;
+        private bool _hz2X6;
+        private bool _hz3X6;
+        private bool _hz4X6;
+        private bool _hz5X6;
 
-        public bool Ch6Hz1
+        public bool Hz1X6
         {
-            get => _ch6Hz1;
+            get => _hz1X6;
             set
             {
-                _ch6Hz1 = value;
-                OnPropertyChanged(nameof(Ch6Hz1));
+                _hz1X6 = value;
+                OnPropertyChanged(nameof(Hz1X6));
                 Settings.Default.Ch6Hz1IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch6Hz2
+        public bool Hz2X6
         {
-            get => _ch6Hz2;
+            get => _hz2X6;
             set
             {
-                _ch6Hz2 = value;
-                OnPropertyChanged(nameof(Ch6Hz2));
+                _hz2X6 = value;
+                OnPropertyChanged(nameof(Hz2X6));
                 Settings.Default.Ch6Hz2IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch6Hz3
+        public bool Hz3X6
         {
-            get => _ch6Hz3;
+            get => _hz3X6;
             set
             {
-                _ch6Hz3 = value;
-                OnPropertyChanged(nameof(Ch6Hz3));
+                _hz3X6 = value;
+                OnPropertyChanged(nameof(Hz3X6));
                 Settings.Default.Ch6Hz3IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch6Hz4
+        public bool Hz4X6
         {
-            get => _ch6Hz4;
+            get => _hz4X6;
             set
             {
-                _ch6Hz4 = value;
-                OnPropertyChanged(nameof(Ch6Hz4));
+                _hz4X6 = value;
+                OnPropertyChanged(nameof(Hz4X6));
                 Settings.Default.Ch6Hz4IsActive = value;
                 Settings.Default.Save();
             }
         }
 
-        public bool Ch6Hz5
+        public bool Hz5X6
         {
-            get => _ch6Hz5;
+            get => _hz5X6;
             set
             {
-                _ch6Hz5 = value;
-                OnPropertyChanged(nameof(Ch6Hz5));
+                _hz5X6 = value;
+                OnPropertyChanged(nameof(Hz5X6));
                 Settings.Default.Ch6Hz1IsActive = value;
                 Settings.Default.Save();
             }
@@ -471,40 +471,40 @@ namespace MAC.Models
         /// <summary>
         /// Флаг показывающий, выбран весь канал X1 или нет.
         /// </summary>
-        public bool IsAllCh0Active => Ch0Ohm1 && Ch0Ohm2 &&
-                                      Ch0Ohm3 && Ch0Ohm4 &&
-                                      Ch0Ohm5;
+        public bool IsAllCh0Active => Ohm1X1 && Ohm2X1 &&
+                                      Ohm3X1 && Ohm4X1 &&
+                                      Ohm5X1;
 
         /// <summary>
         /// Флаг показывающий, выбран весь канал X2 или нет.
         /// </summary>
-        public bool IsAllCh1Active => Ch1Ohm1 && Ch1Ohm2 &&
-                                      Ch1Ohm3 && Ch1Ohm4 &&
-                                      Ch1Ohm5;
+        public bool IsAllCh1Active => Ohm1X2 && Ohm2X2 &&
+                                      Ohm3X2 && Ohm4X2 &&
+                                      Ohm5X2;
         /// <summary>
         /// Флаг показывающий, выбран весь канал X3 или нет.
         /// </summary>
-        public bool IsAllCh2Active => Ch2Ohm1 && Ch2Ohm2 &&
-                                      Ch2Ohm3 && Ch2Ohm4 &&
-                                      Ch2Ohm5;
+        public bool IsAllCh2Active => Ohm1X3 && Ohm2X3 &&
+                                      Ohm3X3 && Ohm4X3 &&
+                                      Ohm5X3;
 
         /// <summary>
         /// Флаг показывающий, выбран весь канал X4 или нет.
         /// </summary>
-        public bool IsAllCh3Active => Ch3V1 && Ch3V2 &&
-                                      Ch3V3 && Ch3V4 &&
-                                      Ch3V5;
+        public bool IsAllCh3Active => V1X4 && V2X4 &&
+                                      V3X4 && V4X4 &&
+                                      V5X4;
         /// <summary>
         /// Флаг показывающий, выбран весь канал X5 или нет.
         /// </summary>
-        public bool IsAllCh5Active => Ch5V1 && Ch5V2 &&
-                                      Ch5V3 && Ch5V4 &&
-                                      Ch5V5;
+        public bool IsAllCh5Active => V1X5 && V2X5 &&
+                                      V3X5 && V4X5 &&
+                                      V5X5;
         /// <summary>
         /// Флаг показывающий, выбран весь канал X6 или нет.
         /// </summary>
-        public bool IsAllCh6Active => Ch6Hz1 && Ch6Hz2 &&
-                                      Ch6Hz3 && Ch6Hz4 &&
-                                      Ch6Hz5;
+        public bool IsAllCh6Active => Hz1X6 && Hz2X6 &&
+                                      Hz3X6 && Hz4X6 &&
+                                      Hz5X6;
     }
 }

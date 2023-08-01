@@ -286,7 +286,7 @@
                                                                             <Grid>
                                                                                 <customControl:ChannelButton
                                                                                     TextButton="t возд"
-                                                                                    DefaultChannel="Ch0"
+                                                                                    DefaultChannel="X1"
                                                                                     CurrentChannel="{Binding CurrentChannel}"
                                                                                     RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
                                                                             </Grid>
@@ -314,7 +314,7 @@
                                                                             <Grid>
                                                                                 <customControl:ChannelButton
                                                                                     TextButton="t дор"
-                                                                                    DefaultChannel="Ch1"
+                                                                                    DefaultChannel="X2"
                                                                                     CurrentChannel="{Binding CurrentChannel}"
                                                                                     RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
 
@@ -343,7 +343,7 @@
                                                                             <Grid>
                                                                                 <customControl:ChannelButton
                                                                                     TextButton="t п/п"
-                                                                                    DefaultChannel="Ch2"
+                                                                                    DefaultChannel="X3"
                                                                                     CurrentChannel="{Binding CurrentChannel}"
                                                                                     RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
                                                                             </Grid>
@@ -419,7 +419,7 @@
                                                                             <Grid>
                                                                                 <customControl:ChannelButton
                                                                                     TextButton="Влаж"
-                                                                                    DefaultChannel="Ch3"
+                                                                                    DefaultChannel="X4"
                                                                                     CurrentChannel="{Binding CurrentChannel}"
                                                                                     RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
                                                                             </Grid>
@@ -447,7 +447,7 @@
                                                                             <Grid>
                                                                                 <customControl:ChannelButton
                                                                                     TextButton="ДНВ"
-                                                                                    DefaultChannel="Ch5"
+                                                                                    DefaultChannel="X5"
                                                                                     CurrentChannel="{Binding CurrentChannel}"
                                                                                     RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
                                                                             </Grid>
@@ -523,7 +523,7 @@
                                                                             <Grid>
                                                                                 <customControl:ChannelButton
                                                                                     TextButton="ДВС"
-                                                                                    DefaultChannel="Ch6"
+                                                                                    DefaultChannel="X6"
                                                                                     CurrentChannel="{Binding CurrentChannel}"
                                                                                     RestartChannelTestCommand="{Binding RelativeSource={RelativeSource Mode=FindAncestor , AncestorType=Window} , Path= DataContext.RestartTestChannelCommand}" />
                                                                             </Grid>

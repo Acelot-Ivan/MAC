@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO.Ports;
-using System.Runtime.Remoting.Channels;
 using System.Threading;
 using System.Windows;
 using MAC.Models;

@@ -39,61 +39,61 @@ namespace MAC.ViewModels
         private void IsAllCh0Click()
         {
             var newValue = !ActiveSettings.IsAllCh0Active;
-            ActiveSettings.Ch0Ohm1 = newValue;
-            ActiveSettings.Ch0Ohm2 = newValue;
-            ActiveSettings.Ch0Ohm3 = newValue;
-            ActiveSettings.Ch0Ohm4 = newValue;
-            ActiveSettings.Ch0Ohm5 = newValue;
+            ActiveSettings.Ohm1X1 = newValue;
+            ActiveSettings.Ohm2X1 = newValue;
+            ActiveSettings.Ohm3X1 = newValue;
+            ActiveSettings.Ohm4X1 = newValue;
+            ActiveSettings.Ohm5X1 = newValue;
         }
 
         private void IsAllCh1Click()
         {
             var isAllActive = !ActiveSettings.IsAllCh1Active;
-            ActiveSettings.Ch1Ohm1 = isAllActive;
-            ActiveSettings.Ch1Ohm2 = isAllActive;
-            ActiveSettings.Ch1Ohm3 = isAllActive;
-            ActiveSettings.Ch1Ohm4 = isAllActive;
-            ActiveSettings.Ch1Ohm5 = isAllActive;
+            ActiveSettings.Ohm1X2 = isAllActive;
+            ActiveSettings.Ohm2X2 = isAllActive;
+            ActiveSettings.Ohm3X2 = isAllActive;
+            ActiveSettings.Ohm4X2 = isAllActive;
+            ActiveSettings.Ohm5X2 = isAllActive;
         }
 
         private void IsAllCh2Click()
         {
             var isAllActive = !ActiveSettings.IsAllCh2Active;
-            ActiveSettings.Ch2Ohm1 = isAllActive;
-            ActiveSettings.Ch2Ohm2 = isAllActive;
-            ActiveSettings.Ch2Ohm3 = isAllActive;
-            ActiveSettings.Ch2Ohm4 = isAllActive;
-            ActiveSettings.Ch2Ohm5 = isAllActive;
+            ActiveSettings.Ohm1X3 = isAllActive;
+            ActiveSettings.Ohm2X3 = isAllActive;
+            ActiveSettings.Ohm3X3 = isAllActive;
+            ActiveSettings.Ohm4X3 = isAllActive;
+            ActiveSettings.Ohm5X3 = isAllActive;
         }
 
         private void IsAllCh3Click()
         {
             var isAllActive = !ActiveSettings.IsAllCh3Active;
-            ActiveSettings.Ch3V1 = isAllActive;
-            ActiveSettings.Ch3V2 = isAllActive;
-            ActiveSettings.Ch3V3 = isAllActive;
-            ActiveSettings.Ch3V4 = isAllActive;
-            ActiveSettings.Ch3V5 = isAllActive;
+            ActiveSettings.V1X4 = isAllActive;
+            ActiveSettings.V2X4 = isAllActive;
+            ActiveSettings.V3X4 = isAllActive;
+            ActiveSettings.V4X4 = isAllActive;
+            ActiveSettings.V5X4 = isAllActive;
         }
 
         private void IsAllCh5Click()
         {
             var isAllActive = !ActiveSettings.IsAllCh5Active;
-            ActiveSettings.Ch5V1 = isAllActive;
-            ActiveSettings.Ch5V2 = isAllActive;
-            ActiveSettings.Ch5V3 = isAllActive;
-            ActiveSettings.Ch5V4 = isAllActive;
-            ActiveSettings.Ch5V5 = isAllActive;
+            ActiveSettings.V1X5 = isAllActive;
+            ActiveSettings.V2X5 = isAllActive;
+            ActiveSettings.V3X5 = isAllActive;
+            ActiveSettings.V4X5 = isAllActive;
+            ActiveSettings.V5X5 = isAllActive;
         }
 
         private void IsAllCh6Click()
         {
             var isAllActive = !ActiveSettings.IsAllCh6Active;
-            ActiveSettings.Ch6Hz1 = isAllActive;
-            ActiveSettings.Ch6Hz2 = isAllActive;
-            ActiveSettings.Ch6Hz3 = isAllActive;
-            ActiveSettings.Ch6Hz4 = isAllActive;
-            ActiveSettings.Ch6Hz5 = isAllActive;
+            ActiveSettings.Hz1X6 = isAllActive;
+            ActiveSettings.Hz2X6 = isAllActive;
+            ActiveSettings.Hz3X6 = isAllActive;
+            ActiveSettings.Hz4X6 = isAllActive;
+            ActiveSettings.Hz5X6 = isAllActive;
         }
     }
 }

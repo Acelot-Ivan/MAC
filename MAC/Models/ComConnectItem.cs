@@ -1,6 +1,5 @@
 ﻿using MAC.Properties;
 using System;
-using System.Threading.Tasks;
 using MAC.ViewModels.Base;
 using MAC.ViewModels.Services;
 using MAC.ViewModels.Services.SerialPort;

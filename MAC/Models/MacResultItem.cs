@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
-using System.IO.Ports;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows;
 using MAC.Models.Value;
 using MAC.Properties;
@@ -137,55 +135,55 @@ namespace MAC.Models
             _mac = new MacSerialPort(mac);
 
 
-            #region Заполнение коллекций CH
+            #region Заполнение коллекций X
 
             X1 = new ObservableCollection<IMacValue>
             {
-                new OhmValueMac(30, activeSettings.Ch0Ohm1),
-                new OhmValueMac(85, activeSettings.Ch0Ohm2),
-                new OhmValueMac(110, activeSettings.Ch0Ohm3),
-                new OhmValueMac(155, activeSettings.Ch0Ohm4),
-                new OhmValueMac(190, activeSettings.Ch0Ohm5),
+                new OhmValueMac(30, activeSettings.Ohm1X1),
+                new OhmValueMac(85, activeSettings.Ohm2X1),
+                new OhmValueMac(110, activeSettings.Ohm3X1),
+                new OhmValueMac(155, activeSettings.Ohm4X1),
+                new OhmValueMac(190, activeSettings.Ohm5X1),
             };
             X2 = new ObservableCollection<IMacValue>
             {
-                new OhmValueMac(30, activeSettings.Ch1Ohm1),
-                new OhmValueMac(85, activeSettings.Ch1Ohm2),
-                new OhmValueMac(110, activeSettings.Ch1Ohm3),
-                new OhmValueMac(155, activeSettings.Ch1Ohm4),
-                new OhmValueMac(190, activeSettings.Ch1Ohm5),
+                new OhmValueMac(30, activeSettings.Ohm1X2),
+                new OhmValueMac(85, activeSettings.Ohm2X2),
+                new OhmValueMac(110, activeSettings.Ohm3X2),
+                new OhmValueMac(155, activeSettings.Ohm4X2),
+                new OhmValueMac(190, activeSettings.Ohm5X2),
             };
             X3 = new ObservableCollection<IMacValue>
             {
-                new OhmValueMac(30, activeSettings.Ch2Ohm1),
-                new OhmValueMac(85, activeSettings.Ch2Ohm2),
-                new OhmValueMac(110, activeSettings.Ch2Ohm3),
-                new OhmValueMac(155, activeSettings.Ch2Ohm4),
-                new OhmValueMac(190, activeSettings.Ch2Ohm5),
+                new OhmValueMac(30, activeSettings.Ohm1X3),
+                new OhmValueMac(85, activeSettings.Ohm2X3),
+                new OhmValueMac(110, activeSettings.Ohm3X3),
+                new OhmValueMac(155, activeSettings.Ohm4X3),
+                new OhmValueMac(190, activeSettings.Ohm5X3),
             };
             X4 = new ObservableCollection<IMacValue>
             {
-                new VoltValue(0.345m, activeSettings.Ch3V1),
-                new VoltValue(1.325m, activeSettings.Ch3V2),
-                new VoltValue(2.550m, activeSettings.Ch3V3),
-                new VoltValue(3.775m, activeSettings.Ch3V4),
-                new VoltValue(4.755m, activeSettings.Ch3V5)
+                new VoltValue(0.345m, activeSettings.V1X4),
+                new VoltValue(1.325m, activeSettings.V2X4),
+                new VoltValue(2.550m, activeSettings.V3X4),
+                new VoltValue(3.775m, activeSettings.V4X4),
+                new VoltValue(4.755m, activeSettings.V5X4)
             };
             X5 = new ObservableCollection<IMacValue>
             {
-                new VoltValue(0.345m, activeSettings.Ch5V1),
-                new VoltValue(1.325m, activeSettings.Ch5V2),
-                new VoltValue(2.550m, activeSettings.Ch5V3),
-                new VoltValue(3.775m, activeSettings.Ch5V4),
-                new VoltValue(4.755m, activeSettings.Ch5V5)
+                new VoltValue(0.345m, activeSettings.V1X5),
+                new VoltValue(1.325m, activeSettings.V2X5),
+                new VoltValue(2.550m, activeSettings.V3X5),
+                new VoltValue(3.775m, activeSettings.V4X5),
+                new VoltValue(4.755m, activeSettings.V5X5)
             };
             X6 = new ObservableCollection<IMacValue>
             {
-                new HzValueMac(50, activeSettings.Ch6Hz1),
-                new HzValueMac(250, activeSettings.Ch6Hz2),
-                new HzValueMac(500, activeSettings.Ch6Hz3),
-                new HzValueMac(750, activeSettings.Ch6Hz4),
-                new HzValueMac(1000, activeSettings.Ch6Hz5)
+                new HzValueMac(50, activeSettings.Hz1X6),
+                new HzValueMac(250, activeSettings.Hz2X6),
+                new HzValueMac(500, activeSettings.Hz3X6),
+                new HzValueMac(750, activeSettings.Hz4X6),
+                new HzValueMac(1000, activeSettings.Hz5X6)
             };
 
             #endregion
@@ -254,41 +252,41 @@ namespace MAC.Models
             CountActiveMeasurements = 0;
             TimeLeftOnAllMeasurements = new TimeSpan();
 
-            UpdateMeasurements(activeSettings.Ch0Ohm1, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch0Ohm2, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch0Ohm3, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch0Ohm4, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch0Ohm5, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm1X1, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm2X1, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm3X1, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm4X1, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm5X1, TypeMeasurement.Ohm);
 
-            UpdateMeasurements(activeSettings.Ch1Ohm1, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch1Ohm2, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch1Ohm3, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch1Ohm4, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch1Ohm5, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm1X2, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm2X2, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm3X2, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm4X2, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm5X2, TypeMeasurement.Ohm);
 
-            UpdateMeasurements(activeSettings.Ch2Ohm1, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch2Ohm2, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch2Ohm3, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch2Ohm4, TypeMeasurement.Ohm);
-            UpdateMeasurements(activeSettings.Ch2Ohm5, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm1X3, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm2X3, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm3X3, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm4X3, TypeMeasurement.Ohm);
+            UpdateMeasurements(activeSettings.Ohm5X3, TypeMeasurement.Ohm);
 
-            UpdateMeasurements(activeSettings.Ch3V1, TypeMeasurement.V);
-            UpdateMeasurements(activeSettings.Ch3V2, TypeMeasurement.V);
-            UpdateMeasurements(activeSettings.Ch3V3, TypeMeasurement.V);
-            UpdateMeasurements(activeSettings.Ch3V4, TypeMeasurement.V);
-            UpdateMeasurements(activeSettings.Ch3V5, TypeMeasurement.V);
+            UpdateMeasurements(activeSettings.V1X4, TypeMeasurement.V);
+            UpdateMeasurements(activeSettings.V2X4, TypeMeasurement.V);
+            UpdateMeasurements(activeSettings.V3X4, TypeMeasurement.V);
+            UpdateMeasurements(activeSettings.V4X4, TypeMeasurement.V);
+            UpdateMeasurements(activeSettings.V5X4, TypeMeasurement.V);
 
-            UpdateMeasurements(activeSettings.Ch5V1, TypeMeasurement.V);
-            UpdateMeasurements(activeSettings.Ch5V2, TypeMeasurement.V);
-            UpdateMeasurements(activeSettings.Ch5V3, TypeMeasurement.V);
-            UpdateMeasurements(activeSettings.Ch5V4, TypeMeasurement.V);
-            UpdateMeasurements(activeSettings.Ch5V5, TypeMeasurement.V);
+            UpdateMeasurements(activeSettings.V1X5, TypeMeasurement.V);
+            UpdateMeasurements(activeSettings.V2X5, TypeMeasurement.V);
+            UpdateMeasurements(activeSettings.V3X5, TypeMeasurement.V);
+            UpdateMeasurements(activeSettings.V4X5, TypeMeasurement.V);
+            UpdateMeasurements(activeSettings.V5X5, TypeMeasurement.V);
 
-            UpdateMeasurements(activeSettings.Ch6Hz1, TypeMeasurement.Hz);
-            UpdateMeasurements(activeSettings.Ch6Hz2, TypeMeasurement.Hz);
-            UpdateMeasurements(activeSettings.Ch6Hz3, TypeMeasurement.Hz);
-            UpdateMeasurements(activeSettings.Ch6Hz4, TypeMeasurement.Hz);
-            UpdateMeasurements(activeSettings.Ch6Hz5, TypeMeasurement.Hz);
+            UpdateMeasurements(activeSettings.Hz1X6, TypeMeasurement.Hz);
+            UpdateMeasurements(activeSettings.Hz2X6, TypeMeasurement.Hz);
+            UpdateMeasurements(activeSettings.Hz3X6, TypeMeasurement.Hz);
+            UpdateMeasurements(activeSettings.Hz4X6, TypeMeasurement.Hz);
+            UpdateMeasurements(activeSettings.Hz5X6, TypeMeasurement.Hz);
         }
 
         /// <summary>
@@ -296,22 +294,22 @@ namespace MAC.Models
         /// </summary>
         private void SetErrorValue()
         {
-            var channelName = $"Sc{_numberMac}";
+            var channelName = $"Mac{_numberMac}";
 
             foreach (var itemCh in X1)
-                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch0Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}X1Error"];
 
             foreach (var itemCh in X2)
-                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch1Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}X2Error"];
 
             foreach (var itemCh in X3)
-                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch2Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}X3Error"];
 
             foreach (var itemCh in X4)
-                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch3Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}X4Error"];
 
             foreach (var itemCh in X5)
-                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch5Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}X5Error"];
         }
 
         #region Const Channel 
@@ -365,7 +363,7 @@ namespace MAC.Models
 
             try
             {
-                //CreateMeasurement(folderPath);
+                CreateMeasurement(folderPath);
             }
             catch (Exception e)
             {
@@ -459,7 +457,7 @@ namespace MAC.Models
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
-                    ChannelMeasurements(ChannelX1, X1, ctSource, Channel.Ch0);
+                    ChannelMeasurements(ChannelX1, X1, ctSource, Channel.X1);
                 }
                 finally
                 {
@@ -480,7 +478,7 @@ namespace MAC.Models
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
-                    ChannelMeasurements(ChannelX2, X2, ctSource, Channel.Ch1);
+                    ChannelMeasurements(ChannelX2, X2, ctSource, Channel.X2);
                 }
                 finally
                 {
@@ -501,7 +499,7 @@ namespace MAC.Models
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
-                    ChannelMeasurements(ChannelX3, X3, ctSource, Channel.Ch2);
+                    ChannelMeasurements(ChannelX3, X3, ctSource, Channel.X3);
                 }
                 finally
                 {
@@ -514,7 +512,7 @@ namespace MAC.Models
             //X4 Volt
             try
             {
-                ChannelMeasurements(ChannelX4, X4, ctSource, Channel.Ch3);
+                ChannelMeasurements(ChannelX4, X4, ctSource, Channel.X4);
             }
             finally
             {
@@ -526,7 +524,7 @@ namespace MAC.Models
             //X5 Volt
             try
             {
-                ChannelMeasurements(ChannelX5, X5, ctSource, Channel.Ch5);
+                ChannelMeasurements(ChannelX5, X5, ctSource, Channel.X5);
             }
             finally
             {
@@ -538,7 +536,7 @@ namespace MAC.Models
             //X6 Hz
             try
             {
-                ChannelMeasurements(ChannelX6, X6, ctSource, Channel.Ch6);
+                ChannelMeasurements(ChannelX6, X6, ctSource, Channel.X6);
             }
             finally
             {
@@ -1127,7 +1125,7 @@ namespace MAC.Models
 
         private void CreateMeasurementXlsx(string folderPath)
         {
-            var pathExampleXlsxFile = @"Resources\test_cs_protocol.xlsx";
+            var pathExampleXlsxFile = @"Resources\mac_protocol.xlsx";
 
             while (true)
             {
@@ -1253,45 +1251,42 @@ namespace MAC.Models
             #region Create Data
 
             csvContent.AppendLine("OHM;R[0];R[1];R[2];V;V[3];V[5];Hz;Hz[6]");
-            csvContent.AppendLine("80;" +
+            csvContent.AppendLine("30;" +
                                   X1[0].ResultValue + ";" +
                                   X2[0].ResultValue + ";" +
-                                  X3[0].ResultValue + ";1;" +
+                                  X3[0].ResultValue + ";0.345;" +
                                   X4[0].ResultValue + ";" +
-                                  X5[0].ResultValue + ";5;" +
+                                  X5[0].ResultValue + ";50;" +
                                   X6[0].ResultValue);
-            csvContent.AppendLine("90;" +
+            csvContent.AppendLine("85;" +
                                   X1[1].ResultValue + ";" +
                                   X2[1].ResultValue + ";" +
-                                  X3[1].ResultValue + ";2;" +
+                                  X3[1].ResultValue + ";1.325;" +
                                   X4[1].ResultValue + ";" +
-                                  X5[1].ResultValue + ";25;" +
+                                  X5[1].ResultValue + ";250;" +
                                   X6[1].ResultValue);
-            csvContent.AppendLine("100;" +
+            csvContent.AppendLine("110;" +
                                   X1[2].ResultValue + ";" +
                                   X2[2].ResultValue + ";" +
-                                  X3[2].ResultValue + ";3;" +
+                                  X3[2].ResultValue + ";2.550;" +
                                   X4[2].ResultValue + ";" +
-                                  X5[2].ResultValue + ";50;" +
+                                  X5[2].ResultValue + ";500;" +
                                   X6[2].ResultValue);
-            csvContent.AppendLine("115;" +
+            csvContent.AppendLine("155;" +
                                   X1[3].ResultValue + ";" +
                                   X2[3].ResultValue + ";" +
-                                  X3[3].ResultValue + ";4;" +
+                                  X3[3].ResultValue + ";3.775;" +
                                   X4[3].ResultValue + ";" +
-                                  X5[3].ResultValue + ";75;" +
+                                  X5[3].ResultValue + ";750;" +
                                   X6[3].ResultValue);
-            csvContent.AppendLine("130;" +
+            csvContent.AppendLine("190;" +
                                   X1[4].ResultValue + ";" +
                                   X2[4].ResultValue + ";" +
-                                  X3[4].ResultValue + ";5;" +
+                                  X3[4].ResultValue + ";4.755;" +
                                   X4[4].ResultValue + ";" +
-                                  X5[4].ResultValue + ";100;" +
+                                  X5[4].ResultValue + ";1000;" +
                                   X6[4].ResultValue);
-            csvContent.AppendLine("140;" +
-                                  X1[5].ResultValue + ";" +
-                                  X2[5].ResultValue + ";" +
-                                  X3[5].ResultValue);
+
 
             #endregion
 
@@ -1331,14 +1326,12 @@ namespace MAC.Models
     public enum Channel
     {
         None = 0,
-        Ch0 = 1,
-        Ch1 = 2,
-        Ch2 = 3,
-        Ch3 = 4,
-
-        //4-ой не существует. Гениальная задумка изобретателя ксочной хреновины. 
-        Ch5 = 5,
-        Ch6 = 6
+        X1 = 1,
+        X2 = 2,
+        X3 = 3,
+        X4 = 4,
+        X5 = 5,
+        X6 = 6
     }
 
     /// <summary>
