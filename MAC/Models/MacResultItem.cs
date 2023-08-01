@@ -1133,7 +1133,7 @@ namespace MAC.Models
                     break;
 
                 var errorMessage =
-                    "Отсутствует файл образец test_cs_protocol.xlsx  " +
+                    "Отсутствует файл образец mac_protocol.xlsx  " +
                     "Пожалуйста поместите файл и повторите попытку(ОК). Или нажмите отмена для пропуска создания .xlsx";
 
                 var mb = MessageBox.Show(errorMessage, "Ошибка", MessageBoxButton.OKCancel);
@@ -1150,88 +1150,86 @@ namespace MAC.Models
             {
                 var ws = package.Workbook.Worksheets.First();
 
-                ws.Cells[14, 6].Value = NameMac;
+                ws.Cells[16, 6].Value = NameMac;
 
-                ws.Cells[55, 22].Value = $"{DateTime.Now:dd.MM.yyyy}";
+                ws.Cells[47, 22].Value = $"{DateTime.Now:dd.MM.yyyy}";
 
-                ws.Cells[55, 16].Value = _measurementsData.Verifier;
+                ws.Cells[47, 16].Value = _measurementsData.Verifier;
 
 
 
 
                 //Температура
-                ws.Cells[25, 5].Value = _measurementsData.Temperature;
+                ws.Cells[27, 5].Value = _measurementsData.Temperature;
                 //Влажность
-                ws.Cells[26, 5].Value = _measurementsData.Humidity;
-                //Атмосферное давление
-                ws.Cells[27, 5].Value = _measurementsData.Pressure;
-                //Напряжение , константа
-                ws.Cells[28, 5].Value = _measurementsData.Voltage;
-                //Частота , константа
-                ws.Cells[29, 5].Value = _measurementsData.Frequency;
+                ws.Cells[28, 5].Value = _measurementsData.Humidity;
+
+                ////Атмосферное давление
+                //ws.Cells[27, 5].Value = _measurementsData.Pressure;
+                ////Напряжение , константа
+                //ws.Cells[28, 5].Value = _measurementsData.Voltage;
+                ////Частота , константа
+                //ws.Cells[29, 5].Value = _measurementsData.Frequency;
 
                 #region Set Result Value
 
                 #region X1
 
-                ws.Cells[8, 13].Value = ConvertResultForXlsx(X1[0].ResultValue);
-                ws.Cells[9, 13].Value = ConvertResultForXlsx(X1[1].ResultValue);
-                ws.Cells[10, 13].Value = ConvertResultForXlsx(X1[2].ResultValue);
-                ws.Cells[11, 13].Value = ConvertResultForXlsx(X1[3].ResultValue);
-                ws.Cells[12, 13].Value = ConvertResultForXlsx(X1[4].ResultValue);
-                ws.Cells[13, 13].Value = ConvertResultForXlsx(X1[5].ResultValue);
+                ws.Cells[10, 13].Value = ConvertResultForXlsx(X1[0].ResultValue);
+                ws.Cells[11, 13].Value = ConvertResultForXlsx(X1[1].ResultValue);
+                ws.Cells[12, 13].Value = ConvertResultForXlsx(X1[2].ResultValue);
+                ws.Cells[13, 13].Value = ConvertResultForXlsx(X1[3].ResultValue);
+                ws.Cells[14, 13].Value = ConvertResultForXlsx(X1[4].ResultValue);
 
                 #endregion
 
                 #region X2
 
-                ws.Cells[8, 16].Value = ConvertResultForXlsx(X2[0].ResultValue);
-                ws.Cells[9, 16].Value = ConvertResultForXlsx(X2[1].ResultValue);
-                ws.Cells[10, 16].Value = ConvertResultForXlsx(X2[2].ResultValue);
-                ws.Cells[11, 16].Value = ConvertResultForXlsx(X2[3].ResultValue);
-                ws.Cells[12, 16].Value = ConvertResultForXlsx(X2[4].ResultValue);
-                ws.Cells[13, 16].Value = ConvertResultForXlsx(X2[5].ResultValue);
+                ws.Cells[10, 16].Value = ConvertResultForXlsx(X2[0].ResultValue);
+                ws.Cells[11, 16].Value = ConvertResultForXlsx(X2[1].ResultValue);
+                ws.Cells[12, 16].Value = ConvertResultForXlsx(X2[2].ResultValue);
+                ws.Cells[13, 16].Value = ConvertResultForXlsx(X2[3].ResultValue);
+                ws.Cells[14, 16].Value = ConvertResultForXlsx(X2[4].ResultValue);
 
                 #endregion
 
                 #region X3
 
-                ws.Cells[8, 19].Value = ConvertResultForXlsx(X3[0].ResultValue);
-                ws.Cells[9, 19].Value = ConvertResultForXlsx(X3[1].ResultValue);
-                ws.Cells[10, 19].Value = ConvertResultForXlsx(X3[2].ResultValue);
-                ws.Cells[11, 19].Value = ConvertResultForXlsx(X3[3].ResultValue);
-                ws.Cells[12, 19].Value = ConvertResultForXlsx(X3[4].ResultValue);
-                ws.Cells[13, 19].Value = ConvertResultForXlsx(X3[5].ResultValue);
+                ws.Cells[10, 19].Value = ConvertResultForXlsx(X3[0].ResultValue);
+                ws.Cells[11, 19].Value = ConvertResultForXlsx(X3[1].ResultValue);
+                ws.Cells[12, 19].Value = ConvertResultForXlsx(X3[2].ResultValue);
+                ws.Cells[13, 19].Value = ConvertResultForXlsx(X3[3].ResultValue);
+                ws.Cells[14, 19].Value = ConvertResultForXlsx(X3[4].ResultValue);
 
                 #endregion
 
                 #region X4
 
-                ws.Cells[17, 14].Value = ConvertResultForXlsx(X4[0].ResultValue);
-                ws.Cells[18, 14].Value = ConvertResultForXlsx(X4[1].ResultValue);
-                ws.Cells[19, 14].Value = ConvertResultForXlsx(X4[2].ResultValue);
-                ws.Cells[20, 14].Value = ConvertResultForXlsx(X4[3].ResultValue);
-                ws.Cells[21, 14].Value = ConvertResultForXlsx(X4[4].ResultValue);
+                ws.Cells[18, 14].Value = ConvertResultForXlsx(X4[0].ResultValue);
+                ws.Cells[19, 14].Value = ConvertResultForXlsx(X4[1].ResultValue);
+                ws.Cells[20, 14].Value = ConvertResultForXlsx(X4[2].ResultValue);
+                ws.Cells[21, 14].Value = ConvertResultForXlsx(X4[3].ResultValue);
+                ws.Cells[22, 14].Value = ConvertResultForXlsx(X4[4].ResultValue);
 
                 #endregion
 
                 #region X5
 
-                ws.Cells[17, 17].Value = ConvertResultForXlsx(X5[0].ResultValue);
-                ws.Cells[18, 17].Value = ConvertResultForXlsx(X5[1].ResultValue);
-                ws.Cells[19, 17].Value = ConvertResultForXlsx(X5[2].ResultValue);
-                ws.Cells[20, 17].Value = ConvertResultForXlsx(X5[3].ResultValue);
-                ws.Cells[21, 17].Value = ConvertResultForXlsx(X5[4].ResultValue);
+                ws.Cells[18, 17].Value = ConvertResultForXlsx(X5[0].ResultValue);
+                ws.Cells[19, 17].Value = ConvertResultForXlsx(X5[1].ResultValue);
+                ws.Cells[20, 17].Value = ConvertResultForXlsx(X5[2].ResultValue);
+                ws.Cells[21, 17].Value = ConvertResultForXlsx(X5[3].ResultValue);
+                ws.Cells[22, 17].Value = ConvertResultForXlsx(X5[4].ResultValue);
 
                 #endregion
 
                 #region X6
 
-                ws.Cells[25, 16].Value = ConvertResultForXlsx(X6[0].ResultValue);
-                ws.Cells[26, 16].Value = ConvertResultForXlsx(X6[1].ResultValue);
-                ws.Cells[27, 16].Value = ConvertResultForXlsx(X6[2].ResultValue);
-                ws.Cells[28, 16].Value = ConvertResultForXlsx(X6[3].ResultValue);
-                ws.Cells[29, 16].Value = ConvertResultForXlsx(X6[4].ResultValue);
+                ws.Cells[26, 16].Value = ConvertResultForXlsx(X6[0].ResultValue);
+                ws.Cells[27, 16].Value = ConvertResultForXlsx(X6[1].ResultValue);
+                ws.Cells[28, 16].Value = ConvertResultForXlsx(X6[2].ResultValue);
+                ws.Cells[29, 16].Value = ConvertResultForXlsx(X6[3].ResultValue);
+                ws.Cells[30, 16].Value = ConvertResultForXlsx(X6[4].ResultValue);
 
                 #endregion
 
@@ -1250,7 +1248,7 @@ namespace MAC.Models
 
             #region Create Data
 
-            csvContent.AppendLine("OHM;R[0];R[1];R[2];V;V[3];V[5];Hz;Hz[6]");
+            csvContent.AppendLine("OHM;R[1];R[2];R[3];V;V[4];V[5];Hz;Hz[6]");
             csvContent.AppendLine("30;" +
                                   X1[0].ResultValue + ";" +
                                   X2[0].ResultValue + ";" +
