@@ -142,8 +142,8 @@ namespace MAC.ViewModels.Services.SerialPort
 
             Send(
                 isOnOper
-                    ? $"OUT 4 V,{value} HZ;OPER"
-                    : $"OUT 4 V,{value} HZ"
+                    ? $"OUT 4 V,{value} HZ;DC_OFFSET +2 V;WAVE SQUARE;OPER"
+                    : $"OUT 4 V,{value} HZ;DC_OFFSET +2 V;WAVE SQUARE"
             );
         }
 
