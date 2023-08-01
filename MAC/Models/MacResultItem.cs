@@ -294,22 +294,22 @@ namespace MAC.Models
         /// </summary>
         private void SetErrorValue()
         {
-            var channelName = $"Mac{_numberMac}";
+            var channelName = $"Sc{_numberMac}";
 
             foreach (var itemCh in X1)
-                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}X1Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch0Error"];
 
             foreach (var itemCh in X2)
-                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}X2Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch1Error"];
 
             foreach (var itemCh in X3)
-                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}X3Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch2Error"];
 
             foreach (var itemCh in X4)
-                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}X4Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch3Error"];
 
             foreach (var itemCh in X5)
-                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}X5Error"];
+                itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch5Error"];
         }
 
         #region Const Channel 
@@ -424,7 +424,7 @@ namespace MAC.Models
             var ch1IsActiveCollection = X2.Select(item => item.IsActive).ToList();
             var ch2IsActiveCollection = X3.Select(item => item.IsActive).ToList();
 
-            #region Добавляю время калибровки к общему времени
+            #region Добавляю время калибровки к общему времени          
 
             if (ch0IsActiveCollection.Contains(true))
             {
