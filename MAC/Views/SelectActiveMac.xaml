@@ -69,7 +69,7 @@
                                                      VerticalAlignment="Center" />
                                         </Grid>
                                         <Grid Grid.Column="3">
-                                            <Button Style="{StaticResource IconBackgroundButton}"
+                                            <!--<Button Style="{StaticResource IconBackgroundButton}"
                                                     Command="{Binding RelativeSource={ RelativeSource Mode=FindAncestor , AncestorType= Window} , Path=DataContext.GetSerialNumberMacCommand}"
                                                     CommandParameter="{Binding  }"
                                                     Height="25"
@@ -94,8 +94,27 @@
                                                         </Style>
                                                     </Image.Style>
                                                 </Image>
-                                            </Button>
-                                            
+                                            </Button>-->
+
+                                            <Image>
+                                                <Image.Style>
+                                                    <Style TargetType="Image">
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding CheckedResult}"
+                                                                         Value="True">
+                                                                <Setter Property="Source"
+                                                                        Value="{StaticResource SuccessIcon}" />
+                                                            </DataTrigger>
+                                                            <DataTrigger Binding="{Binding CheckedResult}"
+                                                                         Value="False">
+                                                                <Setter Property="Source"
+                                                                        Value="{StaticResource FailIcon}" />
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Image.Style>
+                                            </Image>
+
 
                                             <Image Visibility="{Binding IsChecked , Converter={StaticResource BoolToVis}}"
                                                    Height="25"
@@ -131,7 +150,7 @@
                             Background="{StaticResource ButtonRightColor}"
                             Grid.Column="1"
                             Margin="10,5"
-                            Command="{Binding }" />
+                            Command="{Binding CheckMacCommand}" />
                     <Button Content="Отменить"
                             Background="{StaticResource ButtonRightColor}"
                             Grid.Column="2"

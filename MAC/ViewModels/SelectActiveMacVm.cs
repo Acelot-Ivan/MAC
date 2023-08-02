@@ -14,18 +14,28 @@ namespace MAC.ViewModels
         public Action CloseWindow;
         public RelayCommand ContinueCommand => new RelayCommand(Continue, ContinueValidation);
         public RelayCommand CancelCommand => new RelayCommand(Cancel);
-        public RelayCommand GetSerialNumberMacCommand => new RelayCommand(GetSerialNumber);
+
+        public RelayCommand CheckMacCommand => new RelayCommand(CheckMac , IsCheckNowValidation);
         public ObservableCollection<ComConnectItem> MacItems { get; set; }
         private CommutatorSerialPort Comm;
 
         object locker = new object();
         public bool IsContinue { get; set; }
 
+        /// <summary>
+        /// Флаг отвечающий за доступ к функции проверки мас
+        /// Если true, то проверка уже идет и запускать еще раз нельзя
+        /// </summary>
+        public bool IsCheckNow { get; set; }
+
         public SelectActiveMacVm(IEnumerable<ComConnectItem> macItems, CommutatorSerialPort comm)
         {
             MacItems = new ObservableCollection<ComConnectItem>(macItems);
             Comm = comm;
+            CheckMac();
         }
+
+        private bool IsCheckNowValidation(object obj) => IsCheckNow;
 
         /// <summary>
         /// Проверка валидности и запрос серийного номера
@@ -34,7 +44,7 @@ namespace MAC.ViewModels
         {
             Task.Run(async () => await Task.Run(() =>
             {
-
+                IsCheckNow = true;
                 Comm.OpenCommPort();
 
                 foreach (var item in MacItems)
@@ -47,6 +57,8 @@ namespace MAC.ViewModels
                 }
 
                 Comm.Close();
+
+                IsCheckNow = true;
             }));
         }
 
