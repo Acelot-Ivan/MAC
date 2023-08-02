@@ -133,12 +133,12 @@ namespace MAC.ViewModels
             {
                 new ComConnectItem(MainConst.NameTypeFluke, 0, Settings.Default.FlukeComPort),
                 new ComConnectItem(MainConst.NameTypeComm, 0, Settings.Default.CommComPort),
-                new ComConnectItem(MainConst.NameTypeSignalController, 1, Settings.Default.Mac1ComPort),
-                //new ComConnectItem(MainConst.NameTypeSignalController, 2, Settings.Default.Mac2ComPort),
-                //new ComConnectItem(MainConst.NameTypeSignalController, 3, Settings.Default.Mac3ComPort),
-                //new ComConnectItem(MainConst.NameTypeSignalController, 4, Settings.Default.Mac4ComPort),
-                //new ComConnectItem(MainConst.NameTypeSignalController, 5, Settings.Default.Mac5ComPort),
-                //new ComConnectItem(MainConst.NameTypeSignalController, 6, Settings.Default.Mac6ComPort)
+                new ComConnectItem(MainConst.NameTypeMac, 1, Settings.Default.Mac1ComPort),
+                //new ComConnectItem(MainConst.NameTypeMac, 2, Settings.Default.Mac2ComPort),
+                //new ComConnectItem(MainConst.NameTypeMac, 3, Settings.Default.Mac3ComPort),
+                //new ComConnectItem(MainConst.NameTypeMac, 4, Settings.Default.Mac4ComPort),
+                //new ComConnectItem(MainConst.NameTypeMac, 5, Settings.Default.Mac5ComPort),
+                //new ComConnectItem(MainConst.NameTypeMac, 6, Settings.Default.Mac6ComPort)
             };
 
             MainSettingsVm = new MainSettingsVm(MainSettingsModel, ContentGridHeight, ContentGridWidth, IsActiveTest);

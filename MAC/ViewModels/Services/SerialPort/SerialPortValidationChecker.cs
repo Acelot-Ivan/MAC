@@ -118,7 +118,7 @@ namespace MAC.ViewModels.Services.SerialPort
 
         private ComType GetComType(string portName)
         {
-            if (portName.Contains(MainConst.NameTypeSignalController))
+            if (portName.Contains(MainConst.NameTypeMac))
                 return ComType.Mac;
             if (portName.Contains(MainConst.NameTypeFluke))
                 return ComType.Fluke;

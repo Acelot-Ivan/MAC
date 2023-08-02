@@ -11,7 +11,7 @@ namespace MAC.Models
     {
         public ComConnectItem(string technicalName, int number, string comPort = MainConst.DefaultComPort)
         {
-            TechnicalName = technicalName.Contains(MainConst.NameTypeSignalController)
+            TechnicalName = technicalName.Contains(MainConst.NameTypeMac)
                 ? $"{technicalName} - {number}"
                 : technicalName;
             Number = number;
@@ -52,7 +52,7 @@ namespace MAC.Models
 
         private void UpdatePropertySettingsComPort()
         {
-            if (TechnicalName.Contains(MainConst.NameTypeSignalController))
+            if (TechnicalName.Contains(MainConst.NameTypeMac))
             {
                 switch (Number)
                 {
@@ -141,13 +141,16 @@ namespace MAC.Models
                 resultCheck = false;
             }
 
-            try
+            if (TechnicalName.Contains(MainConst.NameTypeMac))
             {
-                GerSerialNumberSc();
-            }
-            catch (Exception e)
-            {
-                MessageBox.Show("Error request serial id mac");
+                try
+                {
+                    GerSerialNumberSc();
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show("Error request serial id mac");
+                }
             }
 
             CheckedResult = resultCheck;
