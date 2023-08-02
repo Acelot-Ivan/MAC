@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows;
 using MAC.Models;
 using MAC.ViewModels.Base;
 using MAC.ViewModels.Services.SerialPort;
@@ -54,6 +55,8 @@ namespace MAC.ViewModels
                 item.CheckComConnectAsyncGetSerial();
                 Comm.OffCommAll();
                 Thread.Sleep(200);
+
+                MessageBox.Show("Почти конец");
             }
 
             Comm.Close();

@@ -1,5 +1,6 @@
 ﻿using MAC.Properties;
 using System;
+using System.Windows;
 using MAC.ViewModels.Base;
 using MAC.ViewModels.Services;
 using MAC.ViewModels.Services.SerialPort;
@@ -151,6 +152,7 @@ namespace MAC.Models
         {
             IsChecked = true;
             CheckComConnect();
+            MessageBox.Show("Мас проверен, далее серийник");
             GerSerialNumberSc();
             IsChecked = false;
         }
