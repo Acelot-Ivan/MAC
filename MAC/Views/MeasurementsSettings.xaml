@@ -25,7 +25,7 @@
                     Value="Center" />
         </Style>
     </UserControl.Resources>
-    <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+    <Grid Background="{StaticResource BackgroundRightColor}">
         <Border Margin="2"
                 CornerRadius="5"
                 BorderThickness="1"

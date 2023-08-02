@@ -29,7 +29,7 @@
     <Style x:Key="IconBackgroundButton"
            TargetType="Button">
         <Setter Property="Background"
-                Value="#FF135D9C" />
+                Value="{StaticResource BackgroundRightColor}" />
         <Setter Property="FontSize"
                 Value="14" />
         <Setter Property="Template">
@@ -37,7 +37,7 @@
                 <ControlTemplate TargetType="{x:Type Button}">
                     <Border x:Name="ButtonBorder"
                             CornerRadius="5,5,5,5"
-                            Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+                            Background="{StaticResource BackgroundRightColor}">
                         <Grid>
                             <ContentPresenter x:Name="ButtonContentPresenter"
                                               VerticalAlignment="Center"
@@ -81,7 +81,7 @@
                                     Property="CornerRadius"
                                     Value="10,0,0,10" />
                             <Setter Property="Background"
-                                    Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
+                                    Value="{StaticResource ButtonMouseActiveColor}" />
                             <Setter Property="BorderBrush" Value="Black" />
                             <Setter Property="BorderThickness" Value="1,1,0,1" />
                         </Trigger>
@@ -95,7 +95,7 @@
                             <Setter Property="Opacity"
                                     Value="0.9" />
                             <Setter Property="Background"
-                                    Value="#6089B9" />
+                                    Value="{StaticResource ButtonLeftColor}" />
                         </Trigger>
                         <Trigger Property="IsMouseOver"
                                  Value="True">
@@ -107,7 +107,7 @@
                                     Property="CornerRadius"
                                     Value="10,0,0,10" />
                             <Setter Property="Background"
-                                    Value="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}" />
+                                    Value="{StaticResource ButtonMouseActiveColor}" />
                             <Setter Property="BorderBrush"
                                     Value="Black" />
                             <Setter Property="BorderThickness"

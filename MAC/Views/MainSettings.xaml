@@ -11,7 +11,7 @@
              MinWidth="{Binding ContentGridWidth}"
              d:DesignHeight="280"
              d:DesignWidth="620">
-    <Grid Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+    <Grid Background="{StaticResource BackgroundRightColor}">
         <Grid.RowDefinitions>
             <RowDefinition Height="3*" />
             <RowDefinition Height="2*" />

@@ -5,6 +5,7 @@
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Style/ColorStyle.xaml"/>
                 <ResourceDictionary Source="Style/Converter/Converters.xaml" />
                 <ResourceDictionary Source="Style/Icons/Icon.xaml" />
                 <ResourceDictionary Source="Style/ButtonStyle.xaml"/>
