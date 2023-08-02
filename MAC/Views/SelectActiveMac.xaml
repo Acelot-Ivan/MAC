@@ -96,7 +96,9 @@
                                                 </Image>
                                             </Button>-->
 
-                                            <Image>
+                                            <Image Height="25"
+                                                   VerticalAlignment="Center"
+                                                   HorizontalAlignment="Center">
                                                 <Image.Style>
                                                     <Style TargetType="Image">
                                                         <Style.Triggers>
