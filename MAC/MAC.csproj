@@ -188,7 +188,6 @@
     <Compile Include="Models\ActiveSettingsModel.cs" />
     <Compile Include="Models\MacResultItem.cs" />
     <Compile Include="Models\MeasurementsData.cs" />
-    <Compile Include="Models\ErrorSettingsModel.cs" />
     <Compile Include="Models\Value\HzValueMac.cs" />
     <Compile Include="Models\Value\OhmValueMac.cs" />
     <Compile Include="Models\Value\IMacValue.cs" />
@@ -209,16 +208,12 @@
     <Compile Include="ViewModels\Base\BaseVm.cs" />
     <Compile Include="ViewModels\Base\RelayCommand.cs" />
     <Compile Include="ViewModels\ConnectSettingsVm.cs" />
-    <Compile Include="ViewModels\ErrorValueVm.cs" />
     <Compile Include="ViewModels\MainSettingsVm.cs" />
     <Compile Include="ViewModels\MainWindowVm.cs" />
     <Compile Include="ViewModels\MeasurementsSettingsVm.cs" />
     <Compile Include="ViewModels\SetMeasurementsDataVm.cs" />
     <Compile Include="Views\ConnectSettings.xaml.cs">
       <DependentUpon>ConnectSettings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ErrorValue.xaml.cs">
-      <DependentUpon>ErrorValue.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainSettings.xaml.cs">
       <DependentUpon>MainSettings.xaml</DependentUpon>
@@ -249,10 +244,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ConnectSettings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ErrorValue.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

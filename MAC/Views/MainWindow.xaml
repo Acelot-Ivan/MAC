@@ -159,14 +159,6 @@
                                    Style="{StaticResource HeadMenuTextBlock}" />
                     </Button>
                 </Border>
-                <Border Grid.Row="5"
-                        Style="{StaticResource HeadMenuBorder}">
-                    <Button Style="{StaticResource ControlFrameContentButton}"
-                            Command="{Binding GoOnErrorValueCommand}">
-                        <TextBlock Text="Настройки Погрешности"
-                                   Style="{StaticResource HeadMenuTextBlock}" />
-                    </Button>
-                </Border>
             </Grid>
         </Border>
         <!--#endregion-->

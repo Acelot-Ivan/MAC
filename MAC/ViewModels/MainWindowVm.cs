@@ -24,7 +24,6 @@ namespace MAC.ViewModels
         /// </summary>
         public MainSettingsModel MainSettingsModel { get; set; } = new MainSettingsModel();
 
-        public ErrorSettingsModel ErrorSettingsModel { get; set; } = new ErrorSettingsModel();
         public ActiveSettingsModel ActiveMeasurements { get; set; } = new ActiveSettingsModel();
         public ObservableCollection<ComConnectItem> AllComConnect { get; set; }
         private ComConnectItem Fluke => AllComConnect[0];
@@ -102,9 +101,6 @@ namespace MAC.ViewModels
         public RelayCommand GoOnMainWindowCommand =>
             new RelayCommand(ChangePageOnMainWindow, o => SelectedPage != SelectedPage.MainWindow);
 
-        public RelayCommand GoOnErrorValueCommand =>
-            new RelayCommand(ChangePageOnErrorValue, o => SelectedPage != SelectedPage.ErrorValue);
-
         #endregion
 
         public RelayCommand StartTestSignalControllersCommand => new RelayCommand(StartTestMac);
@@ -124,7 +120,6 @@ namespace MAC.ViewModels
 
         private ConnectSettingsVm ConnectSettingsVm { get; set; }
 
-        private ErrorValueVm ErrorValueVm { get; set; }
 
         #endregion
 
@@ -146,8 +141,6 @@ namespace MAC.ViewModels
                 //new ComConnectItem(MainConst.NameTypeSignalController, 6, Settings.Default.Mac6ComPort)
             };
 
-            ErrorValueVm = new ErrorValueVm(IsErrorActive, ErrorSettingsModel, ContentGridHeight, ContentGridWidth,
-                IsActiveTest);
             MainSettingsVm = new MainSettingsVm(MainSettingsModel, ContentGridHeight, ContentGridWidth, IsActiveTest);
             ConnectSettingsVm = new ConnectSettingsVm(AllComConnect, ContentGridHeight, ContentGridWidth, IsActiveTest);
             MeasurementsSettingsVm =
@@ -181,12 +174,6 @@ namespace MAC.ViewModels
         {
             FrameContent = null;
             SelectedPage = SelectedPage.MainWindow;
-        }
-
-        private void ChangePageOnErrorValue()
-        {
-            FrameContent = new ErrorValue(ErrorValueVm);
-            SelectedPage = SelectedPage.ErrorValue;
         }
 
         #endregion
@@ -470,7 +457,6 @@ namespace MAC.ViewModels
         ActiveSettings = 1,
         MainSettings = 2,
         ConnectSettings = 3,
-        ErrorValue = 4
     }
 
     /// <summary>
