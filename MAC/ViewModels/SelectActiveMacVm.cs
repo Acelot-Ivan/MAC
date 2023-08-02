@@ -33,7 +33,7 @@ namespace MAC.ViewModels
         {
             MacItems = new ObservableCollection<ComConnectItem>(macItems);
             Comm = comm;
-            //CheckMac();
+            CheckMac();
         }
 
         private bool IsCheckNowValidation(object obj) => !IsCheckNow;
@@ -59,7 +59,7 @@ namespace MAC.ViewModels
 
                 Comm.Close();
 
-                IsCheckNow = true;
+                IsCheckNow = false;
             }); });
         }
 
