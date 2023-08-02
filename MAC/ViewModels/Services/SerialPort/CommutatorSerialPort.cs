@@ -1,8 +1,8 @@
-﻿using System;
+﻿using MAC.Models;
+using System;
 using System.IO.Ports;
 using System.Threading;
 using System.Windows;
-using MAC.Models;
 
 namespace MAC.ViewModels.Services.SerialPort
 {
@@ -14,7 +14,6 @@ namespace MAC.ViewModels.Services.SerialPort
         public CommutatorSerialPort(ComConnectItem comConnectItem)
         {
             _comPort = comConnectItem.ComPort;
-            //OpenCommPort(comConnectItem.ComPort);
         }
 
         public void OpenCommPort()
@@ -38,7 +37,7 @@ namespace MAC.ViewModels.Services.SerialPort
             _commutator.Open();
         }
 
-        public void Send(string text)
+        public string Send(string text)
         {
             while (true)
             {
@@ -46,8 +45,8 @@ namespace MAC.ViewModels.Services.SerialPort
                 {
                     _commutator.WriteLine($"{text}\r\n");
                     Thread.Sleep(500);
-                    var x =_commutator.ReadExisting();
-                    return;
+                    var readExisting = _commutator.ReadExisting();
+                    return readExisting;
                 }
                 catch (Exception ex)
                 {

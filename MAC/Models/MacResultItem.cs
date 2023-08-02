@@ -1,4 +1,11 @@
-﻿using System;
+﻿using MAC.Models.Value;
+using MAC.Properties;
+using MAC.ViewModels;
+using MAC.ViewModels.Base;
+using MAC.ViewModels.Services;
+using MAC.ViewModels.Services.SerialPort;
+using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
@@ -7,13 +14,6 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Windows;
-using MAC.Models.Value;
-using MAC.Properties;
-using MAC.ViewModels;
-using MAC.ViewModels.Base;
-using MAC.ViewModels.Services;
-using MAC.ViewModels.Services.SerialPort;
-using OfficeOpenXml;
 
 namespace MAC.Models
 {
@@ -114,7 +114,7 @@ namespace MAC.Models
         /// </summary>
         /// <param name="fluke"></param>
         /// <param name="comm"></param>
-        /// <param name="sc"></param>
+        /// <param name="mac"></param>
         /// <param name="mainSettingsModel"></param>
         /// <param name="activeSettings"></param>
         /// <param name="typeCancelTask"></param>
@@ -353,7 +353,7 @@ namespace MAC.Models
 
             _mac.OpenSerialPort();
 
-            var (macVersion, version) = _mac.GetVersionMac();
+            var (_, version) = _mac.GetVersionMac();
 
             VersionMac = version;
 
@@ -564,7 +564,7 @@ namespace MAC.Models
 
             _mac.OpenSession();
             _mac.SendWithOutN("init def");
-            
+
             //check  "DO YOU WANT TO PERFORM REINITIALIZATION (Y/N)? "
             _mac.SendWithOutN("y");
 
@@ -591,7 +591,7 @@ namespace MAC.Models
         private void ChannelMeasurements(int channel, IEnumerable<IMacValue> ch, CancellationTokenSource ctSource,
             Channel currentChannel)
         {
-            
+
             CurrentChannel = currentChannel;
 
             foreach (var itemCh in ch)
@@ -714,7 +714,6 @@ namespace MAC.Models
         /// </summary>
         /// <param name="channel"></param>
         /// <param name="ctSource"></param>
-        /// <param name="isCalibration"></param>
         /// <returns></returns>
         private decimal? DataRead(int channel, CancellationTokenSource ctSource)
         {
@@ -807,7 +806,6 @@ namespace MAC.Models
         /// </summary>
         /// <param name="channel"></param>
         /// <param name="ctSource"></param>
-        /// <param name="isCalibration"></param>
         /// <returns></returns>
         private decimal? AverageDataRead(int channel, CancellationTokenSource ctSource)
         {
@@ -1238,7 +1236,7 @@ namespace MAC.Models
         {
             var content = _mac.GetFullData();
 
-            var fileName =  $"X{channel}.txt";
+            var fileName = $"X{channel}.txt";
 
             var folderLogPath = Path.Combine(folderPath, "Log");
 

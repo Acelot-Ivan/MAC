@@ -1,5 +1,5 @@
-﻿using System;
-using MAC.ViewModels.Services.SerialPort;
+﻿using MAC.ViewModels.Services.SerialPort;
+using System;
 
 namespace MAC.Models.Value
 {

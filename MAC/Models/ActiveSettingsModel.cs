@@ -1,5 +1,5 @@
-﻿using MAC.ViewModels.Base;
-using MAC.Properties;
+﻿using MAC.Properties;
+using MAC.ViewModels.Base;
 
 namespace MAC.Models
 {

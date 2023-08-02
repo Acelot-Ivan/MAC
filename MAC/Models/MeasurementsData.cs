@@ -7,6 +7,6 @@
         /// <summary>
         /// Поверитель , в месте использования будет сделана коллекция имен или типо того
         /// </summary>
-        public  string Verifier { get; set; }
+        public string Verifier { get; set; }
     }
 }

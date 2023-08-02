@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using MAC.Models;
+﻿using MAC.Models;
 using MAC.ViewModels.Base;
+using System;
 
 namespace MAC.ViewModels
 {

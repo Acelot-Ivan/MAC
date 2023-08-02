@@ -1,12 +1,11 @@
-﻿using System;
+﻿using MAC.Models;
+using MAC.ViewModels.Base;
+using MAC.ViewModels.Services.SerialPort;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Windows;
-using MAC.Models;
-using MAC.ViewModels.Base;
-using MAC.ViewModels.Services.SerialPort;
 
 namespace MAC.ViewModels
 {
@@ -18,9 +17,7 @@ namespace MAC.ViewModels
 
         public RelayCommand CheckMacCommand => new RelayCommand(CheckMac, IsCheckNowValidation);
         public ObservableCollection<ComConnectItem> MacItems { get; set; }
-        private CommutatorSerialPort Comm;
-
-        object locker = new object();
+        private readonly CommutatorSerialPort _comm;
         public bool IsContinue { get; set; }
 
         /// <summary>
@@ -32,7 +29,7 @@ namespace MAC.ViewModels
         public SelectActiveMacVm(IEnumerable<ComConnectItem> macItems, CommutatorSerialPort comm)
         {
             MacItems = new ObservableCollection<ComConnectItem>(macItems);
-            Comm = comm;
+            _comm = comm;
             CheckMac();
         }
 
@@ -43,41 +40,31 @@ namespace MAC.ViewModels
         /// </summary>
         private void CheckMac()
         {
-            Task.Run(async () => { await Task.Run(() =>
+            Task.Run(async () =>
             {
-                IsCheckNow = true;
-                Comm.OpenCommPort();
-
-                foreach (var item in MacItems)
+                await Task.Run(() =>
                 {
-                    item.Name = "Укажите имя";
-                    item.CheckedResult = false;
+                    IsCheckNow = true;
+                    _comm.OpenCommPort();
+
+                    foreach (var item in MacItems)
+                    {
+                        item.Name = "Укажите имя";
+                        item.CheckedResult = false;
 
 
-                    Comm.OnPowerIndex(item.Number);
-                    Thread.Sleep(200);
-                    item.CheckComConnectAsyncGetSerial();
-                    Comm.OffCommAll();
-                    Thread.Sleep(200);
-                }
+                        _comm.OnPowerIndex(item.Number);
+                        Thread.Sleep(200);
+                        item.CheckComConnectAsyncGetSerial();
+                        _comm.OffCommAll();
+                        Thread.Sleep(200);
+                    }
 
-                Comm.Close();
+                    _comm.Close();
 
-                IsCheckNow = false;
-            }); });
-        }
-
-        private void GetSerialNumber(object obj)
-        {
-            var comConnectItem = obj as ComConnectItem;
-
-            lock (locker)
-            {
-                if (comConnectItem?.CheckedResult == true)
-                {
-                    Task.Run(async () => await Task.Run(() => comConnectItem.GerSerialNumberSc()));
-                }
-            }
+                    IsCheckNow = false;
+                });
+            });
         }
 
         private void Cancel()

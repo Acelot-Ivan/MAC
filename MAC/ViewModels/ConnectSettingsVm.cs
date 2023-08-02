@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using MAC.Models;
+using MAC.ViewModels.Base;
+using MAC.ViewModels.Services;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics.CodeAnalysis;
 using System.IO.Ports;
 using System.Linq;
-using MAC.Models;
-using MAC.ViewModels.Base;
-using MAC.ViewModels.Services;
 
 namespace MAC.ViewModels
 {

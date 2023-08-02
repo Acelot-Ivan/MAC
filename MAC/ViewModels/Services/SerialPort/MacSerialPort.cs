@@ -179,7 +179,7 @@ namespace MAC.ViewModels.Services.SerialPort
             Send("");
             Send("close");
 
-  
+
             return (MacVersion.New, currentVersion);
         }
 

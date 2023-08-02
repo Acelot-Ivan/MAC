@@ -549,7 +549,7 @@
                                                                     </Grid.ColumnDefinitions>
                                                                     <Grid Grid.Column="0" />
                                                                     <Grid Grid.Column="1">
-                                                                        <TextBlock Text="{Binding VersionSc}"
+                                                                        <TextBlock Text="{Binding VersionMac}"
                                                                                    FontSize="20"
                                                                                    FontWeight="SemiBold"
                                                                                    VerticalAlignment="Center"

@@ -4,7 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:viewModels="clr-namespace:MAC.ViewModels"
-             xmlns:gif="http://wpfanimatedgif.codeplex.com"
              xmlns:models="clr-namespace:MAC.Models"
              d:DataContext="{d:DesignInstance Type=viewModels:ConnectSettingsVm}"
              mc:Ignorable="d"

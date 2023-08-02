@@ -5,9 +5,9 @@ namespace MAC.Views
     /// <summary>
     /// Логика взаимодействия для SetMeasurementsData.xaml
     /// </summary>
-    public partial class SetMeasurementsData 
+    public partial class SetMeasurementsData
     {
-        public SetMeasurementsDataVm ViewModel => (SetMeasurementsDataVm) DataContext;
+        public SetMeasurementsDataVm ViewModel => (SetMeasurementsDataVm)DataContext;
 
         public SetMeasurementsData(SetMeasurementsDataVm setMeasurementsDataVm)
         {

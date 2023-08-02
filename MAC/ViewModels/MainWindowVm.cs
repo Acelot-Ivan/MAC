@@ -1,4 +1,9 @@
-﻿using MAC.Properties;
+﻿using MAC.Models;
+using MAC.Properties;
+using MAC.ViewModels.Base;
+using MAC.ViewModels.Services;
+using MAC.ViewModels.Services.SerialPort;
+using MAC.Views;
 using System;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -9,11 +14,6 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Threading;
-using MAC.Models;
-using MAC.ViewModels.Base;
-using MAC.ViewModels.Services;
-using MAC.ViewModels.Services.SerialPort;
-using MAC.Views;
 
 namespace MAC.ViewModels
 {
@@ -225,7 +225,7 @@ namespace MAC.ViewModels
         private bool SetActiveSignalController(CommutatorSerialPort comm)
         {
             var selectActiveSignalController =
-                new SelectActiveMac(new SelectActiveMacVm(AllComConnect.Skip(2) , comm));
+                new SelectActiveMac(new SelectActiveMacVm(AllComConnect.Skip(2), comm));
             selectActiveSignalController.ShowDialog();
             var isContinue = selectActiveSignalController.ViewModels.IsContinue;
             selectActiveSignalController.Close();

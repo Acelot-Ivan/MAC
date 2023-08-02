@@ -1,6 +1,6 @@
-﻿using System;
-using MAC.ViewModels.Base;
+﻿using MAC.ViewModels.Base;
 using MAC.ViewModels.Services.SerialPort;
+using System;
 
 namespace MAC.Models.Value
 {
@@ -18,7 +18,7 @@ namespace MAC.Models.Value
 
         /// <summary>
         /// допустимая погрешность
-        /// </summary
+        /// </summary>
         private const decimal AdmissibleErrorValue = 0.01m;
 
         public OhmValueMac(int valueMeasurement, bool isActive)

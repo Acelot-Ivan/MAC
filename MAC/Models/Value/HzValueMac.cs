@@ -1,6 +1,6 @@
-﻿using System;
-using MAC.ViewModels.Base;
+﻿using MAC.ViewModels.Base;
 using MAC.ViewModels.Services.SerialPort;
+using System;
 
 namespace MAC.Models.Value
 {

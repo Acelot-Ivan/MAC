@@ -1,9 +1,9 @@
 ﻿using MAC.Properties;
-using System;
-using System.Windows;
 using MAC.ViewModels.Base;
 using MAC.ViewModels.Services;
 using MAC.ViewModels.Services.SerialPort;
+using System;
+using System.Windows;
 
 namespace MAC.Models
 {
@@ -177,7 +177,7 @@ namespace MAC.Models
 
             scSerialPort.OpenSerialPort();
 
-           Name =  scSerialPort.GetSerialNumberSc();
+            Name = scSerialPort.GetSerialNumberSc();
 
             scSerialPort.Close();
         }

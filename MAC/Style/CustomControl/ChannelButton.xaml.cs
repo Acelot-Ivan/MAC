@@ -1,8 +1,8 @@
-﻿using System.ComponentModel;
+﻿using MAC.Models;
+using MAC.ViewModels.Base;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using MAC.Models;
-using MAC.ViewModels.Base;
 
 namespace MAC.Style.CustomControl
 {

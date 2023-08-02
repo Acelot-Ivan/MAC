@@ -1,10 +1,10 @@
-﻿using System;
+﻿using MAC.Models;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO.Ports;
 using System.Threading;
 using System.Windows;
-using MAC.Models;
 
 namespace MAC.ViewModels.Services.SerialPort
 {
@@ -58,17 +58,17 @@ namespace MAC.ViewModels.Services.SerialPort
                 catch (Exception ex)
                 {
                     GlobalLog.Log.Debug(ex, "Fluke:{_comPort}", _comPort);
-                    var result = (int) MessageBox.Show(
+                    var result = (int)MessageBox.Show(
                         "Нажмите Ок, что бы повторить попытку.\r\nНажмите Отмена, что бы перейти на следующую МАС или остановить программу.",
                         $"{ex.Message}({_comPort})",
                         MessageBoxButton.OKCancel
                     );
                     switch (result)
                     {
-                        case (int) MessageBoxResult.OK:
+                        case (int)MessageBoxResult.OK:
                             OpenFlukePort();
                             break;
-                        case (int) MessageBoxResult.Cancel:
+                        case (int)MessageBoxResult.Cancel:
                             throw;
                     }
                 }
@@ -82,15 +82,15 @@ namespace MAC.ViewModels.Services.SerialPort
         {
             Send("STBY");
         }
+
         /// <summary>
         /// 30, 85, 110, 155, 190Ом
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="isOnOper"></param>
         /// <exception cref="ArgumentException"></exception>
         public void SetOhmValue(decimal value)
         {
-            var validationOhmList = new List<decimal> { 30, 85, 110, 115, 155, 190, 200};
+            var validationOhmList = new List<decimal> { 30, 85, 110, 115, 155, 190, 200 };
             if (!validationOhmList.Contains(value))
                 throw new ArgumentException();
 
@@ -107,11 +107,10 @@ namespace MAC.ViewModels.Services.SerialPort
         /// 0.345, 1.325, 2.550, 3.775, 4.755
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="isOnOper"></param>
         /// <exception cref="ArgumentException"></exception>
         public void SetVoltValue(decimal value)
         {
-            var validationVoltList = new List<decimal> {0.345m, 1.325m, 2.550m, 3.775m, 4.755m};
+            var validationVoltList = new List<decimal> { 0.345m, 1.325m, 2.550m, 3.775m, 4.755m };
             if (!validationVoltList.Contains(value))
                 throw new ArgumentException();
 
@@ -119,15 +118,15 @@ namespace MAC.ViewModels.Services.SerialPort
 
             Send($"OUT {valueFix} V;OPER");
         }
+
         /// <summary>
         /// 50, 250, 500, 750, 1000
         /// </summary>
         /// <param name="value"></param>
-        /// <param name="isOnOper"></param>
         /// <exception cref="ArgumentException"></exception>
         public void SetHzValue(decimal value)
         {
-            var validationHzList = new List<decimal> {50, 250, 500, 750, 1000};
+            var validationHzList = new List<decimal> { 50, 250, 500, 750, 1000 };
             if (!validationHzList.Contains(value))
                 throw new ArgumentException();
 

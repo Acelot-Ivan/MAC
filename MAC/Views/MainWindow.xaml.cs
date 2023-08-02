@@ -1,6 +1,6 @@
-﻿using System;
-using MAC.ViewModels;
+﻿using MAC.ViewModels;
 using MAC.ViewModels.Services;
+using System;
 
 namespace MAC.Views
 {

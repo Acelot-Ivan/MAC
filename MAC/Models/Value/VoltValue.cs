@@ -1,6 +1,6 @@
-﻿using System;
-using MAC.ViewModels.Base;
+﻿using MAC.ViewModels.Base;
 using MAC.ViewModels.Services.SerialPort;
+using System;
 
 namespace MAC.Models.Value
 {
@@ -16,9 +16,7 @@ namespace MAC.Models.Value
         public decimal ErrorValue { get; set; }
         public TimeSpan TimeMeasurements { get; set; }
 
-        /// <summary>
-        /// допустимая погрешность
-        /// </summary
+        //допустимая погрешность
         private const decimal AdmissibleErrorValue = 0.001m;
 
 
