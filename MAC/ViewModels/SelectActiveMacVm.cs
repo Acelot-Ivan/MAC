@@ -33,9 +33,7 @@ namespace MAC.ViewModels
         {
             MacItems = new ObservableCollection<ComConnectItem>(macItems);
             Comm = comm;
-            CheckMac();
-
-            Task.Run(async () => { await Task.Run(CheckMac); });
+            //CheckMac();
         }
 
         private bool IsCheckNowValidation(object obj) => IsCheckNow;
@@ -45,23 +43,26 @@ namespace MAC.ViewModels
         /// </summary>
         private void CheckMac()
         {
-            IsCheckNow = true;
-            Comm.OpenCommPort();
-
-            foreach (var item in MacItems)
+            Task.Run(async () => { await Task.Run(() =>
             {
-                Comm.OnPowerIndex(item.Number);
-                Thread.Sleep(200);
-                item.CheckComConnectAsyncGetSerial();
-                Comm.OffCommAll();
-                Thread.Sleep(200);
+                IsCheckNow = true;
+                Comm.OpenCommPort();
 
-                MessageBox.Show("Почти конец");
-            }
+                foreach (var item in MacItems)
+                {
+                    Comm.OnPowerIndex(item.Number);
+                    Thread.Sleep(200);
+                    item.CheckComConnectAsyncGetSerial();
+                    Comm.OffCommAll();
+                    Thread.Sleep(200);
 
-            Comm.Close();
+                    MessageBox.Show("Почти конец");
+                }
 
-            IsCheckNow = true;
+                Comm.Close();
+
+                IsCheckNow = true;
+            }); });
         }
 
         private void GetSerialNumber(object obj)
