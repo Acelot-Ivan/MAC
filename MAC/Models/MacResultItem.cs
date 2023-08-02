@@ -50,7 +50,7 @@ namespace MAC.Models
         /// <summary>
         /// Время калибровки на каждую точку при калибровке новых версий mac в секундах.
         /// </summary>
-        private const int TimeOutCalibrationNewSc = 60;
+        private const int TimeOutCalibrationNewSc = 30;
 
         /// <summary>
         /// Имя заданное лаборантом
@@ -428,17 +428,17 @@ namespace MAC.Models
 
             if (ch0IsActiveCollection.Contains(true))
             {
-                TimeLeftOnAllMeasurements += TimeSpan.FromSeconds(TimeOutCalibrationNewSc * 2);
+                TimeLeftOnAllMeasurements += TimeSpan.FromSeconds(TimeOutCalibrationNewSc);
             }
 
             if (ch1IsActiveCollection.Contains(true))
             {
-                TimeLeftOnAllMeasurements += TimeSpan.FromSeconds(TimeOutCalibrationNewSc * 2);
+                TimeLeftOnAllMeasurements += TimeSpan.FromSeconds(TimeOutCalibrationNewSc);
             }
 
             if (ch2IsActiveCollection.Contains(true))
             {
-                TimeLeftOnAllMeasurements += TimeSpan.FromSeconds(TimeOutCalibrationNewSc * 2);
+                TimeLeftOnAllMeasurements += TimeSpan.FromSeconds(TimeOutCalibrationNewSc);
             }
 
             #endregion
