@@ -141,6 +141,15 @@ namespace MAC.Models
                 resultCheck = false;
             }
 
+            try
+            {
+                GerSerialNumberSc();
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error request serial id mac");
+            }
+
             CheckedResult = resultCheck;
             IsChecked = false;
         }
@@ -152,8 +161,6 @@ namespace MAC.Models
         {
             IsChecked = true;
             CheckComConnect();
-            MessageBox.Show("Мас проверен, далее серийник");
-            GerSerialNumberSc();
             IsChecked = false;
         }
 

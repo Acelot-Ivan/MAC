@@ -36,7 +36,7 @@ namespace MAC.ViewModels
             //CheckMac();
         }
 
-        private bool IsCheckNowValidation(object obj) => IsCheckNow;
+        private bool IsCheckNowValidation(object obj) => !IsCheckNow;
 
         /// <summary>
         /// Проверка валидности и запрос серийного номера
@@ -55,8 +55,6 @@ namespace MAC.ViewModels
                     item.CheckComConnectAsyncGetSerial();
                     Comm.OffCommAll();
                     Thread.Sleep(200);
-
-                    MessageBox.Show("Почти конец");
                 }
 
                 Comm.Close();
