@@ -10,7 +10,7 @@
         xmlns:value="clr-namespace:MAC.Models.Value"
         xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
         xmlns:customControl="clr-namespace:MAC.Style.CustomControl"
-        BorderThickness="1"
+        BorderThickness="0.5"
         BorderBrush="{StaticResource BackgroundLeftColor}"
         Title="{Binding Version , StringFormat={}ПО для поверки MAC {0}}"
         MinWidth="800"
