@@ -50,6 +50,10 @@ namespace MAC.ViewModels
 
                 foreach (var item in MacItems)
                 {
+                    item.Name = "Укажите имя";
+                    item.CheckedResult = false;
+
+
                     Comm.OnPowerIndex(item.Number);
                     Thread.Sleep(200);
                     item.CheckComConnectAsyncGetSerial();
