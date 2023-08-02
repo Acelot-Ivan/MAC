@@ -3,12 +3,12 @@
 namespace MAC.Views
 {
     /// <summary>
-    /// Логика взаимодействия для SelectActiveSignalController.xaml
+    /// Логика взаимодействия для SelectActiveMac.xaml
     /// </summary>
-    public partial class SelectActiveSignalController
+    public partial class SelectActiveMac
     {
         public SelectActiveMacVm ViewModels => (SelectActiveMacVm)DataContext;
-        public SelectActiveSignalController(SelectActiveMacVm selectActiveMacVm)
+        public SelectActiveMac(SelectActiveMacVm selectActiveMacVm)
         {
             InitializeComponent();
 

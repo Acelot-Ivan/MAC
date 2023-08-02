@@ -16,6 +16,7 @@ namespace MAC.ViewModels
         public RelayCommand CancelCommand => new RelayCommand(Cancel);
         public RelayCommand GetSerialNumberMacCommand => new RelayCommand(GetSerialNumber);
         public ObservableCollection<ComConnectItem> MacItems { get; set; }
+        private CommutatorSerialPort Comm;
 
         object locker = new object();
         public bool IsContinue { get; set; }
@@ -23,22 +24,29 @@ namespace MAC.ViewModels
         public SelectActiveMacVm(IEnumerable<ComConnectItem> macItems, CommutatorSerialPort comm)
         {
             MacItems = new ObservableCollection<ComConnectItem>(macItems);
+            Comm = comm;
+        }
 
+        /// <summary>
+        /// Проверка валидности и запрос серийного номера
+        /// </summary>
+        public void CheckMac()
+        {
             Task.Run(async () => await Task.Run(() =>
             {
 
-                comm.OpenCommPort();
+                Comm.OpenCommPort();
 
                 foreach (var item in MacItems)
                 {
-                    comm.OnPowerIndex(item.Number);
+                    Comm.OnPowerIndex(item.Number);
                     Thread.Sleep(200);
                     item.CheckComConnectAsyncGetSerial();
-                    comm.OffCommAll();
+                    Comm.OffCommAll();
                     Thread.Sleep(200);
                 }
 
-                comm.Close();   
+                Comm.Close();
             }));
         }
 
@@ -69,15 +77,15 @@ namespace MAC.ViewModels
 
         private bool ContinueValidation(object obj)
         {
-            var isActiveOneSignalController = false;
+            var isActiveOneMac = false;
 
             foreach (var item in MacItems)
             {
                 if (item.IsActiveTest)
-                    isActiveOneSignalController = true;
+                    isActiveOneMac = true;
             }
 
-            return isActiveOneSignalController;
+            return isActiveOneMac;
         }
     }
 }

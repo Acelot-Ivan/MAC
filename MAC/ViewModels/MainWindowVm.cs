@@ -238,7 +238,7 @@ namespace MAC.ViewModels
         private bool SetActiveSignalController(CommutatorSerialPort comm)
         {
             var selectActiveSignalController =
-                new SelectActiveSignalController(new SelectActiveMacVm(AllComConnect.Skip(2) , comm));
+                new SelectActiveMac(new SelectActiveMacVm(AllComConnect.Skip(2) , comm));
             selectActiveSignalController.ShowDialog();
             var isContinue = selectActiveSignalController.ViewModels.IsContinue;
             selectActiveSignalController.Close();

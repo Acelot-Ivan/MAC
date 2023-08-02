@@ -226,8 +226,8 @@
     <Compile Include="Views\MeasurementsSettings.xaml.cs">
       <DependentUpon>MeasurementsSettings.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SelectActiveSignalController.xaml.cs">
-      <DependentUpon>SelectActiveSignalController.xaml</DependentUpon>
+    <Compile Include="Views\SelectActiveMac.xaml.cs">
+      <DependentUpon>SelectActiveMac.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SetMeasurementsData.xaml.cs">
       <DependentUpon>SetMeasurementsData.xaml</DependentUpon>
@@ -276,7 +276,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\SelectActiveSignalController.xaml">
+    <Page Include="Views\SelectActiveMac.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

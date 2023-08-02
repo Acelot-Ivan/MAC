@@ -147,12 +147,11 @@ namespace MAC.Models
         /// <summary>
         /// Асинхронный запуск CheckComConnect. Необходимо учитывать, что сеттер завершается раньше чем запущенная из него проверка.
         /// </summary>
-        public async void CheckComConnectAsyncGetSerial()
+        public void CheckComConnectAsyncGetSerial()
         {
             IsChecked = true;
             CheckComConnect();
             GerSerialNumberSc();
-            //await Task.Run(CheckComConnect);
             IsChecked = false;
         }
 
