@@ -29,9 +29,9 @@ namespace MAC.Models.Value
             IsActive = isActive;
         }
 
-        public void SetFlukeSettings(FlukeSerialPort fluke , bool isOnOper)
+        public void SetFlukeSettings(FlukeSerialPort fluke)
         {
-            fluke.SetVoltValue(ValueMeasurement , isOnOper);
+            fluke.SetVoltValue(ValueMeasurement);
         }
 
         public bool CheckedValidationDifferenceValue(decimal differenceValue) =>

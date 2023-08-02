@@ -29,9 +29,9 @@ namespace MAC.Models.Value
         }
 
 
-        public void SetFlukeSettings(FlukeSerialPort fluke, bool isOnOper)
+        public void SetFlukeSettings(FlukeSerialPort fluke)
         {
-            fluke.SetOhmValue(ValueMeasurement , isOnOper);
+            fluke.SetOhmValue(ValueMeasurement);
         }
 
 

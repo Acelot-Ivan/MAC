@@ -88,17 +88,13 @@ namespace MAC.ViewModels.Services.SerialPort
         /// <param name="value"></param>
         /// <param name="isOnOper"></param>
         /// <exception cref="ArgumentException"></exception>
-        public void SetOhmValue(decimal value, bool isOnOper = true)
+        public void SetOhmValue(decimal value)
         {
             var validationOhmList = new List<decimal> { 30, 85, 110, 115, 155, 190, 200};
             if (!validationOhmList.Contains(value))
                 throw new ArgumentException();
 
-            Send(
-                isOnOper
-                    ? $"OUT {value} OHM;OPER"
-                    : $"OUT {value} OHM"
-            );
+            Send($"OUT {value} OHM;OPER");
         }
 
         public void SetOhmValueCalibration()
@@ -113,7 +109,7 @@ namespace MAC.ViewModels.Services.SerialPort
         /// <param name="value"></param>
         /// <param name="isOnOper"></param>
         /// <exception cref="ArgumentException"></exception>
-        public void SetVoltValue(decimal value, bool isOnOper = true)
+        public void SetVoltValue(decimal value)
         {
             var validationVoltList = new List<decimal> {0.345m, 1.325m, 2.550m, 3.775m, 4.755m};
             if (!validationVoltList.Contains(value))
@@ -121,11 +117,7 @@ namespace MAC.ViewModels.Services.SerialPort
 
             var valueFix = value.ToString(CultureInfo.InvariantCulture).Replace(",", ".");
 
-            Send(
-                isOnOper
-                    ? $"OUT {valueFix} V;OPER"
-                    : $"OUT {valueFix} V"
-            );
+            Send($"OUT {valueFix} V;OPER");
         }
         /// <summary>
         /// 50, 250, 500, 750, 1000
@@ -133,18 +125,14 @@ namespace MAC.ViewModels.Services.SerialPort
         /// <param name="value"></param>
         /// <param name="isOnOper"></param>
         /// <exception cref="ArgumentException"></exception>
-        public void SetHzValue(decimal value, bool isOnOper = true)
+        public void SetHzValue(decimal value)
         {
             var validationHzList = new List<decimal> {50, 250, 500, 750, 1000};
             if (!validationHzList.Contains(value))
                 throw new ArgumentException();
 
 
-            Send(
-                isOnOper
-                    ? $"OUT 4 V,{value} HZ;DC_OFFSET +2 V;WAVE SQUARE;OPER"
-                    : $"OUT 4 V,{value} HZ;DC_OFFSET +2 V;WAVE SQUARE"
-            );
+            Send($"OUT 4 V,{value} HZ;DC_OFFSET +2 V;WAVE SQUARE;OPER");
         }
 
         /// <summary>

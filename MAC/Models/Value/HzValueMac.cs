@@ -28,9 +28,9 @@ namespace MAC.Models.Value
             IsActive = isActive;
         }
 
-        public void SetFlukeSettings(FlukeSerialPort fluke, bool isOnOper)
+        public void SetFlukeSettings(FlukeSerialPort fluke)
         {
-            fluke.SetHzValue(ValueMeasurement, isOnOper);
+            fluke.SetHzValue(ValueMeasurement);
         }
 
         public bool CheckedValidationDifferenceValue(decimal differenceValue) =>

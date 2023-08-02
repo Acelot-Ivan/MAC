@@ -60,7 +60,7 @@ namespace MAC.Models.Value
         /// <summary>
         /// Установка нужных настроек на Fluke  по TypeMeasurement and ValueMeasurement
         /// </summary>
-        void SetFlukeSettings(FlukeSerialPort fluke , bool isOnOper = true);
+        void SetFlukeSettings(FlukeSerialPort fluke);
 
         /// <summary>
         /// Проверка отклонения полученного результата от нормы

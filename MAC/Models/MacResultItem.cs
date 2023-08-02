@@ -550,60 +550,6 @@ namespace MAC.Models
             IsCheckedNow = false;
         }
 
-        /// <summary>
-        /// Калибровка Mac
-        /// </summary>
-        private void CalibrationOhmChannelNewVersion(int channel, CancellationTokenSource ctSource)
-        {
-            var nameChannel = channel < 5
-                ? _channelName[$"CH{channel - 1}"]
-                : _channelName[$"CH{channel}"];
-
-            CurrentActTest = $"Калибровка {nameChannel}";
-
-
-            _comm.OnPowerIndex(_numberMac);
-            _comm.OnСhannel(channel);
-
-            _mac.OpenSession();
-            _mac.Send($"fcalt {channel - 1} 200");
-            _mac.SendWithOutN("y");
-
-            _fluke.FlukeOff();
-            _fluke.SetOhmValueCalibration();
-
-            var timeOutSleep = TimeOutCalibrationNewSc;
-            while (timeOutSleep != 0)
-            {
-                if (IsCancellationRequested(ctSource))
-                    return;
-
-                timeOutSleep -= 1;
-                TimeLeftOnAllMeasurements -= TimeSpan.FromSeconds(1);
-                Thread.Sleep(1000);
-            }
-
-            _mac.SendWithOutN("80");
-            _mac.SendEnter();
-
-            _fluke.FlukeOff();
-            _fluke.SetOhmValue(120);
-
-            timeOutSleep = TimeOutCalibrationNewSc;
-            while (timeOutSleep != 0)
-            {
-                if (IsCancellationRequested(ctSource))
-                    return;
-
-                timeOutSleep -= 1;
-                TimeLeftOnAllMeasurements -= TimeSpan.FromSeconds(1);
-                Thread.Sleep(1000);
-            }
-
-            _mac.SendWithOutN("120");
-            _mac.SendWithOutN("\r\n");
-        }
-
         private void CalibrationOhmChannelMac(int channel, CancellationTokenSource ctSource)
         {
             var nameChannel = _channelName[$"X{channel}"];
@@ -645,8 +591,7 @@ namespace MAC.Models
         private void ChannelMeasurements(int channel, IEnumerable<IMacValue> ch, CancellationTokenSource ctSource,
             Channel currentChannel)
         {
-            var isStartChannelMeasurement = true;
-
+            
             CurrentChannel = currentChannel;
 
             foreach (var itemCh in ch)
@@ -662,18 +607,9 @@ namespace MAC.Models
 
                 _fluke.FlukeOff();
 
-                //if (isStartChannelMeasurement)
-                //{
-                //    _fluke.FlukeOff();
-                //}
-
                 _comm.OnСhannel(channel);
 
-                //itemCh.SetFlukeSettings(_fluke, isStartChannelMeasurement);
-
-                itemCh.SetFlukeSettings(_fluke, true);
-
-                isStartChannelMeasurement = false;
+                itemCh.SetFlukeSettings(_fluke);
 
                 if (IsCancellationRequested(ctSource)) return;
                 var value = _mainSettingsModel.IsUseAverageValue
