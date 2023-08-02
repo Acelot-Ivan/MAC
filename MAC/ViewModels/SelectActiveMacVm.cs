@@ -15,7 +15,7 @@ namespace MAC.ViewModels
         public RelayCommand ContinueCommand => new RelayCommand(Continue, ContinueValidation);
         public RelayCommand CancelCommand => new RelayCommand(Cancel);
 
-        public RelayCommand CheckMacCommand => new RelayCommand(CheckMac , IsCheckNowValidation);
+        public RelayCommand CheckMacCommand => new RelayCommand(CheckMac, IsCheckNowValidation);
         public ObservableCollection<ComConnectItem> MacItems { get; set; }
         private CommutatorSerialPort Comm;
 
@@ -33,6 +33,8 @@ namespace MAC.ViewModels
             MacItems = new ObservableCollection<ComConnectItem>(macItems);
             Comm = comm;
             CheckMac();
+
+            Task.Run(async () => { await Task.Run(CheckMac); });
         }
 
         private bool IsCheckNowValidation(object obj) => IsCheckNow;
@@ -40,38 +42,35 @@ namespace MAC.ViewModels
         /// <summary>
         /// Проверка валидности и запрос серийного номера
         /// </summary>
-        public void CheckMac()
+        private void CheckMac()
         {
-            Task.Run(async () => await Task.Run(() =>
+            IsCheckNow = true;
+            Comm.OpenCommPort();
+
+            foreach (var item in MacItems)
             {
-                IsCheckNow = true;
-                Comm.OpenCommPort();
+                Comm.OnPowerIndex(item.Number);
+                Thread.Sleep(200);
+                item.CheckComConnectAsyncGetSerial();
+                Comm.OffCommAll();
+                Thread.Sleep(200);
+            }
 
-                foreach (var item in MacItems)
-                {
-                    Comm.OnPowerIndex(item.Number);
-                    Thread.Sleep(200);
-                    item.CheckComConnectAsyncGetSerial();
-                    Comm.OffCommAll();
-                    Thread.Sleep(200);
-                }
+            Comm.Close();
 
-                Comm.Close();
-
-                IsCheckNow = true;
-            }));
+            IsCheckNow = true;
         }
 
         private void GetSerialNumber(object obj)
         {
             var comConnectItem = obj as ComConnectItem;
 
-           lock(locker)
-           {
-               if (comConnectItem?.CheckedResult == true)
-               {
-                   Task.Run(async () => await Task.Run(() => comConnectItem.GerSerialNumberSc()));
-               }
+            lock (locker)
+            {
+                if (comConnectItem?.CheckedResult == true)
+                {
+                    Task.Run(async () => await Task.Run(() => comConnectItem.GerSerialNumberSc()));
+                }
             }
         }
 
