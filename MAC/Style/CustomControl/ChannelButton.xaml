@@ -33,7 +33,7 @@
                                 <ControlTemplate TargetType="{x:Type Button}">
                                     <Border x:Name="ButtonBorder"
                                             CornerRadius="5"
-                                            Background="{DynamicResource {x:Static SystemColors.GradientInactiveCaptionBrushKey}}">
+                                            Background="{StaticResource BackgroundRightColor}">
                                         <Grid>
                                             <ContentPresenter x:Name="ButtonContentPresenter"
                                                               VerticalAlignment="Center"
