@@ -430,9 +430,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Resources\test_cs_protocol.xlsx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Resources\mac_protocol.xlsx">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
