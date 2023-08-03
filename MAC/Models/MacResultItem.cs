@@ -451,9 +451,11 @@ namespace MAC.Models
             {
                 try
                 {
-                    if (_mainSettingsModel.IsOnCalibration)
+                    var x1Result = CalibrationOhmChannelMac(ChannelX1, ctSource);
+
+                    if (x1Result == false)
                     {
-                        CalibrationOhmChannelMac(ChannelX1, ctSource);
+                        //restart channel or cancel
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
@@ -472,9 +474,11 @@ namespace MAC.Models
             {
                 try
                 {
-                    if (_mainSettingsModel.IsOnCalibration)
+                    var x2Result =CalibrationOhmChannelMac(ChannelX2, ctSource);
+
+                    if (x2Result == false)
                     {
-                        CalibrationOhmChannelMac(ChannelX2, ctSource);
+                        //restart channel or cancel
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
@@ -493,10 +497,13 @@ namespace MAC.Models
             {
                 try
                 {
-                    if (_mainSettingsModel.IsOnCalibration)
+                    var x3Result = CalibrationOhmChannelMac(ChannelX3, ctSource);
+
+                    if (x3Result == false)
                     {
-                        CalibrationOhmChannelMac(ChannelX3, ctSource);
+                        //restart channel or cancel
                     }
+
 
                     if (IsCancellationRequested(ctSource)) return;
                     ChannelMeasurements(ChannelX3, X3, ctSource, Channel.X3);
