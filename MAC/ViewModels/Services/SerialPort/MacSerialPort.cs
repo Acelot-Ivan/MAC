@@ -257,7 +257,7 @@ namespace MAC.ViewModels.Services.SerialPort
         /// <summary>
         /// Очистка переменной хранящей данные последнего теста 
         /// </summary>
-        private void ClearCurrentData()
+        public void ClearCurrentData()
         {
             _currentData = string.Empty;
         }

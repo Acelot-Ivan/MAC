@@ -32,12 +32,12 @@ namespace MAC.Models
 
         private readonly Dictionary<string, string> _channelName = new Dictionary<string, string>
         {
-            {"X1", "t возд"},
-            {"X2", "t дор"},
-            {"X3", "t п/п"},
-            {"X4", "Влаж"},
-            {"X5", "ДНВ"},
-            {"X6", "ДВС"}
+            { "X1", "t возд" },
+            { "X2", "t дор" },
+            { "X3", "t п/п" },
+            { "X4", "Влаж" },
+            { "X5", "ДНВ" },
+            { "X6", "ДВС" }
         };
 
         /// <summary>
@@ -312,7 +312,7 @@ namespace MAC.Models
                 itemCh.ErrorValue = (decimal)Settings.Default[$"{channelName}Ch5Error"];
         }
 
-        #region Const Channel 
+        #region Const Channel
 
         private const int ChannelX1 = 1;
         private const int ChannelX2 = 2;
@@ -424,7 +424,7 @@ namespace MAC.Models
             var ch1IsActiveCollection = X2.Select(item => item.IsActive).ToList();
             var ch2IsActiveCollection = X3.Select(item => item.IsActive).ToList();
 
-            #region Добавляю время калибровки к общему времени          
+            #region Добавляю время калибровки к общему времени
 
             if (ch0IsActiveCollection.Contains(true))
             {
@@ -550,7 +550,7 @@ namespace MAC.Models
             IsCheckedNow = false;
         }
 
-        private void CalibrationOhmChannelMac(int channel, CancellationTokenSource ctSource)
+        private bool CalibrationOhmChannelMac(int channel, CancellationTokenSource ctSource)
         {
             var nameChannel = _channelName[$"X{channel}"];
 
@@ -563,10 +563,21 @@ namespace MAC.Models
             _comm.OnСhannel(channel);
 
             _mac.OpenSession();
-            _mac.SendWithOutN("init def");
 
+            _mac.ClearCurrentData();
+            _mac.SendWithOutN("init def");
             //check  "DO YOU WANT TO PERFORM REINITIALIZATION (Y/N)? "
+            var macCurrentData = _mac.GetCurrentData();
+
+            if (macCurrentData.Contains("PERFORM") == false && macCurrentData.Contains("REINITIALIZATION") == false)
+                return false;
+
             _mac.SendWithOutN("y");
+
+            macCurrentData = _mac.GetCurrentData();
+
+            if (macCurrentData.Contains("OPERATION") == false && macCurrentData.Contains("SUCCESSFUL") == false)
+                return false;
 
             _mac.SendWithOutN("test");
 
@@ -574,11 +585,24 @@ namespace MAC.Models
 
             _mac.SendWithOutN(" ");
 
+            _mac.ClearCurrentData();
+
+            macCurrentData = _mac.GetCurrentData();
             _mac.SendWithOutN($"fcal {channel} 200");
+            //check DO YOU WANT TO PERFORM CALIBRATION (Y/N)? 
+
+            if (macCurrentData.Contains("PERFORM") == false && macCurrentData.Contains("CALIBRATION") == false)
+                return false;
 
             _mac.SendWithOutN("y");
 
+
+            if (macCurrentData.Contains("CALIBRATION") == false && macCurrentData.Contains("SUCCESSFUL") == false)
+                return false;
+
             var x = _mac.GetCurrentData();
+
+            return true;
         }
 
         /// <summary>
@@ -591,7 +615,6 @@ namespace MAC.Models
         private void ChannelMeasurements(int channel, IEnumerable<IMacValue> ch, CancellationTokenSource ctSource,
             Channel currentChannel)
         {
-
             CurrentChannel = currentChannel;
 
             foreach (var itemCh in ch)
@@ -1091,8 +1114,6 @@ namespace MAC.Models
                 ws.Cells[47, 16].Value = _measurementsData.Verifier;
 
 
-
-
                 //Температура
                 ws.Cells[27, 5].Value = _measurementsData.Temperature;
                 //Влажность
@@ -1218,7 +1239,6 @@ namespace MAC.Models
                                   X4[4].ResultValue + ";" +
                                   X5[4].ResultValue + ";1000;" +
                                   X6[4].ResultValue);
-
 
             #endregion
 
