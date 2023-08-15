@@ -451,12 +451,23 @@ namespace MAC.Models
             {
                 try
                 {
-                    var x1Result = CalibrationOhmChannelMac(ChannelX1, ctSource);
-
-                    if (x1Result == false)
+                    while (true)
                     {
-                        //restart channel or cancel
+                        var x1Result = CalibrationOhmChannelMac(ChannelX1, ctSource);
+
+                        if (x1Result)
+                        {
+                            break;
+                        }
+
+                        var resultMessageBox = MessageBox.Show("Повторить попытку? В случае отмены, поверка будет остановлена.", "Ошибка при калибровке Х1", MessageBoxButton.OKCancel,
+                            MessageBoxImage.Error, MessageBoxResult.Cancel);
+
+                        if (resultMessageBox != MessageBoxResult.Cancel) continue;
+                        ctSource.Cancel();
+                        if (IsCancellationRequested(ctSource)) return;
                     }
+
 
                     if (IsCancellationRequested(ctSource)) return;
                     ChannelMeasurements(ChannelX1, X1, ctSource, Channel.X1);
@@ -474,11 +485,21 @@ namespace MAC.Models
             {
                 try
                 {
-                    var x2Result =CalibrationOhmChannelMac(ChannelX2, ctSource);
-
-                    if (x2Result == false)
+                    while (true)
                     {
-                        //restart channel or cancel
+                        var x2Result = CalibrationOhmChannelMac(ChannelX2, ctSource);
+
+                        if (x2Result)
+                        {
+                            break;
+                        }
+
+                        var resultMessageBox = MessageBox.Show("Повторить попытку? В случае отмены, поверка будет остановлена.", "Ошибка при калибровке X2", MessageBoxButton.OKCancel,
+                            MessageBoxImage.Error, MessageBoxResult.Cancel);
+
+                        if (resultMessageBox != MessageBoxResult.Cancel) continue;
+                        ctSource.Cancel();
+                        if (IsCancellationRequested(ctSource)) return;
                     }
 
                     if (IsCancellationRequested(ctSource)) return;
@@ -497,11 +518,21 @@ namespace MAC.Models
             {
                 try
                 {
-                    var x3Result = CalibrationOhmChannelMac(ChannelX3, ctSource);
-
-                    if (x3Result == false)
+                    while (true)
                     {
-                        //restart channel or cancel
+                        var x3Result = CalibrationOhmChannelMac(ChannelX3, ctSource);
+
+                        if (x3Result)
+                        {
+                            break;
+                        }
+
+                        var resultMessageBox = MessageBox.Show("Повторить попытку? В случае отмены, поверка будет остановлена.", "Ошибка при калибровке X3", MessageBoxButton.OKCancel,
+                            MessageBoxImage.Error, MessageBoxResult.Cancel);
+
+                        if (resultMessageBox != MessageBoxResult.Cancel) continue;
+                        ctSource.Cancel();
+                        if (IsCancellationRequested(ctSource)) return;
                     }
 
 
