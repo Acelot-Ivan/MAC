@@ -625,20 +625,18 @@ namespace MAC.Models
 
             _mac.ClearCurrentData();
 
-            macCurrentData = _mac.GetCurrentData();
             _mac.SendWithOutN($"fcal {channel} 200");
-            //check DO YOU WANT TO PERFORM CALIBRATION (Y/N)? 
+            macCurrentData = _mac.GetCurrentData();
 
             if (macCurrentData.Contains("PERFORM") == false || macCurrentData.Contains("CALIBRATION") == false)
                 return false;
 
             _mac.SendWithOutN("y");
-
+            macCurrentData = _mac.GetCurrentData();
 
             if (macCurrentData.Contains("CALIBRATION") == false || macCurrentData.Contains("SUCCESSFUL") == false)
                 return false;
 
-            var x = _mac.GetCurrentData();
 
             return true;
         }
