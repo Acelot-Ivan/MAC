@@ -158,6 +158,7 @@
                                 <Viewbox>
                                     <CheckBox IsChecked="{Binding MainSettingsModel.IsOnCalibration}"
                                               Margin="25,18"
+                                              IsEnabled="False"
                                               VerticalAlignment="Center" />
                                 </Viewbox>
 
